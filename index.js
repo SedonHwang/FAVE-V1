@@ -1,4 +1,6 @@
 import express from "express";
+import helmet from "helmet";
+import morgan from "morgan";
 const app = express();
 
 const PORT = 4000;
@@ -16,6 +18,9 @@ const handleHome = (req, res) => {
 const handleProfile = (req, res) => {
   res.send("This is Profile!!!");
 };
+
+app.use(helmet());
+app.use(morgan("dev"));
 
 app.get("/", handleHome);
 

@@ -4,7 +4,7 @@
   "description": "fave webpage for Strong Friend By RunningWater ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node index.js --delay 2"
   },
   "author": "RunningWater",
   "license": "ISC",
@@ -13,7 +13,9 @@
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "core-js": "^3.1.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "helmet": "^3.20.0",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
