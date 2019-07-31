@@ -1,0 +1,14 @@
+{
+  "name": "fave-v1",
+  "version": "1.0.0",
+  "description": "fave webpage for Strong Friend By RunningWater ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RunningWater",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
