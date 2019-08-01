@@ -1,6 +1,8 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import session from "express-session";
 const app = express();
 
 const PORT = 4000;
