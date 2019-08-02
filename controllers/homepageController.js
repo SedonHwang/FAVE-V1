@@ -1,5 +1,5 @@
 //Global Router Controller
-export const home = (req, res) => res.send("home");
+export const home = (req, res) => res.render("home");
 export const company = (req, res) => res.send("company");
 
 //About Router Controller
