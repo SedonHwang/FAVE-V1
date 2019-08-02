@@ -1,12 +1,14 @@
 import express from "express";
 import routes from "../routes";
+import { home, company } from "../controllers/homepageController";
+import { signup, login, logout } from "../controllers/adminController";
 
 const globalRouter = express.Router();
 
-globalRouter.get(routes.home, (req, res) => res.send("Home"));
-globalRouter.get(routes.signup, (req, res) => res.send("signup"));
-globalRouter.get(routes.login, (req, res) => res.send("login"));
-globalRouter.get(routes.logout, (req, res) => res.send("logout"));
-globalRouter.get(routes.company, (req, res) => res.send("company"));
+globalRouter.get(routes.home, home);
+globalRouter.get(routes.signup, signup);
+globalRouter.get(routes.login, login);
+globalRouter.get(routes.logout, logout);
+globalRouter.get(routes.company, company);
 
 export default globalRouter;
