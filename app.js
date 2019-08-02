@@ -10,14 +10,6 @@ import noticeRouter from "./routers/noticeRouter";
 
 const app = express();
 
-const PORT = 4000;
-
-const handleListening = () => {
-  console.log(`Listening on: http://localhost:${PORT}`);
-};
-
-app.listen(PORT, handleListening);
-
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
@@ -27,3 +19,5 @@ app.use(cookieParser());
 app.use(routes.home, globalRouter);
 app.use(routes.about, aboutRouter);
 app.use(routes.notice, noticeRouter);
+
+export default app;
