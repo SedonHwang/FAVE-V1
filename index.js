@@ -23,6 +23,9 @@ const handleProfile = (req, res) => {
 
 app.use(helmet());
 app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.get("/", handleHome);
 
