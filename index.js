@@ -14,7 +14,7 @@ const handleListening = () => {
 app.listen(PORT, handleListening);
 
 const handleHome = (req, res) => {
-  res.send("Hello from home");
+  res.send("Hello from home!!!!");
 };
 
 const handleProfile = (req, res) => {
