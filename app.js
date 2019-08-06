@@ -7,6 +7,7 @@ import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import aboutRouter from "./routers/aboutRouter";
 import noticeRouter from "./routers/noticeRouter";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.about, aboutRouter);
