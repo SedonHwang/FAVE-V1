@@ -4,7 +4,7 @@
   "description": "fave webpage for Strong Friend By RunningWater ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node init.js --delay 2"
+    "start": "nodemon --exec babel-node src/init.js --delay 2"
   },
   "author": "RunningWater",
   "license": "ISC",

@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import path from "path";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import routes from "./routes";
@@ -12,6 +13,7 @@ import { localsMiddleware } from "./middlewares";
 const app = express();
 
 app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
