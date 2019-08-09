@@ -1,0 +1,12 @@
+@import "_reset";
+@import "_variables";
+
+.footer {
+  background-color: $red;
+  display: flex;
+  flex-direction: column;
+}
+.footer .footer__row:first-child {
+  display: flex;
+  justify-content: space-between;
+}
