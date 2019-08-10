@@ -34,7 +34,8 @@ const routes = {
 const pug = () =>
   gulp.src(routes.pug.src).pipe(gulpCopy(routes.pug.dest, { prefix: 1 }));
 
-const clean = () => del(["build/public/js"]);
+const clean = () =>
+  del(["build/public/js", "src/public/jsDev", "src/public/css"]);
 
 const devClean = () => del(["src/public/css", "src/public/jsDev"]);
 
