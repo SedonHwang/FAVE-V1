@@ -2,4 +2,6 @@ import { random } from "./util";
 
 const rOne = random(10);
 
-console.log(rOne);
+const rTwo = random(20);
+
+console.log(rOne, rTwo);

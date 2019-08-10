@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:server": "nodemon --exec babel-node src/init.js --delay 2",
+    "dev:assets": "gulp dev",
     "build:server": "babel src --out-dir build",
     "build:assets": "gulp build",
     "prebuild": "rm -rf build",

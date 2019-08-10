@@ -18,12 +18,16 @@ const routes = {
     dest: "build/public/img"
   },
   scss: {
+    watch: "src/public/scss/**/*.scss",
     src: "src/public/scss/style.scss",
-    dest: "build/public/css"
+    dest: "build/public/css",
+    devDest: "src/public/css"
   },
   js: {
+    watch: "src/public/js/**/*.js",
     src: "src/public/js/main.js",
-    dest: "build/public/js"
+    dest: "build/public/js",
+    devDest: "src/public/jsDev"
   }
 };
 
@@ -31,6 +35,8 @@ const pug = () =>
   gulp.src(routes.pug.src).pipe(gulpCopy(routes.pug.dest, { prefix: 1 }));
 
 const clean = () => del(["build/public/js"]);
+
+const devClean = () => del(["src/public/css", "src/public/jsDev"]);
 
 const img = () =>
   gulp
@@ -46,6 +52,13 @@ const styles = () =>
     .pipe(miniCSS())
     .pipe(gulp.dest(routes.scss.dest));
 
+const devStyles = () =>
+  gulp
+    .src(routes.scss.src)
+    .pipe(gulpSass().on("error", gulpSass.logError))
+    .pipe(gulpAutop({ overrideBrowserslist: ["last 2 versions"] }))
+    .pipe(gulp.dest(routes.scss.devDest));
+
 const js = () =>
   gulp
     .src(routes.js.src)
@@ -59,9 +72,28 @@ const js = () =>
     )
     .pipe(gulp.dest(routes.js.dest));
 
+const devJs = () =>
+  gulp
+    .src(routes.js.src)
+    .pipe(
+      bro({
+        transform: [babelify.configure({ presets: ["@babel/preset-env"] })]
+      })
+    )
+    .pipe(gulp.dest(routes.js.devDest));
+
+const watch = () => {
+  gulp.watch(routes.scss.watch, devStyles);
+  gulp.watch(routes.js.watch, devJs);
+};
+
 const prepare = gulp.series([clean, img]);
 
 const assets = gulp.series([pug, styles, js]);
 
-// dev 필요 : dev 파일에서 sass나 js를 변환해서 확인할 수 있어야 편함. build만 있으면 dev 상태에서는 어떻게 scss와 js가 적용된 모습을 볼 것인가?
+// dev 필요 : dev 파일에서 sass, js를 변환해서 확인할 수 있어야 편함.
+//build만 있으면 dev 상태에서는 어떻게 scss와 js가 적용된 모습을 볼 것인가?
+//1번. 우선 js나 scss에 변화를 감지한다.
+//2번. watch
+export const dev = gulp.series([devClean, watch]);
 export const build = gulp.series([prepare, assets]);
