@@ -13,6 +13,9 @@ body {
   justify-content: center;
   padding-top: 12px;
   padding-bottom: 12px;
+  // 다른 푸터와 구분하기 위한 마진값
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .footer .footer__wrapper {
   width: 100%;
