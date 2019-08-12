@@ -1,12 +1,86 @@
 @import "_reset";
 @import "_variables";
 
-.footer {
-  background-color: red;
-  display: flex;
-  flex-direction: column;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
-.footer .footer__row:first-child {
+
+.footer {
+  background-color: $main-gray;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.footer .footer__wrapper {
+  width: 100%;
+  max-width: 1170px;
+}
+.footer__row {
+  color: $font-white;
+}
+.footer__row:first-child {
   display: flex;
   justify-content: space-between;
+}
+.footer__row__list,
+.footer__row__icon {
+  display: flex;
+}
+.footer__row__list {
+  height: 18px;
+}
+.footer__row__list li {
+  padding: 0 6px;
+}
+.footer__row__list li:first-child {
+  padding-left: 0;
+}
+.footer__row__list li:last-child {
+  padding-right: 0;
+}
+.footer__row__list li:nth-child(2) {
+  border-left: 1.5px solid $font-white;
+  border-right: 1.5px solid $font-white;
+}
+.footer__row__list a {
+  color: $font-white;
+  text-decoration: none;
+}
+.footer__row__icon li {
+  margin-right: 8px;
+}
+.footer__row__icon li:last-child {
+  margin-right: 0px;
+}
+.footer__row__icon li i {
+  font-size: 32px;
+  color: $font-white;
+}
+
+.footer__row h4 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.footer-info {
+  display: flex;
+  margin-bottom: 8px;
+  li:first-child {
+    padding-right: 7px;
+  }
+  li:last-child {
+    padding-left: 7px;
+    border-left: 1.5px solid $font-white;
+  }
+}
+.footer__row:nth-child(3) {
+  padding-bottom: 12px;
+  border-bottom: 1px solid $font-white;
+}
+.footer__row:nth-child(4) {
+  margin-top: 40px;
 }

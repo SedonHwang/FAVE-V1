@@ -1,30 +1,38 @@
 footer.footer
-    .footer__row
-        ul
-            li 회사소개
-            li 제품소개
-            li 고객센터
-        ul
-            li
-                i.fab.fa-facebook-square
-            li
-                i.fab.fa-instagram
-            li
-                i.fab.fa-twitter
-            li
-                i.fab.fa-youtube        
-    .footer__row 
-        h4 (주)건강한 친구
-    .footer__row
-        ul
-            li 대표 황세돈
-            li 부산광역시 해운대구 센텀동로 45 CENTOP 304호
-        ul
-            li 사업자등록번호 203-88-00742
-            li 통신판매업신고 제2018-부산해운대-0857호
-        ul
-            li E-mail fave188170@gmail.com
-            li Tel 051 761 5166
-    .footer__row
-        span.footer__copyright Copyright &copy; #{new Date().getFullYear()} (주)건강한친구 All rights Reserved.
+    .footer__wrapper
+        .footer__row
+            ul.footer__row__list
+                li
+                    a(href="#", title="Company") 회사소개
+                li
+                    a(href="#", title="Product") 제품소개
+                li
+                    a(href="#", title="Service Center") 고객센터
+            ul.footer__row__icon
+                li
+                    a(href="https://www.facebook.com/FAVE.world/", title="FAVE.facebook", target="_blank")
+                        i.fab.fa-facebook-square
+                li
+                    a(href="https://www.facebook.com/FAVE.world/", title="FAVE.instagram", target="_blank")
+                        i.fab.fa-instagram
+                li
+                    a(href="https://www.facebook.com/FAVE.world/", title="FAVE.twitter", target="_blank")
+                        i.fab.fa-twitter
+                li
+                    a(href="https://www.youtube.com/channel/UC-JY5aiBe5M9wKhzKTI1OuA/featured", title="FAVE.youtube", target="_blank")
+                        i.fab.fa-youtube        
+        .footer__row 
+            h4 (주)건강한 친구
+        .footer__row
+            ul.footer-info
+                li 대표 황세돈
+                li 부산광역시 해운대구 센텀동로 45 CENTOP 304호
+            ul.footer-info
+                li 사업자등록번호 203-88-00742
+                li 통신판매업신고 제2018-부산해운대-0857호
+            ul.footer-info
+                li E-mail fave188170@gmail.com
+                li Tel 051 761 5166
+        .footer__row
+            span.footer__copyright Copyright &copy; #{new Date().getFullYear()} (주)건강한친구 All rights Reserved.
 
