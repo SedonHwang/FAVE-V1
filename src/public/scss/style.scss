@@ -1,5 +1,6 @@
 @import "_reset";
 @import "_variables";
+@import "_mixin";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -9,84 +10,146 @@ body {
 .footer {
   background-color: $main-gray;
   width: 100%;
-  display: flex;
-  justify-content: center;
   // 다른 푸터와 구분하기 위한 마진값
   margin-top: 20px;
   margin-bottom: 20px;
-  .footer__wrapper {
+  //
+  color: $font-white;
+  padding-bottom: 20px;
+  a {
+    color: $font-white;
+    text-decoration: none;
+  }
+  .footer__top {
     width: 100%;
-    max-width: 1170px;
+    background-color: rgb(97, 97, 97);
+    display: flex;
+    justify-content: center;
     .footer__row {
-      color: $font-white;
-      &:first-child {
+      width: 100%;
+      max-width: 1170px;
+      padding-right: 15px;
+      padding-left: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      @include breakpoint(mobile) {
+        flex-direction: column;
+      }
+      @include breakpoint(tablet) {
+        flex-direction: column;
+      }
+      .footer__navi {
         display: flex;
-        justify-content: space-between;
-        background-color: rgb(96, 96, 96);
-        .footer__navi {
-          display: flex;
-          height: 18px;
-          a {
-            color: $font-white;
-            text-decoration: none;
+        height: 18px;
+        li {
+          padding: 0 6px;
+          &:first-child {
+            padding-left: 0;
           }
-          li {
-            padding: 0 6px;
-            &:first-child {
-              padding-left: 0;
-            }
-            &:last-child {
-              padding-right: 0;
-            }
-            &:nth-child(2) {
-              border-left: 1.5px solid $font-white;
-              border-right: 1.5px solid $font-white;
-            }
+          &:last-child {
+            padding-right: 0;
           }
-        }
-        .footer__icon {
-          display: flex;
-          li {
-            margin-right: 8px;
-            i {
-              font-size: 28px;
-              color: $font-white;
-            }
-            &:last-child {
-              margin-right: 0px;
-            }
+          &:nth-child(2) {
+            border-left: 1.5px solid $font-white;
+            border-right: 1.5px solid $font-white;
           }
         }
       }
+      .footer__icon {
+        display: flex;
+        @include breakpoint(mobile) {
+          margin-top: 30px;
+        }
+        @include breakpoint(tablet) {
+          margin-top: 34px;
+        }
+        li {
+          margin-right: 8px;
+          i {
+            font-size: 28px;
+            color: $font-white;
+          }
+          &:last-child {
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+  .footer__wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+    .footer__row {
+      width: 100%;
       h4 {
         font-size: 24px;
         font-weight: 400;
         margin-top: 30px;
         margin-bottom: 30px;
       }
-      &:nth-child(3) {
+      &:nth-child(2) {
         padding-bottom: 12px;
         border-bottom: 1px solid $font-white;
         .footer-info {
           display: flex;
           margin-bottom: 8px;
+          @include breakpoint(mobile) {
+            flex-direction: column;
+          }
+          @include breakpoint(tablet) {
+            flex-direction: column;
+          }
           li {
             &:first-child {
               padding-right: 7px;
+              @include breakpoint(mobile) {
+                padding-right: 0;
+              }
+              @include breakpoint(tablet) {
+                padding-right: 0;
+              }
             }
             &:last-child {
               padding-left: 7px;
               border-left: 1.5px solid $font-white;
+              @include breakpoint(mobile) {
+                padding-left: 0;
+                border-left: none;
+                margin-top: 8px;
+              }
+              @include breakpoint(tablet) {
+                padding-left: 0;
+                border-left: none;
+                margin-top: 8px;
+              }
             }
           }
         }
       }
-      &:nth-child(4) {
+      &:nth-child(3) {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 20px;
-        margin-bottom: 20px;
+        @include breakpoint(mobile) {
+          flex-direction: column;
+          .footer__copyright {
+            margin-bottom: 20px;
+          }
+        }
+        @include breakpoint(tablet) {
+          flex-direction: column;
+          .footer__copyright {
+            margin-bottom: 20px;
+          }
+        }
         img {
           width: 120px;
         }
