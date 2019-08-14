@@ -20,6 +20,12 @@ body {
     color: $font-white;
     text-decoration: none;
   }
+  @include breakpoint(mobile) {
+    font-size: 14px;
+  }
+  @include breakpoint(tablet) {
+    font-size: 14px;
+  }
   .footer__top {
     width: 100%;
     background-color: rgb(97, 97, 97);
