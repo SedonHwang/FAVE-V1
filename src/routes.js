@@ -1,5 +1,7 @@
 //Global
 const HOME = "/";
+const HOME_KR = "/kr";
+const HOME_JP = "/jp";
 const SIGNUP = "/signup";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
@@ -21,6 +23,8 @@ const NOTICE_DETAIL = "/:id";
 
 const routes = {
   home: HOME,
+  homeKr: HOME_KR,
+  homeJp: HOME_JP,
   signup: SIGNUP,
   login: LOGIN,
   logout: LOGOUT,
