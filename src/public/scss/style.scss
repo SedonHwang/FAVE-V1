@@ -162,3 +162,183 @@ body {
     }
   }
 }
+
+.header {
+  font-family: inherit;
+  position: fixed;
+  width: 100%;
+  font-size: 20px;
+  a {
+    text-decoration: none;
+    color: $font-white;
+  }
+  .header--wide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1170px;
+    padding: 15px;
+    box-sizing: border-box;
+    .header__logo {
+      img {
+        width: 150px;
+      }
+    }
+    .header__navi {
+      flex: 1;
+      margin-left: 20px;
+      margin-right: 20px;
+      & > ul {
+        display: flex;
+        justify-content: space-evenly;
+        li {
+          padding-top: 4px;
+          padding-bottom: 4px;
+          &:nth-child(2) {
+            position: relative;
+          }
+          ul {
+            display: none;
+            font-size: 17px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: $hover-background;
+            margin-top: 4px;
+            li {
+              padding: 6px;
+              text-align: center;
+              a {
+                color: $font-gray;
+              }
+              &:hover {
+                a {
+                  color: $font-orange;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+          &:nth-child(2):hover {
+            ul {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    .header__language {
+      color: $font-white;
+      position: relative;
+      box-sizing: border-box;
+      cursor: pointer;
+      span {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        &:nth-child(2) {
+          margin-right: 4px;
+          margin-left: 4px;
+        }
+      }
+      .header__language-list {
+        display: none;
+        background-color: $hover-background;
+        position: absolute;
+        margin-top: 4px;
+        font-size: 17px;
+        width: 100%;
+        li {
+          padding: 6px;
+          text-align: center;
+          a {
+            color: $font-gray;
+          }
+          &:hover {
+            a {
+              color: $font-orange;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      &:hover {
+        .header__language-list {
+          display: block;
+        }
+      }
+    }
+  }
+  //   .header--wide {
+  //     padding: 12px;
+  //     .header__top {
+  //       display: flex;
+  //       justify-content: flex-end;
+  //       .header__language {
+  //         color: $font-white;
+  //         position: relative;
+  //         box-sizing: border-box;
+  //         cursor: pointer;
+  //         span {
+  //           padding-top: 4px;
+  //           padding-bottom: 4px;
+  //           &:nth-child(2) {
+  //             margin-right: 4px;
+  //             margin-left: 4px;
+  //           }
+  //         }
+  //         .header__language-list {
+  //           display: none;
+  //           background-color: $hover-background;
+  //           position: absolute;
+  //           margin-top: 4px;
+  //           width: 100%;
+  //           li {
+  //             padding: 6px;
+  //             text-align: center;
+  //             a {
+  //               color: $font-gray;
+  //             }
+  //             &:hover {
+  //               a {
+  //                 color: $font-orange;
+  //                 text-decoration: underline;
+  //               }
+  //             }
+  //           }
+  //         }
+  //         &:hover {
+  //           .header__language-list {
+  //             display: block;
+  //           }
+  //         }
+  //       }
+  //     }
+  //     .header__main {
+  //       display: flex;
+  //       width: 100%;
+  //       max-width: 1170px;
+  //       margin: 0 auto;
+  //       padding-left: 15px;
+  //       padding-right: 15px;
+  //       box-sizing: border-box;
+  //       .header__logo {
+  //         img {
+  //           width: 150px;
+  //         }
+  //       }
+  //       .nav {
+  //         & > ul {
+  //           display: flex;
+  //         }
+  //       }
+  //     }
+  //   }
+}
+
+.movie {
+  img {
+    width: 100%;
+  }
+}

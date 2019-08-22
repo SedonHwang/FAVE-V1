@@ -1,17 +1,36 @@
 header.header
-    .header
-        .header__top
+    .header--wide
+        .header__logo
+            img(src="img/logo.png")
+        nav.header__navi
+            ul
+                li
+                    a(href="#") COMPANY
+                li
+                    a(href="#") ABOUT
+                    ul
+                        li
+                            a(href="#") Fitness
+                        li
+                            a(href="#") Game
+                        li
+                            a(href="#") Character
+                        li
+                            a(href="#") Connection
+                li
+                    a(href="#") NOTICE
+        .header__language
+            span
+                i.fas.fa-globe
             span English
             span 
                 i.fas.fa-caret-down
-            ul
-                li
-                    a(href="/") English
-                li
-                    a(href="/kr") 한국어
-                li
-                    a(href="/jp") 日本語
-        .header__bottom
-            div
-                img(src="img/logo.png")
+            .header__language-list
+                ul
+                    li
+                        a(href="/") English
+                    li
+                        a(href="/kr") 한국어
+                    li
+                        a(href="/jp") 日本語
                 
