@@ -1,7 +1,8 @@
 header.header
     .header--wide
         .header__logo
-            img(src="img/logo.png")
+            a(href="/")
+                img(src="img/logo.png")
         nav.header__navi
             ul
                 li
@@ -33,4 +34,18 @@ header.header
                         a(href="/kr") 한국어
                     li
                         a(href="/jp") 日本語
+    .header--narrow
+        .header__logo--responsive#js--logoResponsive
+            a(href="/")
+                img(src="img/logo_responsive.png")
+            span.header__icon#js--openSide
+                i.fas.fa-bars
+        .header__navi--side#js--sideNavi
+            .header__logo--side
+                .side--navi__header
+                    img(src="img/logo_responsive.png")
+                    span.header__icon#js--closeSide
+                        i.fas.fa-times
+
+
                 

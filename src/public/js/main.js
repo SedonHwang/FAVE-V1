@@ -1,5 +1,14 @@
-import { random } from "./util";
+const openSide = document.getElementById("js--openSide");
+const closeSide = document.getElementById("js--closeSide");
+const logoResponsive = document.getElementById("js--logoResponsive");
+const sideNavi = document.getElementById("js--sideNavi");
 
-const rOne = random(10);
+openSide.addEventListener("click", function() {
+  logoResponsive.classList.add("hide");
+  sideNavi.classList.add("visible");
+});
 
-console.log(rOne);
+closeSide.addEventListener("click", function() {
+  logoResponsive.classList.remove("hide");
+  sideNavi.classList.remove("visible");
+});
