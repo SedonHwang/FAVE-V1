@@ -288,7 +288,7 @@ body {
         justify-content: center;
         padding: 15px;
         img {
-          width: 125px;
+          width: 105px;
         }
         .header__icon {
           position: absolute;
@@ -316,7 +316,7 @@ body {
             padding: 15px;
             border-bottom: 0.7px solid $font-gray;
             img {
-              width: 125px;
+              width: 100px;
             }
             .header__icon {
               position: absolute;
@@ -325,6 +325,63 @@ body {
               right: 30px;
               i {
                 font-size: 28px;
+              }
+            }
+          }
+          .side--navi__body {
+            .side--navi__collapsible {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 12px;
+              font-size: 24px;
+              font-weight: 600;
+              cursor: pointer;
+              border-bottom: 0.7px solid $font-gray;
+              i {
+                font-size: 32px;
+              }
+              &:hover,
+              &.active {
+                border-bottom: 1px solid $font-orange;
+                li {
+                  &:first-child {
+                    color: $font-orange;
+                  }
+                }
+              }
+            }
+            .collapsible__content {
+              display: none;
+              background-color: $light-orange;
+              li {
+                padding-left: 15px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-bottom: 0.7px solid $font-gray;
+                a {
+                  color: $font-gray;
+                  padding: 7px;
+                  font-size: 18px;
+                }
+              }
+            }
+            .visible {
+              display: block;
+            }
+            .side--navi__content {
+              padding: 12px;
+              font-size: 24px;
+              font-weight: 600;
+              border-bottom: 0.7px solid $font-gray;
+              li {
+                a {
+                  color: black;
+                  padding: 7px;
+                  &:hover {
+                    color: $font-orange;
+                  }
+                }
               }
             }
           }
