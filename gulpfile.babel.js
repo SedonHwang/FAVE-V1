@@ -90,11 +90,9 @@ const watch = () => {
 
 const prepare = gulp.series([clean, img]);
 
+const devAssets = gulp.series([devStyles, devJs]);
+
 const assets = gulp.series([pug, styles, js]);
 
-// dev 필요 : dev 파일에서 sass, js를 변환해서 확인할 수 있어야 편함.
-//build만 있으면 dev 상태에서는 어떻게 scss와 js가 적용된 모습을 볼 것인가?
-//1번. 우선 js나 scss에 변화를 감지한다.
-//2번. watch
-export const dev = gulp.series([devClean, watch]);
+export const dev = gulp.series([devClean, devAssets, watch]);
 export const build = gulp.series([prepare, assets]);
