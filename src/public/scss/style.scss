@@ -404,6 +404,66 @@ body {
   }
 }
 
+.body-wrapper {
+  width: 100%;
+  .fave-intro {
+    width: 100%;
+    max-width: 1170px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: normal;
+    @include breakpoint(mobile) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    @include breakpoint(tablet) {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    .fave-intro__header {
+      width: 40%;
+      @include breakpoint(tablet) {
+        width: 100%;
+      }
+      h2 {
+        color: $font-orange;
+        font-size: 60px;
+        font-weight: 700;
+        word-break: keep-all;
+        @include breakpoint(mobile) {
+          font-size: 32px;
+        }
+        @include breakpoint(tablet) {
+          font-size: 36px;
+          text-align: center;
+        }
+      }
+    }
+    .fave-intro__paragraph {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 28px;
+      @include breakpoint(tablet) {
+        margin-top: 22px;
+        display: block;
+      }
+      p {
+        font-size: 24px;
+        width: 50%;
+        word-break: keep-all;
+        @include breakpoint(tablet) {
+          width: 100%;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
 .movie {
   img {
     width: 100%;
