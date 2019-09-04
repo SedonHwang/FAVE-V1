@@ -66,11 +66,11 @@ body {
       }
       .footer__icon {
         display: flex;
-        @include breakpoint(mobile) {
-          margin-top: 30px;
-        }
         @include breakpoint(tablet) {
           margin-top: 34px;
+        }
+        @include breakpoint(mobile) {
+          margin-top: 30px;
         }
         li {
           margin-right: 8px;
@@ -168,6 +168,7 @@ body {
   position: fixed;
   width: 100%;
   font-size: 20px;
+  z-index: 7;
   a {
     text-decoration: none;
     color: $font-white;
@@ -416,13 +417,13 @@ body {
     padding-left: 15px;
     padding-right: 15px;
     line-height: normal;
-    @include breakpoint(mobile) {
-      padding-top: 30px;
-      padding-bottom: 30px;
-    }
     @include breakpoint(tablet) {
       padding-top: 40px;
       padding-bottom: 40px;
+    }
+    @include breakpoint(mobile) {
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
     .fave-intro__header {
       width: 40%;
@@ -434,12 +435,12 @@ body {
         font-size: 60px;
         font-weight: 700;
         word-break: keep-all;
-        @include breakpoint(mobile) {
-          font-size: 32px;
-        }
         @include breakpoint(tablet) {
           font-size: 36px;
           text-align: center;
+        }
+        @include breakpoint(mobile) {
+          font-size: 32px;
         }
       }
     }
@@ -467,22 +468,149 @@ body {
     max-width: 1170px;
     box-sizing: border-box;
     margin: 0 auto;
+    padding-right: 15px;
+    padding-left: 15px;
     .fave-links__row {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
+      &:nth-child(2) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        align-items: center;
+      }
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        align-items: center;
+        &:nth-child(2) {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
       .image-wrapper {
         position: relative;
         width: 40%;
-        border-radius: 12px;
+        border-radius: 24px;
+        // 뒷배경 확인용
         background-color: black;
-        z-index: 99;
-        h3 {
-          position: absolute;
+        overflow: hidden;
+        @include breakpoint(tablet) {
+          width: 70%;
+          &:nth-child(2) {
+            margin-top: 18px;
+            margin-bottom: 18px;
+          }
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+          &:nth-child(2) {
+            margin-top: 15px;
+            margin-bottom: 15px;
+          }
+        }
+        &:hover {
+          a {
+            img {
+              opacity: 1;
+            }
+            h3 {
+              color: $font-orange;
+              transform: scale(1.1);
+              transition: 0.2s;
+            }
+          }
         }
         a {
+          h3 {
+            position: absolute;
+            color: white;
+            font-size: 40px;
+            left: 24px;
+            top: 24px;
+          }
           img {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 24px;
+            opacity: 0.4;
+          }
+        }
+      }
+    }
+  }
+  .fave-info {
+    width: 100%;
+    max-width: 1170px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+    .fave-info__header {
+      h3 {
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        color: $font-orange;
+      }
+    }
+    .fave-info__body {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        align-items: center;
+      }
+      .fave-info__columns {
+        width: 30%;
+        @include breakpoint(tablet) {
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &:nth-child(2) {
+            flex-direction: row-reverse;
+            margin-top: 40px;
+            margin-bottom: 40px;
+          }
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        .info-icon {
+          span {
+            border: 1px solid $font-orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            margin: 0 auto;
+            i {
+              font-size: 48px;
+              color: $font-orange;
+            }
+          }
+        }
+        .info-text {
+          @include breakpoint(tablet) {
+            width: 60%;
+          }
+          @include breakpoint(mobile) {
+            width: 70%;
+          }
+          h4 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 24px;
+          }
+          p {
+            line-height: normal;
           }
         }
       }
