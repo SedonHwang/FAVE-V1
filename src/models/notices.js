@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const NoticeSchema = new mongoose.Schema({
-  title: {
+  title_kr: {
     type: String,
     required: "Title_kr is required"
   },
@@ -13,7 +13,7 @@ const NoticeSchema = new mongoose.Schema({
     type: String,
     required: "Title_jp is required"
   },
-  description: {
+  description_kr: {
     type: String,
     required: "description_kr is required"
   },
@@ -25,6 +25,7 @@ const NoticeSchema = new mongoose.Schema({
     type: String,
     required: "description_jp is required"
   },
+  notice_img: String,
   createdAt: {
     type: Date,
     default: Date.now

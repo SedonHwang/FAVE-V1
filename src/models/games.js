@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const GameSchema = new mongoose.Schema({
-  name: {
+  name_kr: {
     type: String,
     required: "Name_kr is required"
   },
@@ -13,7 +13,7 @@ const GameSchema = new mongoose.Schema({
     type: String,
     required: "Name_jp is required"
   },
-  description: {
+  description_kr: {
     type: String,
     required: "Description_kr is required"
   },
@@ -34,7 +34,11 @@ const GameSchema = new mongoose.Schema({
     required: "Mobile Image is required"
   },
   androidLink: String,
-  iosLink: String
+  iosLink: String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const model = mongoose.model("Game", GameSchema);
