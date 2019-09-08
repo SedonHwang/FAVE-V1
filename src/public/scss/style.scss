@@ -1,6 +1,7 @@
 @import "_reset";
 @import "_variables";
 @import "_mixin";
+@import "_admin.scss";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -13,7 +14,7 @@ body {
   // 다른 푸터와 구분하기 위한 마진값
   margin-top: 20px;
   margin-bottom: 20px;
-  //
+  //zz
   color: $font-white;
   padding-bottom: 20px;
   a {

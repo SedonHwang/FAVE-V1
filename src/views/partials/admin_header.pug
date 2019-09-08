@@ -1,2 +1,19 @@
 header.header-admin
     h1 FAVE_ADMIN
+    .admin-nav
+        if user
+            ul
+                li
+                    a(href="#") Notices
+                li
+                    a(href="#") Games
+                li
+                    a(href="#") Logout
+        else
+            ul
+                li
+                    a(href="#") Notices
+                li
+                    a(href="#") Games
+                li
+                    a(href="#") Login

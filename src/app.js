@@ -8,6 +8,7 @@ import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import aboutRouter from "./routers/aboutRouter";
 import noticeRouter from "./routers/noticeRouter";
+import adminRouter from "./routers/adminRouter";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
@@ -26,5 +27,6 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.about, aboutRouter);
 app.use(routes.notice, noticeRouter);
+app.use(routes.admin, adminRouter);
 
 export default app;
