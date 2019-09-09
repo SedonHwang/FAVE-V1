@@ -1,9 +1,16 @@
 //Global Router Controller
 export const login = (req, res) => res.render("admin_login");
 export const postLogin = (req, res) => {
-  const { id, pw } = req.body;
-  console.log(`id is ${id} and pw is ${pw}`);
+  res.send("admin_home");
 };
-export const logout = (req, res) => res.send("logout");
-export const adminNotice = (req, res) => res.send("admin notice");
-export const adminGame = (req, res) => res.send("admin game");
+export const logout = (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect("/admin/login");
+};
+export const adminNotice = (req, res) => {
+  console.log(req.user);
+  res.render("admin_notice", { user: req.user });
+};
+export const adminGame = (req, res) =>
+  res.render("admin_game", { user: req.user });

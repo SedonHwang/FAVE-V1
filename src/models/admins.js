@@ -13,18 +13,6 @@ const AdminSchema = new mongoose.Schema({
     type: String,
     required: "Password is required"
   },
-  games: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Game"
-    }
-  ],
-  notices: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Notice"
-    }
-  ],
   createdAt: {
     type: Date,
     default: Date.now

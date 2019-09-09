@@ -10,9 +10,9 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const admin = await Admin.find({ where: { email } });
+        const admin = await Admin.findOne({ email });
         if (admin) {
-          const result = admin.password === password;
+          const result = admin.password == password;
           if (result) {
             done(null, admin);
           } else {
