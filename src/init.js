@@ -1,7 +1,7 @@
 import "./db";
 import app from "./app";
 
-import "./models/admins";
+import "./models/users";
 import "./models/games";
 import "./models/notices";
 

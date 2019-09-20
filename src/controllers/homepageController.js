@@ -3,6 +3,12 @@ export const home = (req, res) => res.render("home");
 export const homeKr = (req, res) => res.render("home_kr");
 export const homeJp = (req, res) => res.render("home_jp");
 export const company = (req, res) => res.send("company");
+export const login = (req, res) => res.send("login");
+export const logout = (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
+};
 
 //About Router Controller
 export const fitness = (req, res) => res.send("fitness");

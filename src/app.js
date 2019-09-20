@@ -9,6 +9,7 @@ import globalRouter from "./routers/globalRouter";
 import aboutRouter from "./routers/aboutRouter";
 import noticeRouter from "./routers/noticeRouter";
 import adminRouter from "./routers/adminRouter";
+import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
 import passport from "passport";
 import mongoose from "mongoose";
@@ -45,5 +46,6 @@ app.use(routes.home, globalRouter);
 app.use(routes.about, aboutRouter);
 app.use(routes.notice, noticeRouter);
 app.use(routes.admin, adminRouter);
+app.use(routes.user, userRouter);
 
 export default app;
