@@ -5,6 +5,7 @@ import {
   homeKr,
   homeJp,
   company,
+  getSignup,
   login,
   logout
 } from "../controllers/homepageController";
@@ -15,6 +16,7 @@ globalRouter.get(routes.home, home);
 globalRouter.get(routes.homeKr, homeKr);
 globalRouter.get(routes.homeJp, homeJp);
 
+globalRouter.get(routes.signup, getSignup);
 globalRouter.get(routes.login, login);
 globalRouter.get(routes.logout, logout);
 

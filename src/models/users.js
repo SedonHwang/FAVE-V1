@@ -10,6 +10,22 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: "Email is required"
   },
+  receiveEmail: {
+    type: Boolean,
+    default: true
+  },
+  birthDate: Number,
+  sex: {
+    type: String,
+    enum: ["M", "F", "N"]
+  },
+  Country: String,
+  Address1: String,
+  Address2: String,
+  postalCode: String,
+  height: Number,
+  weight: Number,
+  job: String,
   isAdmin: {
     type: Boolean,
     default: false
