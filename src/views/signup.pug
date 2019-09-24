@@ -1,5 +1,44 @@
 extends layouts/main
 
 block content
-    .signup--wrapper
-        h1 Signup
+    .main--image
+        img(src="img/join-img.jpg")
+        .main--image__text
+            h1 
+                span JOIN
+            p 회원가입 페이지입니다.
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Join
+    .signup--form
+        .form__header
+            h2 회원가입
+            p 
+                span *
+                | 표시는 필수입력항목입니다.
+        form(action="#", method="get")
+            .basic-info
+                h3 기본정보
+                .basic-info__data
+                    .basic-info__input
+                        label(for="email")
+                            | 아이디(email)
+                            span *
+                        input(type="email", name="email", id="email")
+                    .basic-info__input
+                        label(for="password")
+                            | 비밀번호
+                            span *
+                        input(type="password", name="password1" id="password1")
+                    .basic-info__input
+                        label(for="password2")
+                            | 비밀번호 확인
+                            span *
+                        input(type="password", name="password2" id="password2")
+                    .basic-info__input
+                        label(for="nickname")
+                            | 닉네임
+                            span *
+                        input(type="text", name="nickname", id="nickname")

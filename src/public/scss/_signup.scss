@@ -1,0 +1,114 @@
+@import "_variables";
+
+.main--image {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .main--image__text {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translateY(-50%);
+    h1 {
+      color: $main-gray;
+      font-size: 60px;
+      font-weight: 600;
+      text-align: right;
+      @include breakpoint(tablet) {
+        font-size: 36px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 20px;
+      }
+      span {
+        display: inline-block;
+        border-bottom: 3px solid $font-orange;
+        padding-bottom: 15px;
+        @include breakpoint(tablet) {
+          padding-bottom: 13px;
+        }
+        @include breakpoint(mobile) {
+          border-bottom: 1.5px solid $font-orange;
+          padding-bottom: 11px;
+        }
+      }
+    }
+    p {
+      font-size: 24px;
+      margin-top: 15px;
+      @include breakpoint(tablet) {
+        font-size: 17px;
+        margin-top: 13px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 14px;
+        margin-top: 11px;
+      }
+    }
+  }
+}
+
+.current--nav {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  ul {
+    display: flex;
+    align-items: center;
+    li {
+      &:first-child {
+        margin-right: 15px;
+        i {
+          font-size: 24px;
+          color: black;
+        }
+      }
+      font-size: 18px;
+      font-weight: 500;
+      color: $font-gray;
+    }
+  }
+}
+
+.signup--form {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  .form__header {
+    display: flex;
+    align-items: flex-end;
+    color: $font-gray;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $font-gray;
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    p {
+      span {
+        color: $font-orange;
+      }
+    }
+  }
+  form {
+    .basic-info {
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        padding: 12px;
+        margin-top: 12px;
+        color: black;
+        background-color: #f6f5f6;
+        border-top: 0.9px solid $font-gray;
+        border-bottom: 0.9px solid $font-gray;
+      }
+    }
+  }
+}
