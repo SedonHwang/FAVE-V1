@@ -18,27 +18,76 @@ block content
             p 
                 span *
                 | 표시는 필수입력항목입니다.
-        form(action="#", method="get")
+        form(action="/signup", method="post", id="js-signupForm")
             .basic-info
                 h3 기본정보
                 .basic-info__data
-                    .basic-info__input
-                        label(for="email")
-                            | 아이디(email)
-                            span *
-                        input(type="email", name="email", id="email")
-                    .basic-info__input
-                        label(for="password")
-                            | 비밀번호
-                            span *
-                        input(type="password", name="password1" id="password1")
-                    .basic-info__input
-                        label(for="password2")
-                            | 비밀번호 확인
-                            span *
-                        input(type="password", name="password2" id="password2")
-                    .basic-info__input
-                        label(for="nickname")
-                            | 닉네임
-                            span *
-                        input(type="text", name="nickname", id="nickname")
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="email")
+                                | 아이디(email)
+                                span *
+                        .basic-info__input
+                            input(type="email", name="email", id="email", placeholder="Email")
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="password")
+                                | 비밀번호
+                                span *
+                        .basic-info__input
+                            input(type="password", name="password1" id="password1")
+                            p#js-pwLengthCheck 
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="password2")
+                                | 비밀번호 확인
+                                span *
+                        .basic-info__input
+                            input(type="password", name="password2" id="password2")
+                            p#js-pwVerified 
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="nickname")
+                                | 닉네임
+                                span *
+                        .basic-info__input
+                            input(type="text", name="nickname", id="nickname")
+                            p#js-nickVerified
+            .add-info
+                h3 추가정보
+                .add-info__data
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="birthDate") 생년월일
+                        .add-info__input
+                            input(type="text", name="birthDate", id="birthDate", placeholder="yyyymmdd")
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="sex") 성별
+                        .add-info__input--radio
+                            input(type="radio", name="sex", id="man" value="M")
+                            label(for="man") 남자 
+                            input(type="radio", name="sex",id="woman", value="F")
+                            label(for="woman") 여자
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="country") 나라 및 도시 
+                        .add-info__input
+                            input(type="text", name="country", id="country")
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="height") 키(cm) 
+                        .add-info__input
+                            input(type="text", name="height", id="height")
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="weight") 몸무게(kg) 
+                        .add-info__input
+                            input(type="text", name="weight", id="weight")
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="job") 키(cm) 
+                        .add-info__input
+                            input(type="text", name="job", id="job")
+                .submit-info 
+                    input.submit--Btn(type="submit", value="회원가입")

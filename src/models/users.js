@@ -19,9 +19,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ["M", "F", "N"]
   },
-  Country: String,
-  Address1: String,
-  Address2: String,
+  country: String,
+  address1: String,
+  address2: String,
   postalCode: String,
   height: Number,
   weight: Number,
