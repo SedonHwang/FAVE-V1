@@ -47,11 +47,11 @@ block content
                             p#js-pwVerified 
                     .basic-info__wrapper
                         .basic-info__label
-                            label(for="nickname")
-                                | 닉네임
+                            label(for="name")
+                                | 이름
                                 span *
                         .basic-info__input
-                            input(type="text", name="nickname", id="nickname")
+                            input(type="text", name="name", id="name")
                             p#js-nickVerified
             .add-info
                 h3 추가정보
@@ -76,6 +76,21 @@ block content
                             input(type="text", name="country", id="country")
                     .add-info__wrapper
                         .add-info__label
+                            label(for="address1") 기본주소 
+                        .add-info__input
+                            input(type="text", name="address1", id="address1")
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address2") 상세주소 
+                        .add-info__input
+                            input(type="text", name="address2", id="address2")
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="postalCode") 우편번호 
+                        .add-info__input
+                            input(type="text", name="postalCode", id="postalCode")
+                    .add-info__wrapper
+                        .add-info__label
                             label(for="height") 키(cm) 
                         .add-info__input
                             input(type="text", name="height", id="height")
@@ -86,8 +101,21 @@ block content
                             input(type="text", name="weight", id="weight")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="job") 키(cm) 
+                            label(for="job") 직업
                         .add-info__input
                             input(type="text", name="job", id="job")
-                .submit-info 
-                    input.submit--Btn(type="submit", value="회원가입")
+            .terms
+                .terms__wrapper
+                    .terms__link
+                        a(href="#") 서비스 이용약관
+                    .terms__check
+                        input(type="checkbox", name="use", id="use")
+                        label(for="use", id="js-useLabel") 이용약관에 동의합니다.(필수)
+                .terms__wrapper
+                    .terms__link
+                        a(href="#") 개인정보 수집 및 이용 동의 내용
+                    .terms__check
+                        input(type="checkbox", name="privacy", id="privacy")
+                        label(for="privacy", id="js-privacy") 개인정보 수집 및 이용에 동의합니다.(필수)    
+            .submit-info 
+                input.submit--Btn(type="submit", value="회원가입")

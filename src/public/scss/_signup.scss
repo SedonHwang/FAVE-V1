@@ -221,7 +221,31 @@
           }
           .add-info__input--radio {
             @include breakpoint(mobile) {
-              width: 70%;
+              width: 90%;
+            }
+          }
+        }
+      }
+    }
+    .terms {
+      margin-top: 20px;
+      .terms__wrapper {
+        padding: 15px;
+        display: flex;
+        @include breakpoint(tablet) {
+          flex-direction: column;
+        }
+        .terms__link {
+          width: 30%;
+          @include breakpoint(tablet) {
+            width: 100%;
+            margin-bottom: 10px;
+          }
+          a {
+            color: black;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
             }
           }
         }

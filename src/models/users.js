@@ -2,19 +2,15 @@ import mongoose from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 
 const UserSchema = new mongoose.Schema({
-  username: {
+  name: {
     type: String,
-    required: "Username is required"
+    required: "Name is required"
   },
   email: {
     type: String,
     required: "Email is required"
   },
-  receiveEmail: {
-    type: Boolean,
-    default: true
-  },
-  birthDate: Number,
+  birthDate: String,
   sex: {
     type: String,
     enum: ["M", "F", "N"]
