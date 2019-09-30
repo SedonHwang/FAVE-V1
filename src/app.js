@@ -4,6 +4,10 @@ import morgan from "morgan";
 import path from "path";
 import cookieParser from "cookie-parser";
 import session from "express-session";
+import passport from "passport";
+import mongoose from "mongoose";
+import MongoStore from "connect-mongo";
+import flash from "connect-flash";
 import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import aboutRouter from "./routers/aboutRouter";
@@ -11,9 +15,6 @@ import noticeRouter from "./routers/noticeRouter";
 import adminRouter from "./routers/adminRouter";
 import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
-import passport from "passport";
-import mongoose from "mongoose";
-import MongoStore from "connect-mongo";
 
 import "./passport";
 
@@ -38,6 +39,7 @@ app.use(
     store: new CokieStore({ mongooseConnection: mongoose.connection })
   })
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(localsMiddleware);
