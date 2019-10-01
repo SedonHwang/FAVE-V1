@@ -207,27 +207,33 @@ const checkTerms = () => {
   return false;
 };
 
+const preventSubmit = e => {
+  e.preventDefault();
+  alert("막혀있습니다.");
+};
+
 function handleTerm() {
   const checkValue = checkTerms();
   console.log(checkValue);
+  if (checkValue === true) {
+    signupForm.removeEventListener("submit", preventSubmit);
+  } else {
+    signupForm.addEventListener("submit", preventSubmit);
+  }
   //체크텀을 한다.
   //모두가 체크되어 있으면(true) remove이벤트를 통해 preventSubmit을 없앤다
   //하나라도 체크가 되어있지 않으면 preventSubmit을 달아버린다.
   //동일 이벤트에 이벤트 핸들러가 같으면 중복되서 적용되지 않는다.
   //값을 보낸뒤 flash 이미지로 받아서는 애니메이션이 적용되서 잠깐되다가 사라지도록 만든다.
 }
-function addTerm() {
-  console.log("addddd");
+
+if (useTerm) {
+  useTerm.addEventListener("change", handleTerm);
 }
 
-useTerm.addEventListener("change", handleTerm);
-useTerm.addEventListener("change", handleTerm);
-privacy.addEventListener("change", handleTerm);
-
-const preventSubmit = e => {
-  e.preventDefault();
-  alert("막혀있습니다.");
-};
+if (privacy) {
+  privacy.addEventListener("change", handleTerm);
+}
 
 if (signupForm) {
   signupForm.addEventListener("submit", preventSubmit);

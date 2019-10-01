@@ -1,6 +1,8 @@
 extends layouts/main
 
 block content
+    if errorMessage
+        .error--message #{errorMessage}
     .main--image
         img(src="img/join-img.jpg")
         .main--image__text
