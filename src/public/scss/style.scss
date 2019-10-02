@@ -4,6 +4,7 @@
 @import "_admin.scss";
 @import "_header.scss";
 @import "_signup.scss";
+@import "_login.scss";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -15,7 +16,6 @@ body {
   width: 100%;
   // 다른 푸터와 구분하기 위한 마진값
   margin-top: 20px;
-  margin-bottom: 20px;
   //zz
   color: $font-white;
   padding-bottom: 20px;

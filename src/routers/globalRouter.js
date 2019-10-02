@@ -7,7 +7,8 @@ import {
   company,
   getSignup,
   postSignup,
-  login,
+  getLogin,
+  postLogin,
   logout
 } from "../controllers/homepageController";
 
@@ -18,8 +19,9 @@ globalRouter.get(routes.homeKr, homeKr);
 globalRouter.get(routes.homeJp, homeJp);
 
 globalRouter.get(routes.signup, getSignup);
-globalRouter.post(routes.signup, postSignup);
-globalRouter.get(routes.login, login);
+globalRouter.post(routes.signup, postSignup, postLogin);
+globalRouter.get(routes.login, getLogin);
+globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 
 globalRouter.get(routes.company, company);

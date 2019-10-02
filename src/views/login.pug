@@ -1,0 +1,38 @@
+extends layouts/main
+
+block content
+    .main--image
+        img(src="img/company-img.jpg")
+        .main--image__text
+            h1
+                | L
+                span ogin
+            p 로그인 페이지입니다.
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Login
+    .login--form
+        .form__header
+            h3 로그인
+        form(action="/login", method="post")
+            .login-info__data
+                .login-info__wrapper
+                    .login-info__label
+                        label(for="email") 이메일
+                    .login-info__input
+                        input(type="email", name="email", id="email", placeholder="Email")
+                .login-info__wrapper
+                        .login-info__label
+                            label(for="password") 비밀번호
+                        .login-info__input
+                            input(type="password", name="password", id="password", placeholder="Password")
+            .login-info__Btn
+                input.login--Btn(type="submit", value="로그인")
+                ul.login__links
+                    li
+                        a(href="#") FAVE의 회원이 아니십니까?
+                    li
+                        a(href="#") 비밀번호를 잃어버리셨습니까?
+                    
