@@ -42,7 +42,6 @@ export const postSignup = async (req, res, next) => {
   if (sex === undefined) {
     sex = "N";
   }
-  console.log(sex);
   if (!email || !password || !password2 || !name) {
     throwSignupMsg(req, res, "*은 필수입력값입니다.", routes.signup);
   } else if (password.length < 8) {
@@ -86,6 +85,7 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home
 });
+
 export const logout = (req, res) => {
   req.logout();
   req.session.destroy();

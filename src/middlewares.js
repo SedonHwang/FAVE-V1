@@ -6,6 +6,15 @@ export const localsMiddleware = (req, res, next) => {
   next();
 };
 
+export const onlyAdmin = (req, res, next) => {
+  if (req.user) {
+    if (req.user.isAdmin) {
+      next();
+    }
+  }
+  res.redirect(routes.home);
+};
+
 export const onlyPublic = (req, res, next) => {
   if (req.user) {
     res.redirect(routes.home);
