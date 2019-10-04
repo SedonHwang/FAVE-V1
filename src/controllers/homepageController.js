@@ -25,7 +25,7 @@ export const postSignup = async (req, res, next) => {
   let {
     body: {
       email,
-      password1,
+      password,
       password2,
       name,
       birthDate,
@@ -43,16 +43,16 @@ export const postSignup = async (req, res, next) => {
     sex = "N";
   }
   console.log(sex);
-  if (!email || !password1 || !password2 || !name) {
+  if (!email || !password || !password2 || !name) {
     throwSignupMsg(req, res, "*은 필수입력값입니다.", routes.signup);
-  } else if (password1.length < 8) {
+  } else if (password.length < 8) {
     throwSignupMsg(
       req,
       res,
       "비밀번호를 8자 이상 입력해주세요.",
       routes.signup
     );
-  } else if (password1 !== password2) {
+  } else if (password !== password2) {
     throwSignupMsg(req, res, "비밀번호가 다릅니다.", routes.signup);
   } else {
     try {
@@ -69,7 +69,7 @@ export const postSignup = async (req, res, next) => {
         weight,
         job
       });
-      await User.register(user, password1);
+      await User.register(user, password);
       next();
     } catch (error) {
       if (error.name === "UserExistsError") {
