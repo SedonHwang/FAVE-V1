@@ -28,6 +28,7 @@ const CHANGE_PASSWORD = "/changePassword";
 //Admin
 const ADMIN = "/admin";
 const ADMIN_LOGIN = "/login";
+const ADMIN_LOGOUT = "/logout";
 const ADMIN_NOTICE = "/notice";
 const ADMIN_GAME = "/game";
 
@@ -53,6 +54,7 @@ const routes = {
   change_password: CHANGE_PASSWORD,
   admin: ADMIN,
   admin_login: ADMIN_LOGIN,
+  admin_logout: ADMIN_LOGOUT,
   admin_notice: ADMIN_NOTICE,
   admin_game: ADMIN_GAME
 };

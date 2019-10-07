@@ -1,8 +1,15 @@
-extends layouts/admin.pug
-
-block content
-    .login-wrapper
-        form(action="/admin/login", method="post")
-            input(type="text", placeholder=" ID를 입력하세요.", id="id", name="email", class="login__input")
-            input(type="password", placeholder="PW를 입력하세요.", id="pw", name="password", class="login__input")
-            input(type="submit", value="로그인", class="login__btn")
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.10.1/css/all.css", integrity="sha384-wxqG4glGB3nlqX0bi23nmgwCSjWIW13BdLUEYC4VIMehfbcro/ATkyDsF/AbIOVe", crossorigin="anonymous")
+        link(rel="stylesheet", href="/css/style.css")
+        title FAVE_ADMIN
+    body
+        main
+            .login-wrapper
+                form(action="/admin/login", method="post")
+                    input(type="text", placeholder=" ID를 입력하세요.", id="id", name="email", class="login__input")
+                    input(type="password", placeholder="PW를 입력하세요.", id="pw", name="password", class="login__input")
+                    input(type="submit", value="로그인", class="login__btn")

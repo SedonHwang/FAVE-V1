@@ -10,9 +10,12 @@ export const onlyAdmin = (req, res, next) => {
   if (req.user) {
     if (req.user.isAdmin) {
       next();
+    } else {
+      res.redirect(routes.home);
     }
+  } else {
+    res.redirect(routes.home);
   }
-  res.redirect(routes.home);
 };
 
 export const onlyPublic = (req, res, next) => {
@@ -27,6 +30,6 @@ export const onlyPrivate = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    res.redirect("/admin/login");
+    res.redirect(routes.home);
   }
 };
