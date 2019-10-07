@@ -30,6 +30,7 @@ const ADMIN = "/admin";
 const ADMIN_LOGIN = "/login";
 const ADMIN_LOGOUT = "/logout";
 const ADMIN_NOTICE = "/notice";
+const UPLOAD_NOTICE = "/upload/notice";
 const ADMIN_GAME = "/game";
 
 const routes = {
@@ -56,6 +57,7 @@ const routes = {
   admin_login: ADMIN_LOGIN,
   admin_logout: ADMIN_LOGOUT,
   admin_notice: ADMIN_NOTICE,
+  upload_notice: UPLOAD_NOTICE,
   admin_game: ADMIN_GAME
 };
 

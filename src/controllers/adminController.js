@@ -25,9 +25,7 @@ export const adminNotice = async (req, res) => {
     res.render("admin_notice", { notices: [] });
   }
 };
-export const adminGame = (req, res) => res.send("admin_game");
 
-// 1. notice 모델을 불러온다.
-// 2. 모델을 모두 찾는다. await Notice.find({});
-// 3. 찾은 노티스를 넘겨준다.
-// 4. 테이블 형식으로 꾸며서 보여준다. title, description, 날짜를 보여주면 될듯
+export const uploadNotice = (req, res) => res.render("notice_upload");
+
+export const adminGame = (req, res) => res.send("admin_game");
