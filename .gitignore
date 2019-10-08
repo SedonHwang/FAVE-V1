@@ -2,6 +2,7 @@ package-lock.json
 build/
 src/public/css/*
 src/public/jsDev/*
+uploads
 
 # Logs
 logs

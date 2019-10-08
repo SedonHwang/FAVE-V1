@@ -1,4 +1,7 @@
 import routes from "./routes";
+import multer from "multer";
+
+const multerImg = multer({ dest: "uploads/images/" });
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.routes = routes;
@@ -33,3 +36,5 @@ export const onlyPrivate = (req, res, next) => {
     res.redirect(routes.home);
   }
 };
+
+export const uploadImg = multerImg.single("imgFile");

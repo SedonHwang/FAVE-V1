@@ -2,7 +2,7 @@ extends layouts/admin.pug
 
 block content
     .form-container
-        form(action="#", method="post", enctype="multipart/form-data")
+        form(action=`/admin${routes.upload_notice}`, method="post", enctype="multipart/form-data")
             label(for="title_kr") 타이틀
             input(type="text", placeholder="타이틀", id="title_kr", name="title_kr", requied=true)
             label(for="title_en") 타이틀_영어

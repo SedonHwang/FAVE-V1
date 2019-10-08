@@ -5,22 +5,18 @@ block content
         h1 공지
         .btn-wrapper
             .btns.write--btn
-                a(href="#") 글쓰기
+                a(href=`/admin${routes.upload_notice}`) 글쓰기
         table
             tr
                 th title
                 th description
                 th 날짜
-                th 수정
                 th 삭제
-            tr
-                td sdsd
-                td dsdsd
-                td saf
-                td
-                    .btns.write--btn
-                        a(href="#") 수정
-                td 
-                    .btns.delete--btn
-                        a(href="#") 삭제
-        
+            each notice in notices
+                tr
+                    td= notice.title_kr
+                    td= notice.description_kr
+                    td= `${notice.createdAt.toDateString()}`
+                    td 
+                        .btns.delete--btn
+                            a(href=`/admin${routes.deleteNotice(notice.id)}`) 삭제

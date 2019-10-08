@@ -6,9 +6,11 @@ import {
   adminLogin,
   postAdminLogin,
   adminLogout,
-  uploadNotice
+  uploadNotice,
+  postUploadNotice,
+  deleteNotice
 } from "../controllers/adminController";
-import { onlyAdmin, onlyPublic } from "../middlewares";
+import { onlyAdmin, onlyPublic, uploadImg } from "../middlewares";
 
 const adminRouter = express.Router();
 
@@ -18,5 +20,7 @@ adminRouter.get(routes.admin_logout, adminLogout);
 adminRouter.get(routes.admin_game, onlyAdmin, adminGame);
 adminRouter.get(routes.admin_notice, onlyAdmin, adminNotice);
 adminRouter.get(routes.upload_notice, uploadNotice);
+adminRouter.post(routes.upload_notice, uploadImg, postUploadNotice);
+adminRouter.get(routes.deleteNotice(), deleteNotice);
 
 export default adminRouter;
