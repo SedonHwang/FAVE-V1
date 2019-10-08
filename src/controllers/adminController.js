@@ -62,6 +62,59 @@ export const postUploadNotice = async (req, res) => {
   }
 };
 
+export const editNotice = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  try {
+    const notice = await Notice.findById(id);
+    res.render("notice_edit", { notice });
+  } catch (e) {
+    console.log(e);
+    res.redirect(`/admin${routes.admin_notice}`);
+  }
+};
+
+export const postEditNotice = async (req, res) => {
+  const {
+    params: { id },
+    body: {
+      title_kr,
+      title_en,
+      title_jp,
+      description_kr,
+      description_en,
+      description_jp
+    }
+  } = req;
+  console.log(`id is ${id}`);
+  console.log(
+    title_kr,
+    title_en,
+    title_jp,
+    description_kr,
+    description_en,
+    description_jp
+  );
+  try {
+    await Notice.findOneAndUpdate(
+      { _id: id },
+      {
+        title_kr,
+        title_en,
+        title_jp,
+        description_kr,
+        description_en,
+        description_jp
+      }
+    );
+    res.redirect(`/admin${routes.admin_notice}`);
+  } catch (e) {
+    console.log(e);
+    res.redirect(`/admin${routes.editNotice(id)}`);
+  }
+};
+
 export const deleteNotice = async (req, res) => {
   const {
     params: { id }

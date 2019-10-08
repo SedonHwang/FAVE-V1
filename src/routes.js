@@ -32,6 +32,7 @@ const ADMIN_LOGOUT = "/logout";
 const ADMIN_NOTICE = "/notice";
 const UPLOAD_NOTICE = "/upload/notice";
 const DELETE_NOTICE = "/notice/:id/delete";
+const EDIT_NOTICE = "/notice/:id/edit";
 const ADMIN_GAME = "/game";
 
 const routes = {
@@ -59,6 +60,13 @@ const routes = {
   admin_logout: ADMIN_LOGOUT,
   admin_notice: ADMIN_NOTICE,
   upload_notice: UPLOAD_NOTICE,
+  editNotice: id => {
+    if (id) {
+      return `/notice/${id}/edit`;
+    } else {
+      return EDIT_NOTICE;
+    }
+  },
   deleteNotice: id => {
     if (id) {
       return `/notice/${id}/delete`;

@@ -1,0 +1,15 @@
+extends layouts/admin.pug
+
+block content
+    .form-container
+        form(action=`/admin${routes.editNotice(notice.id)}`, method="post", enctype="multipart/form-data")
+            label(for="title_kr") 타이틀
+            input(type="text", placeholder="타이틀", id="title_kr", name="title_kr", requied=true, value=notice.title_kr)
+            label(for="title_en") 타이틀_영어
+            input(type="text", placeholder="타이틀_영어", id="title_en", name="title_en", requied=true, value=notice.title_en)
+            label(for="title_jp") 타이틀_일어
+            input(type="text", placeholder="타이틀_일어", id="title_jp", name="title_jp", requied=true, value=notice.title_jp)
+            textarea(name="description_kr", placeholder="공지 내용", requied=true)=notice.description_kr
+            textarea(name="description_en", placeholder="공지 내용 영어", requied=true)=notice.description_en
+            textarea(name="description_jp", placeholder="공지 내용 일어", requied=true)=notice.description_jp
+            input(type="submit", value="수정하기")

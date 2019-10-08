@@ -11,12 +11,16 @@ block content
                 th title
                 th description
                 th 날짜
+                th 수정
                 th 삭제
             each notice in notices
                 tr
                     td= notice.title_kr
                     td= notice.description_kr
                     td= `${notice.createdAt.toDateString()}`
+                    td 
+                        .btns.write--btn
+                            a(href=`/admin${routes.editNotice(notice.id)}`) 수정
                     td 
                         .btns.delete--btn
                             a(href=`/admin${routes.deleteNotice(notice.id)}`) 삭제
