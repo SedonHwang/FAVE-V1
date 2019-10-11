@@ -7,7 +7,7 @@ import Notice from "../models/notices";
 export const adminLogin = (req, res) => res.render("admin_login");
 export const postAdminLogin = passport.authenticate("local", {
   failureRedirect: routes.admin_login,
-  successRedirect: "/admin/notice"
+  successRedirect: "/admin/notice/1"
 });
 
 export const adminLogout = (req, res) => {
@@ -17,12 +17,21 @@ export const adminLogout = (req, res) => {
 };
 
 export const adminNotice = async (req, res) => {
+  const renderedNotice = 3;
+  const {
+    params: { page }
+  } = req;
   try {
-    const notices = await Notice.find({});
-    res.render("admin_notice", { notices: notices.reverse() });
+    const numberOfNotice = await Notice.countDocuments();
+    const maxPage = Math.ceil(numberOfNotice / renderedNotice);
+    const notices = await Notice.find({})
+      .sort("-createdAt")
+      .skip((page - 1) * renderedNotice)
+      .limit(renderedNotice);
+    res.render("admin_notice", { notices, maxPage, page });
   } catch (e) {
     console.log(e);
-    res.render("admin_notice", { notices: [] });
+    res.render("admin_notice", { notices: [], maxPage: 1, page });
   }
 };
 
@@ -41,7 +50,6 @@ export const postUploadNotice = async (req, res) => {
     }
   } = req;
   if (req.file) {
-    console.log(req.file);
     path = req.file.path;
   }
   try {
@@ -55,7 +63,7 @@ export const postUploadNotice = async (req, res) => {
       notice_img: path
     });
     console.log(newNotice);
-    res.redirect(`/admin${routes.admin_notice}`);
+    res.redirect("/admin/notice/1");
   } catch (e) {
     console.log(e);
     res.redirect(`/admin${routes.upload_notice}`);
@@ -71,7 +79,7 @@ export const editNotice = async (req, res) => {
     res.render("notice_edit", { notice });
   } catch (e) {
     console.log(e);
-    res.redirect(`/admin${routes.admin_notice}`);
+    res.redirect("/admin/notice/1");
   }
 };
 
@@ -87,15 +95,6 @@ export const postEditNotice = async (req, res) => {
       description_jp
     }
   } = req;
-  console.log(`id is ${id}`);
-  console.log(
-    title_kr,
-    title_en,
-    title_jp,
-    description_kr,
-    description_en,
-    description_jp
-  );
   try {
     await Notice.findOneAndUpdate(
       { _id: id },
@@ -108,7 +107,7 @@ export const postEditNotice = async (req, res) => {
         description_jp
       }
     );
-    res.redirect(`/admin${routes.admin_notice}`);
+    res.redirect("/admin/notice/1");
   } catch (e) {
     console.log(e);
     res.redirect(`/admin${routes.editNotice(id)}`);
@@ -124,7 +123,7 @@ export const deleteNotice = async (req, res) => {
   } catch (e) {
     console.log(e);
   }
-  res.redirect(`/admin${routes.admin_notice}`);
+  res.redirect("/admin/notice/1");
 };
 
 export const adminGame = (req, res) => res.send("admin_game");

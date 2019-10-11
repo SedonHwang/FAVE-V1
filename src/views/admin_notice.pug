@@ -17,10 +17,36 @@ block content
                 tr
                     td= notice.title_kr
                     td= notice.description_kr
-                    td= `${notice.createdAt.toDateString()}`
+                    td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate()}`
                     td 
                         .btns.write--btn
                             a(href=`/admin${routes.editNotice(notice.id)}`) 수정
                     td 
                         .btns.delete--btn
                             a(href=`/admin${routes.deleteNotice(notice.id)}`) 삭제
+        if page == 1
+            ul.notice__pagination
+                li 1
+                li
+                    a(href=`/admin/notice/${Number(page)+1}`)
+                        | next
+                        | >
+        else
+            if page == maxPage
+                ul.notice__pagination
+                    li
+                        a(href=`/admin/notice/${Number(page)-1}`)
+                            | <
+                            | prev
+                    li= page
+            else
+                ul.notice__pagination
+                    li
+                        a(href=`/admin/notice/${Number(page)-1}`)
+                            | <
+                            | prev
+                    li= page
+                    li
+                        a(href=`/admin/notice/${Number(page)+1}`)
+                            | next
+                            | >
