@@ -28,10 +28,21 @@ export const adminNotice = async (req, res) => {
       .sort("-createdAt")
       .skip((page - 1) * renderedNotice)
       .limit(renderedNotice);
-    res.render("admin_notice", { notices, maxPage, page });
+    res.render("admin_notice", {
+      notices,
+      maxPage,
+      page,
+      numberOfNotice,
+      renderedNotice
+    });
   } catch (e) {
     console.log(e);
-    res.render("admin_notice", { notices: [], maxPage: 1, page });
+    res.render("admin_notice", {
+      notices: [],
+      maxPage: 1,
+      page,
+      numberOfNotice
+    });
   }
 };
 

@@ -8,13 +8,15 @@ block content
                 a(href=`/admin${routes.upload_notice}`) 글쓰기
         table
             tr
+                th 번호
                 th title
                 th description
                 th 날짜
                 th 수정
                 th 삭제
-            each notice in notices
+            each notice, index in notices
                 tr
+                    td= `${Number(numberOfNotice)-((Number(page)-1)*Number(renderedNotice))-index}`
                     td= notice.title_kr
                     td= notice.description_kr
                     td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate()}`

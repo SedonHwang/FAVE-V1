@@ -2,6 +2,7 @@ import passport from "passport";
 import routes from "../routes";
 import { throwSignupMsg } from "../lib";
 import User from "../models/users";
+import Notice from "../models/notices";
 
 //Global Router Controller
 export const home = (req, res) => {
@@ -99,5 +100,28 @@ export const character = (req, res) => res.send("character");
 export const connection = (req, res) => res.send("connection");
 
 //Notice Router Controller
-export const noticeHome = (req, res) => res.send("notice home");
+export const noticeHome = async (req, res) => {
+  const renderedNotice = 5;
+  const {
+    params: { page }
+  } = req;
+  try {
+    const numberOfNotice = await Notice.countDocuments();
+    const maxPage = Math.ceil(numberOfNotice / renderedNotice);
+    const notices = await Notice.find({})
+      .sort("-createdAt")
+      .skip((page - 1) * renderedNotice)
+      .limit(renderedNotice);
+    res.render("notice_home", {
+      notices,
+      maxPage,
+      page,
+      numberOfNotice,
+      renderedNotice
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.home);
+  }
+};
 export const noticeDetail = (req, res) => res.send("notice detail");

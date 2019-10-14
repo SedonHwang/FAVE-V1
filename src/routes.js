@@ -16,7 +16,7 @@ const CONNECTION = "/connection";
 
 //Notice
 const NOTICE = "/notice";
-const NOTICE_HOME = "/";
+const NOTICE_HOME = "/:page";
 const NOTICE_DETAIL = "/:id";
 
 //User

@@ -1,0 +1,125 @@
+@import "_variables";
+
+.main--image--right {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .main--image__text {
+    position: absolute;
+    top: 50%;
+    right: 65%;
+    transform: translateY(-50%);
+    h1 {
+      color: $main-gray;
+      font-size: 60px;
+      font-weight: 600;
+      text-align: right;
+      @include breakpoint(tablet) {
+        font-size: 36px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 20px;
+      }
+      span {
+        display: inline-block;
+        border-bottom: 3px solid $font-orange;
+        padding-bottom: 15px;
+        @include breakpoint(tablet) {
+          padding-bottom: 13px;
+        }
+        @include breakpoint(mobile) {
+          border-bottom: 1.5px solid $font-orange;
+          padding-bottom: 11px;
+        }
+      }
+    }
+    p {
+      font-size: 24px;
+      margin-top: 15px;
+      @include breakpoint(tablet) {
+        font-size: 17px;
+        margin-top: 13px;
+      }
+      @include breakpoint(mobile) {
+        display: none;
+      }
+    }
+  }
+}
+
+.middle--header {
+  font-size: 48px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 80px;
+  span {
+    display: inline-block;
+    border-bottom: 3px solid $main-gray;
+    padding-bottom: 15px;
+  }
+}
+
+.middle-tap {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  .middle-tap__text {
+    width: 50%;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    padding: 12px;
+    &:first-child {
+      border-top: 2.5px solid black;
+      border-right: 1px solid black;
+    }
+    &:last-child {
+      border-bottom: 1px solid black;
+    }
+  }
+}
+.current--page {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  text-align: right;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+table {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  margin: 0 auto;
+  th {
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 16px;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: rgb(122, 122, 122);
+    &:nth-child(2) {
+      width: 70%;
+    }
+  }
+  td {
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 16px;
+    font-size: 20px;
+    &:nth-child(2) {
+      text-align: left;
+      width: 70%;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+extends layouts/main
+
+block content
+    .main--image--right
+        img(src="/img/notice-home.jpg")
+        .main--image__text
+            h1 
+                | NO
+                span TICE
+            p FAVE에 공지사항과 고객센터
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Notice
+    h2.middle--header
+        | N
+        span OTIC
+        | E
+    .middle-tap
+        .middle-tap__text Notice
+        .middle-tap__text
+    p.current--page= `Total 4/${page} page`
+    table
+        tr
+            th 번호
+            th 제목
+            th 작성일자
+        each notice, index in notices
+            tr
+                td= `${Number(numberOfNotice)-((Number(page)-1)*Number(renderedNotice))-index}`
+                td
+                    a(href="#")= notice.title_kr
+                td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate()}`
+        
+    
