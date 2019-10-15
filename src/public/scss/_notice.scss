@@ -84,17 +84,23 @@
   width: 100%;
   max-width: 1170px;
   padding: 15px;
+  box-sizing: border-box;
   text-align: right;
   font-size: 18px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: 30px auto;
 }
 
-table {
+table.notice--list {
   width: 100%;
   max-width: 1170px;
   padding: 15px;
   margin: 0 auto;
+  @include breakpoint(tablet) {
+    padding: 13px;
+  }
+  @include breakpoint(mobile) {
+    padding: 12px;
+  }
   th {
     text-align: center;
     border-top: 1px solid black;
@@ -103,8 +109,22 @@ table {
     font-size: 24px;
     font-weight: 500;
     background-color: rgb(122, 122, 122);
+    @include breakpoint(tablet) {
+      padding: 14px;
+      font-size: 22px;
+    }
+    @include breakpoint(mobile) {
+      padding: 12px;
+      font-size: 20px;
+    }
     &:nth-child(2) {
       width: 70%;
+      @include breakpoint(tablet) {
+        width: 60%;
+      }
+      @include breakpoint(mobile) {
+        width: 50%;
+      }
     }
   }
   td {
@@ -113,13 +133,139 @@ table {
     border-bottom: 1px solid black;
     padding: 16px;
     font-size: 20px;
+    @include breakpoint(tablet) {
+      padding: 14px;
+      font-size: 18px;
+    }
+    @include breakpoint(mobile) {
+      padding: 12px;
+      font-size: 16px;
+    }
     &:nth-child(2) {
       text-align: left;
       width: 70%;
+      @include breakpoint(tablet) {
+        width: 60%;
+      }
+      @include breakpoint(mobile) {
+        width: 50%;
+      }
     }
     a {
       color: black;
       text-decoration: none;
+      &:hover {
+        color: $font-orange;
+      }
+    }
+  }
+}
+
+.notice__pagination {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  li {
+    font-size: 18px;
+    &:not(:first-child) {
+      margin-left: 12px;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+      font-size: 18px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+hr {
+  width: 100%;
+  max-width: 1170px;
+  box-sizing: border-box;
+  border-top: 1px solid black;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  @include breakpoint(tablet) {
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.contact--form {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  form {
+    padding: 8px;
+    h3 {
+      font-size: 24px;
+      font-weight: 600;
+      border-left: 3px solid $font-orange;
+      padding-left: 8px;
+    }
+    p {
+      text-align: right;
+      font-size: 16px;
+      margin-bottom: 15px;
+      span {
+        color: $font-orange;
+      }
+    }
+    .contact--form__rows {
+      display: flex;
+      border-top: 1px solid $font-gray;
+      .contact--form__label {
+        background-color: $light-gray;
+        padding: 24px;
+        width: 15%;
+        text-align: center;
+        label {
+          font-size: 20px;
+          font-weight: 500;
+          span {
+            color: $font-orange;
+          }
+        }
+      }
+      .contact--form__input {
+        padding: 16px;
+        &:last-child {
+          width: 70%;
+        }
+        input {
+          padding: 8px 12px;
+        }
+        textarea {
+          width: 60%;
+          height: 70px;
+          resize: none;
+          padding: 8px 12px;
+        }
+      }
+    }
+    .contact--form__btn {
+      text-align: right;
+      margin-top: 30px;
+      button {
+        background-color: $main-gray;
+        border: none;
+        padding: 8px 12px;
+        color: white;
+        font-size: 18px;
+        &:hover {
+          background-color: $font-orange;
+        }
+        i {
+          margin-left: 6px;
+        }
+      }
     }
   }
 }

@@ -9,7 +9,8 @@ import {
   postSignup,
   getLogin,
   postLogin,
-  logout
+  logout,
+  contactUs
 } from "../controllers/homepageController";
 
 const globalRouter = express.Router();
@@ -28,4 +29,5 @@ globalRouter.get(routes.logout, logout);
 
 globalRouter.get(routes.company, company);
 
+globalRouter.post(routes.contact, contactUs);
 export default globalRouter;

@@ -21,7 +21,7 @@ block content
         .middle-tap__text Notice
         .middle-tap__text
     p.current--page= `Total 4/${page} page`
-    table
+    table.notice--list
         tr
             th 번호
             th 제목
@@ -30,7 +30,64 @@ block content
             tr
                 td= `${Number(numberOfNotice)-((Number(page)-1)*Number(renderedNotice))-index}`
                 td
-                    a(href="#")= notice.title_kr
+                    a(href="#")= `${notice.title_kr.length > 20 ? `${notice.title_kr.slice(0, 20)}...` : notice.title_kr}`
                 td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate()}`
-        
+    if page == 1
+        ul.notice__pagination
+            li 1
+            li
+                a(href=`/notice/${Number(page)+1}`)
+                    | next
+                    | >
+    else
+        if page == maxPage
+            ul.notice__pagination
+                li
+                    a(href=`/notice/${Number(page)-1}`)
+                        | <
+                        | prev
+                li= page
+        else
+            ul.notice__pagination
+                li
+                    a(href=`/notice/${Number(page)-1}`)
+                        | <
+                        | prev
+                li= page
+                li
+                    a(href=`/notice/${Number(page)+1}`)
+                        | next
+                        | >
+    hr
+    .contact--form
+        form(action=routes.contact, method="post")
+            h3 정보입력
+            p
+                span *
+                | 표시 필수사항
+            .contact--form__rows
+                .contact--form__label
+                    label(for="username")
+                        | 이름
+                        span *
+                .contact--form__input
+                    input(placeholder="닉네임", id="username",name="username" )
+            .contact--form__rows
+                .contact--form__label
+                    label(for="email")
+                        | 이메일
+                        span *
+                .contact--form__input
+                    input(placeholder="이메일", id="email", name="email")
+            .contact--form__rows
+                .contact--form__label
+                    label(for="description")
+                        | 문의내용
+                        span *
+                .contact--form__input
+                    textarea(id="description", name="description")
+            .contact--form__btn
+                button(type="submit")
+                    | 등록하기
+                    i.fas.fa-edit
     

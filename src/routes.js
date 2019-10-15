@@ -6,6 +6,7 @@ const SIGNUP = "/signup";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const COMPANY = "/company";
+const CONTACT = "/contact";
 
 //About
 const ABOUT = "/about";
@@ -43,6 +44,7 @@ const routes = {
   login: LOGIN,
   logout: LOGOUT,
   company: COMPANY,
+  contact: CONTACT,
   about: ABOUT,
   fitness: FITNESS,
   game: GAME,

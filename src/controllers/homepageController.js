@@ -1,4 +1,5 @@
 import passport from "passport";
+import nodemailer from "nodemailer";
 import routes from "../routes";
 import { throwSignupMsg } from "../lib";
 import User from "../models/users";
@@ -101,7 +102,7 @@ export const connection = (req, res) => res.send("connection");
 
 //Notice Router Controller
 export const noticeHome = async (req, res) => {
-  const renderedNotice = 5;
+  const renderedNotice = 4;
   const {
     params: { page }
   } = req;
@@ -125,3 +126,31 @@ export const noticeHome = async (req, res) => {
   }
 };
 export const noticeDetail = (req, res) => res.send("notice detail");
+
+export const contactUs = async (req, res) => {
+  const {
+    body: { username, email, description }
+  } = req;
+  const smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "fave188170@gmail.com",
+      pass: "188170faves"
+    }
+  });
+  const mailOptions = {
+    from: "fave188170@gmail.com",
+    to: "ifave3@naver.com, ifave5@naver.com",
+    subject: `${username}님이 글을 남겼습니다.`,
+    text: `${description} ------ ${email}로 답변을 보내주세요.`
+  };
+  await smtpTransport.sendMail(mailOptions, (error, response) => {
+    if (error) {
+      console.log(error);
+      res.redirect("/notice/1");
+    } else {
+      res.redirect(routes.home);
+    }
+    smtpTransport.close();
+  });
+};
