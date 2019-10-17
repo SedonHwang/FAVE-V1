@@ -1,0 +1,217 @@
+@import "_variables";
+
+.about-wrapper {
+  width: 100%;
+  max-width: 1170px;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  @include breakpoint(tablet) {
+    flex-direction: column-reverse;
+  }
+  @include breakpoint(mobile) {
+    flex-direction: column-reverse;
+  }
+  .about__Text {
+    width: 50%;
+    padding: 12px;
+    @include breakpoint(tablet) {
+      width: 80%;
+    }
+    @include breakpoint(mobile) {
+      width: 90%;
+    }
+    h3 {
+      font-size: 60px;
+      font-weight: 600;
+      @include breakpoint(tablet) {
+        font-size: 48px;
+        text-align: center;
+      }
+      @include breakpoint(mobile) {
+        font-size: 36px;
+        text-align: center;
+      }
+    }
+    h4 {
+      font-size: 36px;
+      font-weight: 400;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      @include breakpoint(tablet) {
+        font-size: 30px;
+        text-align: center;
+      }
+      @include breakpoint(mobile) {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+    p {
+      font-size: 20px;
+      line-height: 1.8;
+      @include breakpoint(tablet) {
+        font-size: 19px;
+        text-align: center;
+      }
+      @include breakpoint(mobile) {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+  }
+  .about__img {
+    width: 50%;
+    @include breakpoint(tablet) {
+      width: 80%;
+    }
+    @include breakpoint(mobile) {
+      width: 90%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.team-wrapper {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  .team-columns {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    @include breakpoint(tablet) {
+      flex-direction: column;
+      align-items: center;
+    }
+    @include breakpoint(mobile) {
+      flex-direction: column;
+      align-items: center;
+    }
+    .team__member {
+      width: 45%;
+      display: flex;
+      padding: 15px;
+      justify-content: center;
+      align-items: center;
+      @include breakpoint(tablet) {
+        width: 80%;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        width: 90%;
+        .member__img {
+          width: 80%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .member__desc {
+        width: 60%;
+        margin-left: 15px;
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        h4 {
+          font-size: 24px;
+          font-weight: 600;
+          @include breakpoint(mobile) {
+            margin-top: 14px;
+          }
+        }
+        ul {
+          margin-top: 20px;
+          @include breakpoint(mobile) {
+            margin-top: 14px;
+          }
+          li {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mission-wrapper {
+  width: 100%;
+  max-width: 1170px;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 0 auto;
+  h3 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .mission__background {
+    background-image: url("/img/world.png");
+    background-position: center;
+    background-size: cover;
+    padding: 8px;
+    display: flex;
+    .mission__img {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      img {
+        width: 70%;
+      }
+    }
+    .mission__text {
+      width: 50%;
+      h4 {
+        font-size: 26px;
+        font-weight: 600;
+        color: $font-orange;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        @include breakpoint(tablet) {
+          font-size: 22px;
+          margin-top: 19px;
+          margin-bottom: 19px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 20px;
+          margin-top: 18px;
+          margin-bottom: 18px;
+        }
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+        word-break: keep-all;
+        text-align: center;
+        font-weight: 500;
+      }
+      .mission__sign {
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        ul {
+          width: 30%;
+          li {
+            text-align: center;
+          }
+        }
+        .sign__img {
+          width: 150px;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
