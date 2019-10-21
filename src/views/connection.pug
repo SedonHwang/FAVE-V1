@@ -1,0 +1,75 @@
+extends layouts/main
+
+block content
+    .main--image
+        img(src="/img/connection-img.png")
+        .main--image__text
+            h1
+                | CONNE
+                span CTION
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > About > Connection
+    .connection--wrapper
+        .steps.bluetooth
+            h2 FAVE 연결
+            p 제품을 연결하려면 01 ~ 04 단계를 수행하십시요.
+                .steps__columns
+                    .steps__items
+                        .steps__img
+                            img(src="/img/bluetooth01.png")
+                        ul.steps__list
+                            li 01.
+                            li 제품을 개봉해주세요.
+                    .steps__items
+                        .steps__img
+                            img(src="/img/bluetooth02.png")
+                        ul.steps__list
+                            li 02.
+                            li FAVE의 센서 캡을 열어주세요.
+                .steps__columns
+                    .steps__items
+                        .steps__img
+                            img(src="/img/bluetooth03.png")
+                        ul.steps__list
+                            li 03.
+                            li 센서스위치를 켜주세요.
+                    .steps__items
+                        .steps__img
+                            img(src="/img/bluetooth04.png")
+                        ul.steps__list
+                            li 04.
+                            li FAVE의 센서 캡을 닫아주세요.
+        .steps.injection
+            h2 FAVE 공기주입
+            p 공기주입이 필요한 경우 01 ~ 04단계를 수행하십시요.
+                .steps__columns
+                    .steps__items
+                        .steps__img
+                            img(src="/img/injection01.png")
+                        ul.steps__list
+                            li 01.
+                            li FAVE의 센서 캡을 열어주세요.
+                    .steps__items
+                        .steps__img
+                            img(src="/img/injection02.png")
+                        ul.steps__list
+                            li 02.
+                            li 센서 밑 구멍을 찾아주세요.
+                .steps__columns
+                    .steps__items
+                        .steps__img
+                            img(src="/img/injection03.png")
+                        ul.steps__list
+                            li 03.
+                            li 구멍 안 튜브 입구를 열어주세요.
+                    .steps__items
+                        .steps__img
+                            img(src="/img/injection04.png")
+                        ul.steps__list
+                            li 04.
+                            li 펌프를 사용해 공기를 주입하세요.
+        h4.blue-print Connection
+                

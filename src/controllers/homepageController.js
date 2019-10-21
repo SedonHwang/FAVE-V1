@@ -100,7 +100,7 @@ export const logout = (req, res) => {
 export const fitness = (req, res) => res.send("fitness");
 export const game = (req, res) => res.send("game");
 export const character = (req, res) => res.send("character");
-export const connection = (req, res) => res.send("connection");
+export const connection = (req, res) => res.render("connection");
 
 //Notice Router Controller
 export const noticeHome = async (req, res) => {
