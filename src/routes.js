@@ -6,6 +6,8 @@ const SIGNUP = "/signup";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const COMPANY = "/company";
+const COMPANY_KR = "/company/kr";
+const COMPANY_JP = "/company/jp";
 const CONTACT = "/contact";
 
 //About
@@ -44,6 +46,8 @@ const routes = {
   login: LOGIN,
   logout: LOGOUT,
   company: COMPANY,
+  companyKr: COMPANY_KR,
+  companyJp: COMPANY_JP,
   contact: CONTACT,
   about: ABOUT,
   fitness: FITNESS,

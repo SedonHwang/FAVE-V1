@@ -5,6 +5,8 @@ import {
   homeKr,
   homeJp,
   company,
+  companyKr,
+  companyJp,
   getSignup,
   postSignup,
   getLogin,
@@ -28,6 +30,8 @@ globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 
 globalRouter.get(routes.company, company);
+globalRouter.get(routes.companyKr, companyKr);
+globalRouter.get(routes.companyJp, companyJp);
 
 globalRouter.post(routes.contact, contactUs);
 export default globalRouter;

@@ -153,6 +153,18 @@
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 30px;
+    @include breakpoint(tablet) {
+      text-align: center;
+      font-size: 48px;
+      margin-top: 18px;
+      margin-bottom: 26px;
+    }
+    @include breakpoint(mobile) {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 16px;
+      margin-bottom: 22px;
+    }
   }
   .mission__background {
     background-image: url("/img/world.png");
@@ -164,12 +176,26 @@
       display: flex;
       justify-content: center;
       width: 50%;
+      @include breakpoint(tablet) {
+        display: none;
+      }
+      @include breakpoint(mobile) {
+        display: none;
+      }
       img {
         width: 70%;
       }
     }
     .mission__text {
       width: 50%;
+      @include breakpoint(tablet) {
+        width: 90%;
+        margin: 0 auto;
+      }
+      @include breakpoint(mobile) {
+        width: 90%;
+        margin: 0 auto;
+      }
       h4 {
         font-size: 26px;
         font-weight: 600;
@@ -181,11 +207,15 @@
           font-size: 22px;
           margin-top: 19px;
           margin-bottom: 19px;
+          margin-top: 18px;
+          margin-bottom: 26px;
         }
         @include breakpoint(mobile) {
           font-size: 20px;
           margin-top: 18px;
           margin-bottom: 18px;
+          margin-top: 16px;
+          margin-bottom: 22px;
         }
       }
       p {
@@ -194,6 +224,12 @@
         word-break: keep-all;
         text-align: center;
         font-weight: 500;
+        @include breakpoint(tablet) {
+          font-size: 17px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 16px;
+        }
       }
       .mission__sign {
         margin-top: 30px;
@@ -206,9 +242,106 @@
           }
         }
         .sign__img {
-          width: 150px;
+          width: 200px;
           img {
             width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.map-wrapper {
+  width: 100%;
+  max-width: 1170px;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 0 auto;
+  .map__text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    @include breakpoint(tablet) {
+      flex-direction: column;
+    }
+    @include breakpoint(mobile) {
+      flex-direction: column;
+    }
+    h3 {
+      font-size: 60px;
+      font-weight: 600;
+      padding: 8px;
+      @include breakpoint(tablet) {
+        font-size: 48px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 36px;
+      }
+    }
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      margin-left: 30px;
+      transform: translateY(50%);
+      @include breakpoint(tablet) {
+        font-size: 17px;
+        margin-left: 0px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 16px;
+        margin-left: 0;
+      }
+    }
+  }
+  #map {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+    @include breakpoint(tablet) {
+      width: 85%;
+      height: 400px;
+    }
+    @include breakpoint(mobile) {
+      width: 90%;
+      height: 350px;
+    }
+  }
+  .map__subtext {
+    margin-top: 15px;
+    ul {
+      display: flex;
+      width: 65%;
+      margin: 0 auto;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        width: 75%;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        width: 85%;
+      }
+      &:nth-child(2) {
+        margin-top: 12px;
+      }
+      li {
+        &:first-child {
+          font-weight: 600;
+          font-size: 22px;
+          width: 20%;
+          @include breakpoint(tablet) {
+            font-size: 20px;
+            width: 50%;
+          }
+          @include breakpoint(mobile) {
+            font-size: 18px;
+            width: 50%;
+          }
+        }
+        &:nth-child(2) {
+          margin-left: 20px;
+          @include breakpoint(tablet) {
+            margin-left: 0;
+            margin-top: 12px;
           }
         }
       }

@@ -13,6 +13,8 @@ export const home = (req, res) => {
 export const homeKr = (req, res) => res.render("home_kr");
 export const homeJp = (req, res) => res.render("home_jp");
 export const company = (req, res) => res.render("company");
+export const companyKr = (req, res) => res.render("company_kr");
+export const companyJp = (req, res) => res.render("company_jp");
 export const getSignup = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
