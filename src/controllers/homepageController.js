@@ -99,7 +99,7 @@ export const logout = (req, res) => {
 //About Router Controller
 export const fitness = (req, res) => res.send("fitness");
 export const game = (req, res) => res.send("game");
-export const character = (req, res) => res.send("character");
+export const character = (req, res) => res.render("character");
 
 export const connection = (req, res) => res.render("connection");
 export const connectionKr = (req, res) => res.render("connection_kr");

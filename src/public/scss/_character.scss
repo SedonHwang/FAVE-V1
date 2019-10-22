@@ -1,0 +1,93 @@
+@import "_variables";
+
+.character-wrapper {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  .principal-wrapper {
+    h2 {
+      font-size: 60px;
+      font-weight: 600;
+      color: $font-gray;
+      text-align: center;
+      margin-top: 30px;
+      @include breakpoint(tablet) {
+        font-size: 48px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 36px;
+      }
+    }
+    h3 {
+      font-size: 24px;
+      font-weight: 500;
+      color: $main-gray;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      @include breakpoint(tablet) {
+        font-size: 22px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 20px;
+      }
+    }
+    .principal__img {
+      width: 90%;
+      margin: 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.8;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
+      &.img-gap {
+        margin-top: 30px;
+      }
+    }
+    .pentagons {
+      display: flex;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        align-items: center;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        align-items: center;
+      }
+      .pentagon__columns {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-around;
+        width: 50%;
+        @include breakpoint(tablet) {
+          width: 80%;
+          margin-top: 20px;
+          &:nth-child(2) {
+            flex-direction: row-reverse;
+          }
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+          margin-top: 20px;
+          &:nth-child(2) {
+            flex-direction: row-reverse;
+          }
+        }
+        .pentagon__img {
+          width: 40%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
