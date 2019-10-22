@@ -16,6 +16,8 @@ const FITNESS = "/fitness";
 const GAME = "/game";
 const CHARACTER = "/character";
 const CONNECTION = "/connection";
+const CONNECTION_KR = "/connection/kr";
+const CONNECTION_JP = "/connection/jp";
 
 //Notice
 const NOTICE = "/notice";
@@ -54,6 +56,8 @@ const routes = {
   game: GAME,
   character: CHARACTER,
   connection: CONNECTION,
+  connection_kr: CONNECTION_KR,
+  connection_jp: CONNECTION_JP,
   notice: NOTICE,
   notice_home: NOTICE_HOME,
   notice_detail: NOTICE_DETAIL,
