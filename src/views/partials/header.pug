@@ -41,7 +41,7 @@ header.header
                             li
                                 a(href="#") Game
                             li
-                                a(href="#") Character
+                                a(href=`/about${routes.character}`) Character
                             li
                                 a(href=`/about${routes.connection}`) Connection
                     li
@@ -95,7 +95,7 @@ header.header
                         li
                             a(href="/kr") Game
                         li
-                            a(href="/jp") Character
+                            a(href=`/about${routes.character}`) Character
                         li
                             a(href=`/about${routes.connection}`) Connection
                     ul.side--navi__content

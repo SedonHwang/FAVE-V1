@@ -54,6 +54,8 @@
     }
     .pentagons {
       display: flex;
+      margin-top: 50px;
+      margin-bottom: 70px;
       @include breakpoint(tablet) {
         flex-direction: column;
         align-items: center;
@@ -82,9 +84,198 @@
           }
         }
         .pentagon__img {
-          width: 40%;
+          width: 35%;
+          @include breakpoint(tablet) {
+            width: 39%;
+          }
+          @include breakpoint(mobile) {
+            width: 43%;
+          }
           img {
             width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .patents-wrapper {
+    position: relative;
+    h2 {
+      font-size: 48px;
+      font-weight: 600;
+      color: black;
+      padding: 12px;
+      @include breakpoint(tablet) {
+        font-size: 36px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 24px;
+      }
+    }
+    .patents__text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 50px;
+      background-color: $light-gray;
+      @include breakpoint(tablet) {
+        padding: 45px;
+      }
+      @include breakpoint(mobile) {
+        padding: 40px;
+      }
+      h4 {
+        width: 70%;
+        font-size: 24px;
+        font-weight: 600;
+        @include breakpoint(tablet) {
+          width: 80%;
+          font-size: 22px;
+        }
+        @include breakpoint(mobile) {
+          width: 85%;
+          font-size: 20px;
+        }
+      }
+      p {
+        width: 70%;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.8;
+        margin-top: 20px;
+        @include breakpoint(tablet) {
+          width: 80%;
+          font-size: 17px;
+        }
+        @include breakpoint(mobile) {
+          width: 85%;
+          font-size: 16px;
+        }
+      }
+    }
+    .header-rect {
+      width: 200px;
+      height: 200px;
+      background-color: $main-gray;
+      opacity: 0.5;
+      position: absolute;
+      top: 0;
+      @include breakpoint(tablet) {
+        width: 150px;
+        height: 150px;
+      }
+      @include breakpoint(mobile) {
+        width: 130px;
+        height: 130px;
+      }
+    }
+    .patents__img {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .fave-info {
+    width: 100%;
+    max-width: 1170px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+    .fave-info__header {
+      h3 {
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        color: $font-orange;
+        @include breakpoint(tablet) {
+          font-size: 30px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 24px;
+        }
+      }
+    }
+    .fave-info__body {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        align-items: center;
+      }
+      .fave-info__columns {
+        width: 30%;
+        @include breakpoint(tablet) {
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &:nth-child(2) {
+            flex-direction: row-reverse;
+            margin-top: 40px;
+            margin-bottom: 40px;
+          }
+        }
+        @include breakpoint(mobile) {
+          width: 95%;
+        }
+        .info-icon {
+          @include breakpoint(tablet) {
+            margin-right: 12px;
+            margin-left: 12px;
+          }
+          @include breakpoint(mobile) {
+            margin-right: 8px;
+            margin-left: 8px;
+          }
+          span {
+            border: 1px solid $font-orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            margin: 0 auto;
+            i {
+              font-size: 48px;
+              color: $font-orange;
+            }
+          }
+        }
+        .info-text {
+          @include breakpoint(tablet) {
+            width: 60%;
+          }
+          @include breakpoint(mobile) {
+            width: 70%;
+          }
+          h4 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 24px;
+            @include breakpoint(tablet) {
+              font-size: 24px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 20px;
+            }
+          }
+          p {
+            line-height: normal;
+            font-size: 18px;
+            @include breakpoint(tablet) {
+              font-size: 17px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 16px;
+            }
           }
         }
       }
