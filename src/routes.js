@@ -14,6 +14,8 @@ const CONTACT = "/contact";
 const ABOUT = "/about";
 const FITNESS = "/fitness";
 const GAME = "/game";
+const GAME_KR = "/game/kr";
+const GAME_JP = "/game/jp";
 const CHARACTER = "/character";
 const CHARACTER_KR = "/character/kr";
 const CHARACTER_JP = "/character/jp";
@@ -56,6 +58,8 @@ const routes = {
   about: ABOUT,
   fitness: FITNESS,
   game: GAME,
+  game_kr: GAME_KR,
+  game_jp: GAME_JP,
   character: CHARACTER,
   character_kr: CHARACTER_KR,
   character_jp: CHARACTER_JP,

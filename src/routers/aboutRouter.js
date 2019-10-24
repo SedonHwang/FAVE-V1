@@ -8,13 +8,19 @@ import {
   connectionKr,
   connectionJp,
   characterJp,
-  characterKr
+  characterKr,
+  gameKr,
+  gameJp
 } from "../controllers/homepageController";
 
 const aboutRouter = express.Router();
 
 aboutRouter.get(routes.fitness, fitness);
+
 aboutRouter.get(routes.game, game);
+aboutRouter.get(routes.game_kr, gameKr);
+aboutRouter.get(routes.game_jp, gameJp);
+
 aboutRouter.get(routes.character, character);
 aboutRouter.get(routes.character_kr, characterKr);
 aboutRouter.get(routes.character_jp, characterJp);
