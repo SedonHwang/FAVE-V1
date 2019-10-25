@@ -20,7 +20,7 @@ block content
     .middle-tap
         .middle-tap__text Notice
         .middle-tap__text
-    p.current--page= `Total 4/${page} page`
+    p.current--page= `Total ${maxPage}/${page} page`
     table.notice--list
         tr
             th 번호
@@ -33,12 +33,16 @@ block content
                     a(href="#")= `${notice.title_kr.length > 20 ? `${notice.title_kr.slice(0, 20)}...` : notice.title_kr}`
                 td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate()}`
     if page == 1
-        ul.notice__pagination
-            li 1
-            li
-                a(href=`/notice/${Number(page)+1}`)
-                    | next
-                    | >
+        if maxPage < 2
+            ul.notice__pagination
+                li - 1 -
+        else
+            ul.notice__pagination
+                li 1
+                li
+                    a(href=`/notice/${Number(page)+1}`)
+                        | next
+                        | >
     else
         if page == maxPage
             ul.notice__pagination
