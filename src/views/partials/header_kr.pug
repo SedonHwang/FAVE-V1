@@ -4,13 +4,13 @@ header.header
             if user
                 ul
                     li
-                        a(href="#") 로그아웃
+                        a(href="javascript:void(0);") 로그아웃
             else
                 ul
                     li
-                        a(href="#") 로그인
+                        a(href="javascript:void(0);") 로그인
                     li
-                        a(href="#") 회원가입
+                        a(href="javascript:void(0);") 회원가입
             .user--language
                 span
                     i.fas.fa-globe
@@ -27,28 +27,28 @@ header.header
                             a(href="/jp") 日本語
         .header__navi
             .header__logo
-                a(href="/")
+                a(href="/kr")
                     img(src="/img/logo.png")
             .navi__list
                 ul
                     li
-                        a(href="#") COMPANY
+                        a(href=routes.companyKr) COMPANY
                     li
-                        a(href="#") ABOUT
+                        a(href="javascript:void(0);") ABOUT
                         ul
                             li
                                 a(href="#") Fitness
                             li
-                                a(href="#") Game
+                                a(href=`/about${routes.game_kr}`) Game
                             li
                                 a(href=`/about${routes.character_kr}`) Character
                             li
                                 a(href=`/about${routes.connection_kr}`) Connection
                     li
-                        a(href="#") NOTICE
+                        a(href="javascript:void(0);") NOTICE
     .header--narrow
         .header__logo--responsive#js--logoResponsive
-            a(href="/")
+            a(href="/kr")
                 img(src="/img/logo_responsive.png")
             span.header__icon#js--openSide
                 i.fas.fa-bars
@@ -62,13 +62,13 @@ header.header
                     if user
                         ul.side-navi__userform
                             li
-                                a(href="#") 로그아웃
+                                a(href="javascript:void(0);") 로그아웃
                     else
                         ul.side-navi__userform
                             li
-                                a(href="#") 로그인
+                                a(href="javascript:void(0);") 로그인
                             li
-                                a(href="#") 회원가입
+                                a(href="javascript:void(0);") 회원가입
                     ul.side--navi__collapsible.js--collapsible
                         li 한국어
                         li 
@@ -83,7 +83,7 @@ header.header
                             a(href="/jp") 日本語
                     ul.side--navi__content
                         li
-                            a(href="#") COMPANY
+                            a(href=routes.companyKr) COMPANY
                     ul.side--navi__collapsible.js--collapsible
                         li ABOUT
                         li 
@@ -91,13 +91,13 @@ header.header
                                 i.fa.fa-caret-down
                     ul.collapsible__content
                         li
-                            a(href="/") Fitness
+                            a(href="javascript:void(0);") Fitness
                         li
-                            a(href="/kr") Game
+                            a(href=`/about${routes.game_kr}`) Game
                         li
                             a(href=`/about${routes.character_kr}`) Character
                         li
                             a(href=`/about${routes.connection_kr}`) Connection
                     ul.side--navi__content
                         li
-                            a(href="#") NOTICE
+                            a(href="javascript:void(0);") NOTICE
