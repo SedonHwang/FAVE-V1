@@ -1,4 +1,5 @@
 import express from "express";
+import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
@@ -8,6 +9,7 @@ import passport from "passport";
 import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
 import flash from "connect-flash";
+import hpp from "hpp";
 import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import aboutRouter from "./routers/aboutRouter";
@@ -15,6 +17,8 @@ import noticeRouter from "./routers/noticeRouter";
 import adminRouter from "./routers/adminRouter";
 import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
+
+dotenv.config();
 
 import "./passport";
 
@@ -26,18 +30,27 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(helmet());
-app.use(morgan("dev"));
+app.use(hpp());
+if (process.env.NODE_ENV === "production") {
+  app.use(morgan("combined"));
+} else {
+  app.use(morgan("dev"));
+}
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
   session({
-    secret: "asdasd",
+    secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false,
-    store: new CokieStore({ mongooseConnection: mongoose.connection })
+    store: new CokieStore({ mongooseConnection: mongoose.connection }),
+    cookie: {
+      httpOnly: true,
+      secure: false
+    }
   })
 );
 app.use(flash());

@@ -14,6 +14,14 @@ import {
   logout,
   contactUs
 } from "../controllers/homepageController";
+import {
+  onlyAdmin,
+  onlyPublic,
+  onlyPublicKr,
+  uploadImg,
+  onlyPrivateKr,
+  onlyPublicJp
+} from "../middlewares";
 
 const globalRouter = express.Router();
 

@@ -29,11 +29,43 @@ export const onlyPublic = (req, res, next) => {
   }
 };
 
+export const onlyPublicKr = (req, res, next) => {
+  if (req.user) {
+    res.redirect(routes.homeKr);
+  } else {
+    next();
+  }
+};
+
+export const onlyPublicJp = (req, res, next) => {
+  if (req.user) {
+    res.redirect(routes.homeJp);
+  } else {
+    next();
+  }
+};
+
 export const onlyPrivate = (req, res, next) => {
   if (req.user) {
     next();
   } else {
     res.redirect(routes.home);
+  }
+};
+
+export const onlyPrivateKr = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect(routes.homeKr);
+  }
+};
+
+export const onlyPrivateJp = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect(routes.homeJp);
   }
 };
 

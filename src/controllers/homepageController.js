@@ -1,20 +1,24 @@
 import passport from "passport";
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 import routes from "../routes";
 import { throwSignupMsg } from "../lib";
 import User from "../models/users";
 import Notice from "../models/notices";
 
+dotenv.config();
+
+const GOOGLE_MAP = process.env.GOOGLE_MAP;
+
 //Global Router Controller
 export const home = (req, res) => {
-  console.log(req.user);
   res.render("home");
 };
 export const homeKr = (req, res) => res.render("home_kr");
 export const homeJp = (req, res) => res.render("home_jp");
-export const company = (req, res) => res.render("company");
-export const companyKr = (req, res) => res.render("company_kr");
-export const companyJp = (req, res) => res.render("company_jp");
+export const company = (req, res) => res.render("company", { GOOGLE_MAP });
+export const companyKr = (req, res) => res.render("company_kr", { GOOGLE_MAP });
+export const companyJp = (req, res) => res.render("company_jp", { GOOGLE_MAP });
 export const getSignup = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
