@@ -1,4 +1,5 @@
-import "@babel/polyfill";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import "./db";
 import app from "./app";
 import dotenv from "dotenv";

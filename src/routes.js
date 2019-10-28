@@ -26,6 +26,8 @@ const CONNECTION_JP = "/connection/jp";
 //Notice
 const NOTICE = "/notice";
 const NOTICE_HOME = "/:page";
+const NOTICE_HOME_KR = "/:page/kr";
+const NOTICE_HOME_JP = "/:page/jp";
 const NOTICE_DETAIL = "/:id";
 
 //User
@@ -68,6 +70,8 @@ const routes = {
   connection_jp: CONNECTION_JP,
   notice: NOTICE,
   notice_home: NOTICE_HOME,
+  notice_home_kr: NOTICE_HOME_KR,
+  notice_home_jp: NOTICE_HOME_JP,
   notice_detail: NOTICE_DETAIL,
   user: USER,
   user_page: USER_PAGE,

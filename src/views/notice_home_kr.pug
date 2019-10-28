@@ -1,4 +1,4 @@
-extends layouts/main
+extends layouts/main_kr
 
 block content
     if errorMessage
@@ -24,14 +24,14 @@ block content
     p.current--page= `Total ${maxPage}/${page} page`
     table.notice--list
         tr
-            th Index
-            th Title
-            th Date
+            th 번호
+            th 제목
+            th 작성일자
         each notice, index in notices
             tr
                 td= `${Number(numberOfNotice)-((Number(page)-1)*Number(renderedNotice))-index}`
                 td
-                    a(href="#")= `${notice.title_en.length > 20 ? `${notice.title_en.slice(0, 20)}...` : notice.title_en}`
+                    a(href="#")= `${notice.title_kr.length > 20 ? `${notice.title_kr.slice(0, 20)}...` : notice.title_kr}`
                 td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate() < 10 ? `0${notice.createdAt.getDate()}` : `${notice.createdAt.getDate()}`}`
     if page == 1
         if maxPage < 2
@@ -41,58 +41,58 @@ block content
             ul.notice__pagination
                 li 1
                 li
-                    a(href=`/notice/${Number(page)+1}`)
+                    a(href=`/notice/${Number(page)+1}/kr`)
                         | next
                         | >
     else
         if page == maxPage
             ul.notice__pagination
                 li
-                    a(href=`/notice/${Number(page)-1}`)
+                    a(href=`/notice/${Number(page)-1}/kr`)
                         | <
                         | prev
                 li= page
         else
             ul.notice__pagination
                 li
-                    a(href=`/notice/${Number(page)-1}`)
+                    a(href=`/notice/${Number(page)-1}/kr`)
                         | <
                         | prev
                 li= page
                 li
-                    a(href=`/notice/${Number(page)+1}`)
+                    a(href=`/notice/${Number(page)+1}/kr`)
                         | next
                         | >
     hr
     .contact--form
         form(action=routes.contact, method="post")
-            h3 Contact Us
+            h3 정보입력
             p
                 span *
-                | is required
+                | 표시 필수사항
             .contact--form__rows
                 .contact--form__label
                     label(for="username")
-                        | Name
+                        | 이름
                         span *
                 .contact--form__input
-                    input(placeholder="Nickname", id="username",name="username" )
+                    input(placeholder="닉네임", id="username",name="username" )
             .contact--form__rows
                 .contact--form__label
                     label(for="email")
-                        | Email
+                        | 이메일
                         span *
                 .contact--form__input
-                    input(placeholder="Email", id="email", name="email")
+                    input(placeholder="이메일", id="email", name="email")
             .contact--form__rows
                 .contact--form__label
                     label(for="description")
-                        | Description
+                        | 문의내용
                         span *
                 .contact--form__input
-                    textarea(id="description", name="description", placeholder="We will answer your inquiry via the email you entered.")
+                    textarea(id="description", name="description", placeholder="문의하신 내용은 입력하신 이메일을 통해 답변드리겠습니다.")
             .contact--form__btn
                 button(type="submit")
-                    | Submit
+                    | 등록하기
                     i.fas.fa-edit
     

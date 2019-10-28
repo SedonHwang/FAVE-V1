@@ -2,7 +2,7 @@ import passport from "passport";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import routes from "../routes";
-import { throwSignupMsg } from "../lib";
+import { throwFlashMsg } from "../lib";
 import User from "../models/users";
 import Notice from "../models/notices";
 
@@ -51,16 +51,11 @@ export const postSignup = async (req, res, next) => {
     sex = "N";
   }
   if (!email || !password || !password2 || !name) {
-    throwSignupMsg(req, res, "*은 필수입력값입니다.", routes.signup);
+    throwFlashMsg(req, res, "*은 필수입력값입니다.", routes.signup);
   } else if (password.length < 8) {
-    throwSignupMsg(
-      req,
-      res,
-      "비밀번호를 8자 이상 입력해주세요.",
-      routes.signup
-    );
+    throwFlashMsg(req, res, "비밀번호를 8자 이상 입력해주세요.", routes.signup);
   } else if (password !== password2) {
-    throwSignupMsg(req, res, "비밀번호가 다릅니다.", routes.signup);
+    throwFlashMsg(req, res, "비밀번호가 다릅니다.", routes.signup);
   } else {
     try {
       const user = await User({
@@ -80,10 +75,10 @@ export const postSignup = async (req, res, next) => {
       next();
     } catch (error) {
       if (error.name === "UserExistsError") {
-        throwSignupMsg(req, res, "이미 존재하는 유저입니다.", routes.signup);
+        throwFlashMsg(req, res, "이미 존재하는 유저입니다.", routes.signup);
         return;
       }
-      throwSignupMsg(req, res, "Something Wrong :(", routes.signup);
+      throwFlashMsg(req, res, "Something Wrong :(", routes.signup);
     }
   }
 };
@@ -140,6 +135,57 @@ export const noticeHome = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+export const noticeHomeKr = async (req, res) => {
+  const renderedNotice = 4;
+  const {
+    params: { page }
+  } = req;
+  try {
+    const numberOfNotice = await Notice.countDocuments();
+    const maxPage = Math.ceil(numberOfNotice / renderedNotice);
+    const notices = await Notice.find({})
+      .sort("-createdAt")
+      .skip((page - 1) * renderedNotice)
+      .limit(renderedNotice);
+    res.render("notice_home_kr", {
+      notices,
+      maxPage,
+      page,
+      numberOfNotice,
+      renderedNotice
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.homeKr);
+  }
+};
+
+export const noticeHomeJp = async (req, res) => {
+  const renderedNotice = 4;
+  const {
+    params: { page }
+  } = req;
+  try {
+    const numberOfNotice = await Notice.countDocuments();
+    const maxPage = Math.ceil(numberOfNotice / renderedNotice);
+    const notices = await Notice.find({})
+      .sort("-createdAt")
+      .skip((page - 1) * renderedNotice)
+      .limit(renderedNotice);
+    res.render("notice_home_jp", {
+      notices,
+      maxPage,
+      page,
+      numberOfNotice,
+      renderedNotice
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.homeJp);
+  }
+};
+
 export const noticeDetail = (req, res) => res.send("notice detail");
 
 export const contactUs = async (req, res) => {
@@ -155,9 +201,10 @@ export const contactUs = async (req, res) => {
   });
   const mailOptions = {
     from: "fave188170@gmail.com",
-    to: "ifave3@naver.com, ifave5@naver.com",
+    to: "ifave5@naver.com",
+    //to: "ifave@naver.com, ifave2@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
     subject: `${username}님이 글을 남겼습니다.`,
-    text: `${description} ------ ${email}로 답변을 보내주세요.`
+    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
   };
   await smtpTransport.sendMail(mailOptions, (error, response) => {
     if (error) {

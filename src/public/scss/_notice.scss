@@ -209,11 +209,23 @@ hr {
       font-weight: 600;
       border-left: 3px solid $font-orange;
       padding-left: 8px;
+      @include breakpoint(tablet) {
+        font-size: 22px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 20px;
+      }
     }
     p {
       text-align: right;
       font-size: 16px;
       margin-bottom: 15px;
+      @include breakpoint(tablet) {
+        font-size: 15px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 14px;
+      }
       span {
         color: $font-orange;
       }
@@ -221,14 +233,36 @@ hr {
     .contact--form__rows {
       display: flex;
       border-top: 1px solid $font-gray;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+      }
       .contact--form__label {
         background-color: $light-gray;
         padding: 24px;
         width: 15%;
         text-align: center;
+        @include breakpoint(tablet) {
+          width: 100%;
+          padding: 21px;
+          box-sizing: border-box;
+        }
+        @include breakpoint(mobile) {
+          width: 100%;
+          padding: 18px;
+          box-sizing: border-box;
+        }
         label {
           font-size: 20px;
           font-weight: 500;
+          @include breakpoint(tablet) {
+            font-size: 18px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 16px;
+          }
           span {
             color: $font-orange;
           }
@@ -238,15 +272,39 @@ hr {
         padding: 16px;
         &:last-child {
           width: 70%;
+          @include breakpoint(tablet) {
+            width: 100%;
+            box-sizing: border-box;
+          }
+          @include breakpoint(mobile) {
+            width: 100%;
+            box-sizing: border-box;
+          }
         }
         input {
           padding: 8px 12px;
+          @include breakpoint(tablet) {
+            width: 100%;
+            box-sizing: border-box;
+          }
+          @include breakpoint(mobile) {
+            width: 100%;
+            box-sizing: border-box;
+          }
         }
         textarea {
           width: 60%;
           height: 70px;
           resize: none;
           padding: 8px 12px;
+          @include breakpoint(tablet) {
+            width: 100%;
+            box-sizing: border-box;
+          }
+          @include breakpoint(mobile) {
+            width: 100%;
+            box-sizing: border-box;
+          }
         }
       }
     }

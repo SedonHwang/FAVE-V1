@@ -1,4 +1,4 @@
-extends layouts/main
+extends layouts/main_jp
 
 block content
     if errorMessage
@@ -24,14 +24,14 @@ block content
     p.current--page= `Total ${maxPage}/${page} page`
     table.notice--list
         tr
-            th Index
-            th Title
-            th Date
+            th 番号
+            th 題目
+            th 作成日付
         each notice, index in notices
             tr
                 td= `${Number(numberOfNotice)-((Number(page)-1)*Number(renderedNotice))-index}`
                 td
-                    a(href="#")= `${notice.title_en.length > 20 ? `${notice.title_en.slice(0, 20)}...` : notice.title_en}`
+                    a(href="#")= `${notice.title_jp.length > 20 ? `${notice.title_jp.slice(0, 20)}...` : notice.title_jp}`
                 td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate() < 10 ? `0${notice.createdAt.getDate()}` : `${notice.createdAt.getDate()}`}`
     if page == 1
         if maxPage < 2
@@ -41,58 +41,58 @@ block content
             ul.notice__pagination
                 li 1
                 li
-                    a(href=`/notice/${Number(page)+1}`)
+                    a(href=`/notice/${Number(page)+1}/jp`)
                         | next
                         | >
     else
         if page == maxPage
             ul.notice__pagination
                 li
-                    a(href=`/notice/${Number(page)-1}`)
+                    a(href=`/notice/${Number(page)-1}/jp`)
                         | <
                         | prev
                 li= page
         else
             ul.notice__pagination
                 li
-                    a(href=`/notice/${Number(page)-1}`)
+                    a(href=`/notice/${Number(page)-1}/jp`)
                         | <
                         | prev
                 li= page
                 li
-                    a(href=`/notice/${Number(page)+1}`)
+                    a(href=`/notice/${Number(page)+1}/jp`)
                         | next
                         | >
     hr
     .contact--form
         form(action=routes.contact, method="post")
-            h3 Contact Us
+            h3 情報入力
             p
                 span *
                 | is required
             .contact--form__rows
                 .contact--form__label
                     label(for="username")
-                        | Name
+                        | 名前
                         span *
                 .contact--form__input
-                    input(placeholder="Nickname", id="username",name="username" )
+                    input(placeholder="nickname", id="username",name="username" )
             .contact--form__rows
                 .contact--form__label
                     label(for="email")
-                        | Email
+                        | Eメール
                         span *
                 .contact--form__input
                     input(placeholder="Email", id="email", name="email")
             .contact--form__rows
                 .contact--form__label
                     label(for="description")
-                        | Description
+                        | お問い 合わせ内容
                         span *
                 .contact--form__input
-                    textarea(id="description", name="description", placeholder="We will answer your inquiry via the email you entered.")
+                    textarea(id="description", name="description", placeholder="お問い合わせの内容は入力されたEメールを通じて回答させていただきます")
             .contact--form__btn
                 button(type="submit")
-                    | Submit
+                    | 登録
                     i.fas.fa-edit
     
