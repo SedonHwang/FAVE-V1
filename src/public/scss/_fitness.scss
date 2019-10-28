@@ -1,0 +1,316 @@
+@import "_variables";
+
+.fitness-wrapper {
+  width: 100%;
+  .paragon {
+    width: 100%;
+    max-width: 1170px;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    @include breakpoint(tablet) {
+      margin-top: 40px;
+    }
+    @include breakpoint(mobile) {
+      margin-top: 30px;
+    }
+    img {
+      width: 60%;
+      @include breakpoint(tablet) {
+        width: 80%;
+      }
+      @include breakpoint(mobile) {
+        width: 90%;
+      }
+    }
+  }
+  .download-wrapper {
+    width: 100%;
+    max-width: 1170px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 30px;
+    position: relative;
+    h2 {
+      font-size: 48px;
+      font-weight: 600;
+      color: black;
+      padding: 16px;
+      z-index: 8;
+      @include breakpoint(tablet) {
+        font-size: 36px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 24px;
+      }
+    }
+    .header-rect {
+      width: 200px;
+      height: 200px;
+      background-color: $main-gray;
+      opacity: 0.5;
+      position: absolute;
+      top: 0;
+      @include breakpoint(tablet) {
+        width: 150px;
+        height: 150px;
+      }
+      @include breakpoint(mobile) {
+        width: 130px;
+        height: 130px;
+      }
+    }
+    .download__text {
+      background-color: $light-gray;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      p {
+        width: 60%;
+        font-size: 20px;
+        line-height: 1.6;
+        padding-right: 8px;
+        @include breakpoint(tablet) {
+          width: 80%;
+          font-size: 19px;
+        }
+        @include breakpoint(mobile) {
+          width: 85%;
+          font-size: 18px;
+        }
+        &:first-child {
+          margin-bottom: 20px;
+          margin-top: 10px;
+          text-align: right;
+          font-weight: bold;
+        }
+        &:last-child {
+          padding-bottom: 18px;
+        }
+      }
+    }
+    .download__links {
+      background: linear-gradient($light-gray, white);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 40px;
+      .link__wrapper {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+        @include breakpoint(tablet) {
+          width: 85%;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        .link {
+          width: 45%;
+          a {
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .download__desc {
+        width: 60%;
+        @include breakpoint(tablet) {
+          width: 80%;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.6;
+          @include breakpoint(tablet) {
+            font-size: 16px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 14px;
+          }
+          &:first-child {
+            margin-top: 18px;
+          }
+        }
+        padding-bottom: 30px;
+        padding-right: 8px;
+      }
+    }
+  }
+  .balance-trainer {
+    width: 100%;
+    background-color: $background-gray;
+    .balance-trainer__wrapper {
+      width: 100%;
+      max-width: 1170px;
+      padding-left: 15px;
+      padding-right: 15px;
+      box-sizing: border-box;
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        padding-bottom: 15px;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        padding-bottom: 15px;
+      }
+      .balance-trainer__img {
+        width: 50%;
+        @include breakpoint(tablet) {
+          width: 85%;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        img {
+          width: 100%;
+        }
+      }
+      .balance-trainer__text {
+        width: 50%;
+        font-size: 24px;
+        @include breakpoint(tablet) {
+          width: 85%;
+          font-size: 21px;
+          margin-top: 20px;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+          font-size: 18px;
+          margin-top: 18px;
+        }
+        line-height: 1.6;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .fitness-app {
+    .app-wrapper {
+      width: 100%;
+      max-width: 1170px;
+      padding: 15px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      .app__columns {
+        display: flex;
+        @include breakpoint(tablet) {
+          flex-direction: column;
+          &.reverse {
+            flex-direction: column-reverse;
+          }
+          align-items: center;
+        }
+        @include breakpoint(mobile) {
+          flex-direction: column;
+          &.reverse {
+            flex-direction: column-reverse;
+          }
+          align-items: center;
+        }
+
+        .app__text {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          @include breakpoint(tablet) {
+            width: 80%;
+          }
+          @include breakpoint(mobile) {
+            width: 90%;
+          }
+          .app__header {
+            position: relative;
+            h4 {
+              font-size: 48px;
+              font-weight: 600;
+              padding: 12px;
+              @include breakpoint(tablet) {
+                font-size: 36px;
+              }
+              @include breakpoint(mobile) {
+                font-size: 24px;
+              }
+            }
+            .align-right {
+              text-align: right;
+            }
+            .gradient-background {
+              width: 100%;
+              height: 30px;
+              background: linear-gradient(to right, $background-gray, white);
+              position: absolute;
+              bottom: 0;
+              z-index: -1;
+              @include breakpoint(tablet) {
+                height: 24px;
+                width: 100%;
+              }
+              @include breakpoint(mobile) {
+                height: 18px;
+                width: 100%;
+              }
+            }
+            .gradient-background--reverse {
+              width: 100%;
+              height: 30px;
+              background: linear-gradient(to left, $background-gray, white);
+              position: absolute;
+              bottom: 0;
+              z-index: -1;
+              @include breakpoint(tablet) {
+                height: 24px;
+                width: 100%;
+              }
+              @include breakpoint(mobile) {
+                height: 18px;
+                width: 100%;
+              }
+            }
+          }
+          p {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-top: 20px;
+            @include breakpoint(tablet) {
+              font-size: 20px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 16px;
+            }
+          }
+        }
+        .app__img {
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          @include breakpoint(tablet) {
+            width: 70%;
+            margin-top: 20px;
+          }
+          @include breakpoint(mobile) {
+            width: 90%;
+            margin-top: 20px;
+          }
+          img {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
