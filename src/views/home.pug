@@ -2,62 +2,77 @@ extends layouts/main
 
 block content
     .movie
-        img(src="/img/surf.jpg")
-    .body-wrapper
-        .fave-intro
-            .fave-intro__header
-                h2 FAVE 스마트 밸런스 트레이너
-            .fave-intro__paragraph
-                p 
-                    | FAVE의 스마트 밸런스 트레이너는 기능성 트레이닝 운동기구와 ICT 기술을 융합한 스마트 헬스케어 제품입니다.
-                    | 스마트폰, PC/태블릿, AR/VR 기기, TV 등과 bluetooth 연동이 가능하며 모션감지센서가 사용자의 움직임을 감지하여,
-                    | 게임 속 캐릭터의 동작에 반영되는 제품입니다.
-        .fave-links
-            .fave-links__row
+        video(autoplay, loop, muted)
+            source(src="/videos/main-video.mp4", type="video/mp4")
+            source(src="/videos/main-video.webm", type="video/webm")
+            | Something wrong :(
+    .main-wrapper
+        .main__text
+            h2
+                span S
+                | mart Balance Trainer
+            p.text-gap
+                | FAVE's Smart Balance Trainer is a smart healthcare product that fuses ICT technology
+                | with functional training exercise equipment.
+            p
+                | Bluetooth connection is possible with smartphones, PC/tablets, AR/VR devices, and TVs and
+                | Motion sensors detect user movement and reflect the behavior of the game
+        .main__links
+            .main__links__row
                 .image-wrapper
-                    a(href="#", title="Fitness")
+                    a(href=`/about${routes.fitness}`, title="Fitness")
                         h3 Fitness
-                        img(src="/img/fitness.png")
+                        img(src="/img/home/fitness.png")
                     .gray-wrapper
                 .image-wrapper
-                    a(href="#", title="Game")
+                    a(href=`/about${routes.game}`, title="Game")
                         h3 Game
-                        img(src="/img/game.png")
+                        img(src="/img/home/game.png")
                     .gray-wrapper
-            .fave-links__row
+            .main__links__row
                 .image-wrapper
-                    a(href="#", title="Character")
+                    a(href=`/about${routes.character}`, title="Character")
                         h3 Character
-                        img(src="/img/character.png")
+                        img(src="/img/home/character.png")
                     .gray-wrapper
                 .image-wrapper
                     a(href=`/about${routes.connection}`, title="Connection")
                         h3 Connection
-                        img(src="/img/connection.png")
+                        img(src="/img/home/connection.png")
                     .gray-wrapper
-        .fave-info
-            .fave-info__header
-                h3 FAVE의 특징
-            .fave-info__body
-                .fave-info__columns
-                    .info-icon
-                        span
-                            i.fas.fa-gamepad
-                    .info-text
-                        h4 Game
-                        p 언제 어디서나 게임을 통해 운동을 신나게 즐기기만 하면 됩니다.
-                .fave-info__columns
-                    .info-icon
-                        span
-                            i.fas.fa-mobile-alt
-                    .info-text
-                        h4 Information
-                        p 스마트 앱을 통해 의학적 지표는 물론 운동량과 칼로리 소모량과 같은 정보를 제공합니다.
-                .fave-info__columns
-                    .info-icon
-                        span
-                            i.fab.fa-bluetooth-b
-                    .info-text
-                        h4 Motion Sensor
-                        p 제품의 모션감지센서에서 블루투스 통신을 통해 스마트폰, 태블릿, TV, VR에서 사용할 수 있습니다.
-    p main page EN
+        .main__features
+            .feature__columns
+                .feature__items
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/feather.png")
+                    h4.item__text Light and Simple
+                .feature__items.reversed--feature
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/phone.png")
+                    h4.item__text Fitness App
+            .feature__columns
+                .feature__items
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/dumbbell.png")
+                    h4.item__text Exercise Effect
+                .feature__items.reversed--feature
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/signal.png")
+                    h4.item__text Motion Detector
+                .feature__items
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/gamepad.png")
+                    h4.item__text Video Game training
+    .main__middle
+        .middle__img
+            img(src="/img/home/couple.png")
+        .middle__text
+            h4 SMART BALANCE TRAINING
+            h3 FAVE
+            h5 FAVE pursues a world of happiness through exercise.
+            p With FAVE, the world will be richer and happier.

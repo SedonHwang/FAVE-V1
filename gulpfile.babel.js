@@ -28,11 +28,18 @@ const routes = {
     src: "src/public/js/main.js",
     dest: "build/public/js",
     devDest: "src/public/jsDev"
+  },
+  video: {
+    src: "src/public/videos/**/*",
+    dest: "build/public/videos"
   }
 };
 
 const pug = () =>
   gulp.src(routes.pug.src).pipe(gulpCopy(routes.pug.dest, { prefix: 1 }));
+
+const vidoe = () =>
+  gulp.src(routes.video.src).pipe(gulpCopy(routes.video.dest, { prefix: 3 }));
 
 const clean = () =>
   del(["build/public/js", "src/public/jsDev", "src/public/css"]);
@@ -88,7 +95,7 @@ const watch = () => {
   gulp.watch(routes.js.watch, devJs);
 };
 
-const prepare = gulp.series([clean, img]);
+const prepare = gulp.series([clean, img, vidoe]);
 
 const devAssets = gulp.series([devStyles, devJs]);
 

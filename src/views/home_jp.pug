@@ -2,5 +2,78 @@ extends layouts/main_jp
 
 block content
     .movie
-        img(src="img/surf.jpg")
-    p main page JP
+        video(autoplay, loop, muted)
+            source(src="/videos/main-video.mp4", type="video/mp4")
+            source(src="/videos/main-video.webm", type="video/webm")
+            | Something wrong :(
+    .main-wrapper
+        .main__text
+            h2
+                span ス
+                | マート バランス トレーナー
+            p.text-gap
+                | FAVEの スマート バラントレーナーは 機能性トレーニング 運動器具と
+                | ICT 技術を 融合したスマートヘルスケア 製品です.
+            p
+                | スマートフォン, PC / タブレット, AR / VR 機器, TVな どと bluetooth 連動が可能で,
+                | モーション感知センサーが ユーザーの 動きを 感知し, ゲームの中の動作に反映される
+                | 製品です
+        .main__links
+            .main__links__row
+                .image-wrapper
+                    a(href=`/about${routes.fitness_jp}`, title="Fitness")
+                        h3 Fitness
+                        img(src="/img/home/fitness.png")
+                    .gray-wrapper
+                .image-wrapper
+                    a(href=`/about${routes.game_jp}`, title="Game")
+                        h3 Game
+                        img(src="/img/home/game.png")
+                    .gray-wrapper
+            .main__links__row
+                .image-wrapper
+                    a(href=`/about${routes.character_jp}`, title="Character")
+                        h3 Character
+                        img(src="/img/home/character.png")
+                    .gray-wrapper
+                .image-wrapper
+                    a(href=`/about${routes.connection_jp}`, title="Connection")
+                        h3 Connection
+                        img(src="/img/home/connection.png")
+                    .gray-wrapper
+        .main__features
+            .feature__columns
+                .feature__items
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/feather.png")
+                    h4.item__text Light and Simple
+                .feature__items.reversed--feature
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/phone.png")
+                    h4.item__text Fitness App
+            .feature__columns
+                .feature__items
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/dumbbell.png")
+                    h4.item__text Exercise Effect
+                .feature__items.reversed--feature
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/signal.png")
+                    h4.item__text Motion Detector
+                .feature__items
+                    .item__icon
+                        span.item__border
+                            img(src="/img/home/gamepad.png")
+                    h4.item__text Video Game training
+    .main__middle
+        .middle__img
+            img(src="/img/home/couple.png")
+        .middle__text
+            h4 SMART BALANCE TRAINING
+            h3 FAVE
+            h5 FAVEは 運動を 通じて 幸せになる世の中を 追求します.
+            p FAVEと 一緒なら, 世の中が もっと 豊かで 幸せになるでしょう.  
