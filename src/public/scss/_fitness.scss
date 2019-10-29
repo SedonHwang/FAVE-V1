@@ -206,6 +206,7 @@
       box-sizing: border-box;
       .app__columns {
         display: flex;
+        margin-top: 20px;
         @include breakpoint(tablet) {
           flex-direction: column;
           &.reverse {

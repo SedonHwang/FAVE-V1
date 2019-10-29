@@ -1,0 +1,98 @@
+extends layouts/main_kr
+
+block content
+    .main--image--right
+        img(src="/img/fitness-img.png")
+        .main--image__text
+            h1
+                span FITN
+                | ESS
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > About > FITNESS
+    .fitness-wrapper
+        .paragon
+            img(src="/img/pentagon-balance-kr.png")
+        .download-wrapper
+            h2 Smart Balance Training
+            .header-rect
+            .download__text
+                p 운동관리 시스템
+                p FAVE 피트니스 앱을 통해 운동효과를 바로 확인할 수 있습니다.
+                p 
+                    | COP 지표와 근육 활동량 같은 전문 의학 지표는 물론 개인의
+                    | 신체 지방량과 칼로리 소모량과 같은 기본적인 정보들도 제공해 줍니다.
+            .download__links
+                .link__wrapper
+                    .link
+                        a(href="javascript:void(0)")
+                            img(src="/img/googleplay.png")
+                    .link
+                        a(href="javascript:void(0)")
+                            img(src="/img/appstore.png")
+                .download__desc
+                    p 피트니스 앱은 구글스토어와 앱스토어에서 다운로드 가능합니다.
+                    p &#8251; 안드로이드 5.0 이상 / IOS 7.1 이상 / 블루투스 4.2 이상
+        .balance-trainer
+            .balance-trainer__wrapper
+                .balance-trainer__img
+                    img(src="/img/together-fave.png")
+                p.balance-trainer__text
+                    span 스마트 밸런스 트레이너
+                    | 는 중심축의 다양한 변화를 통해 짧은 시간 내에 많은 운동량과
+                    | 신경근육질의 향상은 물론, 근육, 건, 인대의 강화 그리고
+                    | 고관절, 무릎, 발목 주변의 성장판에 다양한 자극을 줍니다.
+        .fitness-app
+            .app-wrapper
+                .app__columns
+                    .app__text
+                        .app__header
+                            h4 Smart Balance Training
+                            .gradient-background
+                        p
+                            | BMI지수, 지방량, 근육량 등을 확인함으로써 자신의
+                            | 신체 정보에 대해 알 수 있고,
+                            | 표준치와 자신의 바디 정보를 비교해 볼 수 있습니다.
+                            | 사용자의 체력 측정 결과를
+                            | 토대로 맞춤 운동 프로그램을 설계해 줍니다.
+                    .app__img
+                        img(src="/img/fitness/app-mybody.png")
+                .app__columns.reverse
+                    .app__img
+                        img(src="/img/fitness/app-cop.png")
+                    .app__text
+                        .app__header
+                            h4.align-right Training Mode
+                            .gradient-background--reverse
+                        p
+                            | 전문 트레이닝 강사의 동영상 강습을 시청할 수 있고
+                            | 센서를 통한 바른 자세 이탈 경고를 통해
+                            | 올바르게 자세를 유지할 수 있습니다.
+                            | 또한 자신에게 필요한 운동세트를 선택하여서
+                            | 자신의 몸에 맞는 운동을 할 수 있도록 도와줍니다.
+                .app__columns
+                    .app__text
+                        .app__header
+                            h4 1:1 Training Mode
+                            .gradient-background
+                        p
+                            | 나에게 맞는 1:1 맞춤형 밀착 마크로 트레이닝과
+                            | 게임을 하는 동안 사용자의 운동 특성을 파악하여
+                            | COP(Center Of Pressure), VO2MAX, 칼로리 소모량 등
+                            | 다양한 정보를 측정하여 여러분의 건강을 스마트하게
+                            | 관리하여 줍니다.
+                    .app__img
+                        img(src="/img/fitness/app-result.png")
+                .app__columns.reverse
+                    .app__img
+                        img(src="/img/fitness/app-history.png")
+                    .app__text
+                        .app__header
+                            h4.align-right Record
+                            .gradient-background--reverse
+                        p
+                            | 매 회 운동을 할 때마다 운동 데이터를 기록합니다.
+                            | 트레이닝에 대해 기록한 데이터는 검토하기 용이하게
+                            | 변화를 그래프로 나타내 한눈에 볼 수 있게 제공합니다.

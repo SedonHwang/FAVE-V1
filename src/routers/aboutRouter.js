@@ -10,12 +10,16 @@ import {
   characterJp,
   characterKr,
   gameKr,
-  gameJp
+  gameJp,
+  fitnessJp,
+  fitnessKr
 } from "../controllers/homepageController";
 
 const aboutRouter = express.Router();
 
 aboutRouter.get(routes.fitness, fitness);
+aboutRouter.get(routes.fitness_kr, fitnessKr);
+aboutRouter.get(routes.fitness_jp, fitnessJp);
 
 aboutRouter.get(routes.game, game);
 aboutRouter.get(routes.game_kr, gameKr);

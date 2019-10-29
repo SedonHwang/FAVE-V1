@@ -1,0 +1,96 @@
+extends layouts/main_jp
+
+block content
+    .main--image--right
+        img(src="/img/fitness-img.png")
+        .main--image__text
+            h1
+                span FITN
+                | ESS
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > About > FITNESS
+    .fitness-wrapper
+        .paragon
+            img(src="/img/pentagon-balance-jp.png")
+        .download-wrapper
+            h2 Smart Balance Training
+            .header-rect
+            .download__text
+                p 運動管理 システム
+                p FAVE フィットネスアプリを 通じて運動効果を その場で確認することができます
+                p 
+                    | COP 指標や筋肉活動量のような 専門医学指標はもちろん
+                    | 個人の身体脂肪量やカ ロリー消耗量のような 基本的な情報も提供します.
+            .download__links
+                .link__wrapper
+                    .link
+                        a(href="javascript:void(0)")
+                            img(src="/img/googleplay.png")
+                    .link
+                        a(href="javascript:void(0)")
+                            img(src="/img/appstore.png")
+                .download__desc
+                    p フィットネスアプリは グーグルストアと アップストアからダウンロードできます.
+                    p &#8251; アンドロイド 5.0以上 / IOS 7.1以上 / ブルートゥース 4.2以上
+        .balance-trainer
+            .balance-trainer__wrapper
+                .balance-trainer__img
+                    img(src="/img/together-fave.png")
+                p.balance-trainer__text
+                    span スマートバランストレーナー
+                    | は 中心軸の様々な 変化を通じて, 短時間内に多くの運動量と
+                    | 神経筋肉質の向上はもちろん, 筋肉, 腱, 靭帯の強化, そして股関節, 膝
+                    | 足首周辺の成長板に様々な 刺激を与えます.
+        .fitness-app
+            .app-wrapper
+                .app__columns
+                    .app__text
+                        .app__header
+                            h4 Smart Balance Training
+                            .gradient-background
+                        p
+                            | BMI指数, 脂肪量, 筋肉量などを 確認することで
+                            | 自分の身体情報について 知ることができ
+                            | 標準値と 自分のボディ情報を 比較することができます.
+                            | 使用者の体力測定結果を もとにオーダーメード運動プログラムを 設計します.
+                    .app__img
+                        img(src="/img/fitness/app-mybody.png")
+                .app__columns.reverse
+                    .app__img
+                        img(src="/img/fitness/app-cop.png")
+                    .app__text
+                        .app__header
+                            h4.align-right Training Mode
+                            .gradient-background--reverse
+                        p
+                            | 専門トレーニング講師の動画講習を 視聴でき,
+                            | センサーによる 正しい姿勢離脱警告を 通じて正しい姿勢を
+                            | 維持することができます.
+                            | また,自分に 必要な運動セットを 選択して
+                            | 自分の体に 合う運動が できるよう手伝います
+                .app__columns
+                    .app__text
+                        .app__header
+                            h4 1:1 Training Mode
+                            .gradient-background
+                        p
+                            | 私に 合う 1:1におけるオーダーメイド型密着 マークトレーニングとゲームを する間,
+                            | 使用者の運動特性を 把握して
+                            | COP(Center Of Pressure), VO2MAX, カロリー消耗量など
+                            | 様々な 情報を 測定し, 皆さんの健康を スマートに管理してくれます.
+                    .app__img
+                        img(src="/img/fitness/app-result.png")
+                .app__columns.reverse
+                    .app__img
+                        img(src="/img/fitness/app-history.png")
+                    .app__text
+                        .app__header
+                            h4.align-right Record
+                            .gradient-background--reverse
+                        p
+                            | 毎回 運動を するたびに 運動データを 記録します.
+                            | トレーニングについて 記録したデータは 検討しやすい変化を グラフで示し
+                            | 一目で 見ることが できるように提供します.
