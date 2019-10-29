@@ -198,7 +198,7 @@ export const contactUs = async (req, res) => {
     service: "Gmail",
     auth: {
       user: "fave188170@gmail.com",
-      pass: "188170faves"
+      pass: process.env.GOOGLE_PW
     }
   });
   const mailOptions = {
