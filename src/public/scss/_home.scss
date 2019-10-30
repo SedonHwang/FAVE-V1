@@ -243,6 +243,7 @@
 .main__middle {
   width: 100%;
   display: flex;
+  margin-top: 20px;
   @include breakpoint(tablet) {
     flex-direction: column;
     align-items: center;

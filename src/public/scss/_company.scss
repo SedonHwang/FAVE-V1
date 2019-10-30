@@ -106,11 +106,14 @@
       @include breakpoint(mobile) {
         flex-direction: column;
         width: 90%;
-        .member__img {
+      }
+      .member__img {
+        width: 40%;
+        @include breakpoint(mobile) {
           width: 80%;
-          img {
-            width: 100%;
-          }
+        }
+        img {
+          width: 100%;
         }
       }
       .member__desc {
