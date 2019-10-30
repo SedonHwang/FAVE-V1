@@ -7,10 +7,10 @@
   box-sizing: border-box;
   margin: 0 auto;
   .paragon {
-    width: 100%;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    align-items: center;
     @include breakpoint(tablet) {
       margin-top: 40px;
     }
@@ -18,8 +18,9 @@
       margin-top: 30px;
     }
     img {
-      width: 60%;
+      width: 70%;
       height: auto;
+      margin: 0 auto;
       @include breakpoint(tablet) {
         width: 80%;
       }
@@ -240,6 +241,7 @@
           width: 50%;
           display: flex;
           justify-content: center;
+          align-items: center;
           @include breakpoint(tablet) {
             width: 70%;
             margin-top: 20px;
