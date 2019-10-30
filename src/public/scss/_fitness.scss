@@ -2,14 +2,14 @@
 
 .fitness-wrapper {
   width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
   .paragon {
     width: 100%;
-    max-width: 1170px;
-    padding: 15px;
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    margin: 0 auto;
     margin-top: 50px;
     @include breakpoint(tablet) {
       margin-top: 40px;
@@ -28,11 +28,6 @@
     }
   }
   .download-wrapper {
-    width: 100%;
-    max-width: 1170px;
-    padding: 15px;
-    box-sizing: border-box;
-    margin: 0 auto;
     margin-top: 30px;
     position: relative;
     h2 {
@@ -145,65 +140,10 @@
       }
     }
   }
-  .balance-trainer {
-    width: 100%;
-    background-color: $background-gray;
-    .balance-trainer__wrapper {
-      width: 100%;
-      max-width: 1170px;
-      padding-left: 15px;
-      padding-right: 15px;
-      box-sizing: border-box;
-      display: flex;
-      margin: 0 auto;
-      align-items: center;
-      @include breakpoint(tablet) {
-        flex-direction: column;
-        padding-bottom: 15px;
-      }
-      @include breakpoint(mobile) {
-        flex-direction: column;
-        padding-bottom: 15px;
-      }
-      .balance-trainer__img {
-        width: 50%;
-        @include breakpoint(tablet) {
-          width: 85%;
-        }
-        @include breakpoint(mobile) {
-          width: 90%;
-        }
-        img {
-          width: 100%;
-        }
-      }
-      .balance-trainer__text {
-        width: 50%;
-        font-size: 24px;
-        @include breakpoint(tablet) {
-          width: 85%;
-          font-size: 21px;
-          margin-top: 20px;
-        }
-        @include breakpoint(mobile) {
-          width: 90%;
-          font-size: 18px;
-          margin-top: 18px;
-        }
-        line-height: 1.6;
-        span {
-          font-weight: bold;
-        }
-      }
-    }
-  }
   .fitness-app {
+    width: 100%;
     .app-wrapper {
       width: 100%;
-      max-width: 1170px;
-      padding: 15px;
-      margin: 0 auto;
-      box-sizing: border-box;
       .app__columns {
         display: flex;
         margin-top: 20px;
@@ -311,6 +251,58 @@
             width: 50%;
           }
         }
+      }
+    }
+  }
+}
+.balance-trainer {
+  width: 100%;
+  background-color: $background-gray;
+  .balance-trainer__wrapper {
+    width: 100%;
+    max-width: 1170px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    @include breakpoint(tablet) {
+      flex-direction: column;
+      padding-bottom: 15px;
+    }
+    @include breakpoint(mobile) {
+      flex-direction: column;
+      padding-bottom: 15px;
+    }
+    .balance-trainer__img {
+      width: 50%;
+      @include breakpoint(tablet) {
+        width: 85%;
+      }
+      @include breakpoint(mobile) {
+        width: 90%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .balance-trainer__text {
+      width: 50%;
+      font-size: 24px;
+      @include breakpoint(tablet) {
+        width: 85%;
+        font-size: 21px;
+        margin-top: 20px;
+      }
+      @include breakpoint(mobile) {
+        width: 90%;
+        font-size: 18px;
+        margin-top: 18px;
+      }
+      line-height: 1.6;
+      span {
+        font-weight: bold;
       }
     }
   }
