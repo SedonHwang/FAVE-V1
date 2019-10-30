@@ -19,6 +19,7 @@
     }
     img {
       width: 60%;
+      height: auto;
       @include breakpoint(tablet) {
         width: 80%;
       }
@@ -249,6 +250,10 @@
           }
           img {
             width: 50%;
+            height: auto;
+            @include breakpoint(tablet) {
+              width: 60%;
+            }
           }
         }
       }
