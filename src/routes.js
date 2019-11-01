@@ -30,7 +30,9 @@ const NOTICE = "/notice";
 const NOTICE_HOME = "/:page";
 const NOTICE_HOME_KR = "/:page/kr";
 const NOTICE_HOME_JP = "/:page/jp";
-const NOTICE_DETAIL = "/:id";
+const NOTICE_DETAIL = "/detail/:id";
+const NOTICE_DETAIL_KR = "/detail/:id/kr";
+const NOTICE_DETAIL_JP = "/detail/:id/jp";
 
 //User
 const USER = "/user";
@@ -77,6 +79,8 @@ const routes = {
   notice_home_kr: NOTICE_HOME_KR,
   notice_home_jp: NOTICE_HOME_JP,
   notice_detail: NOTICE_DETAIL,
+  notice_detail_kr: NOTICE_DETAIL_KR,
+  notice_detail_jp: NOTICE_DETAIL_JP,
   user: USER,
   user_page: USER_PAGE,
   change_profit: CHANGE_PROFIT,

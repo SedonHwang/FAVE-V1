@@ -1,0 +1,27 @@
+extends layouts/main_kr
+
+block content
+    .main--image--right
+        img(src="/img/notice-home.jpg")
+        .main--image__text
+            h1 
+                | NO
+                span TICE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Notice
+    h2.middle--header
+        | N
+        span OTIC
+        | E
+    if prevNotice
+        h1= prevNotice.title_kr
+    else 
+        h1 이전 공지는 없습니다.
+    h1= currentNotice.title_kr
+    if nextNotice
+        h1= nextNotice.title_kr
+    else
+        h1 다음 공지는 없습니다.
