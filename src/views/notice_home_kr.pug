@@ -31,7 +31,7 @@ block content
             tr
                 td= `${Number(numberOfNotice)-((Number(page)-1)*Number(renderedNotice))-index}`
                 td
-                    a(href="#")= `${notice.title_kr.length > 20 ? `${notice.title_kr.slice(0, 20)}...` : notice.title_kr}`
+                    a(href=`/notice/detail/${notice._id}/kr`)= `${notice.title_kr.length > 20 ? `${notice.title_kr.slice(0, 20)}...` : notice.title_kr}`
                 td= `${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate() < 10 ? `0${notice.createdAt.getDate()}` : `${notice.createdAt.getDate()}`}`
     if page == 1
         if maxPage < 2

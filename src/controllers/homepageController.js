@@ -193,16 +193,56 @@ export const noticeDetail = async (req, res) => {
     params: { id }
   } = req;
   try {
-    const currentNotice = await Notice.findById(id);
-    const prevNotice = await Notice.findOne({ _id: { $lt: id } });
-    const nextNotice = await Notice.findOne({ _id: { $gt: id } });
-    res.render("notice_detail", { currentNotice, prevNotice, nextNotice });
+    const notice = await Notice.findById(id);
+    const prevNotice = await Notice.findOne({ _id: { $lt: id } }).sort({
+      _id: -1
+    });
+    const nextNotice = await Notice.findOne({ _id: { $gt: id } }).sort({
+      _id: 1
+    });
+    res.render("notice_detail", { notice, prevNotice, nextNotice });
   } catch (e) {
     console.log(e);
+    res.redirect(routes.notice_home);
   }
-  //지금 아이디에 맞는 노티스를 찾는다.
-  // 다음껄 찾는다
-  //그전껄 찾는다.
+};
+
+export const noticeDetailKr = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  try {
+    const notice = await Notice.findById(id);
+    const prevNotice = await Notice.findOne({ _id: { $lt: id } }).sort({
+      _id: -1
+    });
+    const nextNotice = await Notice.findOne({ _id: { $gt: id } }).sort({
+      _id: 1
+    });
+    res.render("notice_detail_kr", { notice, prevNotice, nextNotice });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.notice_home_kr);
+  }
+};
+
+export const noticeDetailJp = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  try {
+    const notice = await Notice.findById(id);
+    const prevNotice = await Notice.findOne({ _id: { $lt: id } }).sort({
+      _id: -1
+    });
+    const nextNotice = await Notice.findOne({ _id: { $gt: id } }).sort({
+      _id: 1
+    });
+    res.render("notice_detail_jp", { notice, prevNotice, nextNotice });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.notice_home_jp);
+  }
 };
 
 export const contactUs = async (req, res) => {

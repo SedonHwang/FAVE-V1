@@ -1,4 +1,4 @@
-extends layouts/main
+extends layouts/main_kr
 
 block content
     .main--image--right
@@ -17,40 +17,40 @@ block content
         span OTIC
         | E
     .detail--wrapper
-        h3.detail__header= notice.title_en
+        h3.detail__header= notice.title_kr
         .detail__info
             .notice__writer
-                span Writer | Admin
+                span 작성자 | 관리자
             .notice__date
-                span Date |
+                span 작성일 |
                 span= ` ${notice.createdAt.getFullYear()}-${notice.createdAt.getMonth()+1}-${notice.createdAt.getDate() < 10 ? `0${notice.createdAt.getDate()}` : `${notice.createdAt.getDate()}`}`
         .detail__desc
             if notice.notice_img
                 .detail__img
                     img(src=`/${notice.notice_img}`)
-            p.detail__text= notice.description_en
+            p.detail__text= notice.description_kr
         .other--notices
             .notices
                 .notice__icon
                     span 
                         i.fas.fa-caret-up
-                    span NEXT
+                    span 다음글
                 .notice__title
                     if nextNotice
                         h3
-                            a(href=`/notice/detail/${nextNotice._id}`)= nextNotice.title_en
+                            a(href=`/notice/detail/${nextNotice._id}/kr`)= nextNotice.title_kr
                     else
-                        h3 Nothing :(
+                        h3 다음 글이 없습니다.
             .notices
                 .notice__icon
                     span 
                         i.fas.fa-caret-down
-                    span PREV
+                    span 이전글 
                 .notice__title
                     if prevNotice
                         h3
-                            a(href=`/notice/detail/${prevNotice._id}`)= prevNotice.title_en
+                            a(href=`/notice/detail/${prevNotice._id}/kr`)= prevNotice.title_kr
                     else
-                        h3 Nothing :(
+                        h3 이전 글이 없습니다.
         .notice__btn
-            a(href='/notice/1') LIST
+            a(href='/notice/1/kr') 목록
