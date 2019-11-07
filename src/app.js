@@ -16,7 +16,7 @@ import aboutRouter from "./routers/aboutRouter";
 import noticeRouter from "./routers/noticeRouter";
 import adminRouter from "./routers/adminRouter";
 import userRouter from "./routers/userRouter";
-import { localsMiddleware } from "./middlewares";
+import { localsMiddleware, redirectWWW } from "./middlewares";
 
 dotenv.config();
 
@@ -29,6 +29,7 @@ const CokieStore = MongoStore(session);
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(redirectWWW);
 app.use(helmet());
 app.use(hpp());
 if (process.env.NODE_ENV === "production") {

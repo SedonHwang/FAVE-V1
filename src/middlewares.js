@@ -9,6 +9,15 @@ export const localsMiddleware = (req, res, next) => {
   next();
 };
 
+export const redirectWWW = (req, res, next) => {
+  const host = req.get("host");
+  if (host === "faves.co.kr") {
+    res.redirect(301, `http://www.faves.co.kr${req.url}`);
+  } else {
+    next();
+  }
+};
+
 export const onlyAdmin = (req, res, next) => {
   if (req.user) {
     if (req.user.isAdmin) {
