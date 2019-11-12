@@ -12,7 +12,9 @@ import {
   getLogin,
   postLogin,
   logout,
-  contactUs
+  contactUs,
+  contactUsKr,
+  contactUsJp
 } from "../controllers/homepageController";
 import {
   onlyAdmin,
@@ -42,4 +44,6 @@ globalRouter.get(routes.companyKr, companyKr);
 globalRouter.get(routes.companyJp, companyJp);
 
 globalRouter.post(routes.contact, contactUs);
+globalRouter.post(routes.contactKr, contactUsKr);
+globalRouter.post(routes.contactJp, contactUsJp);
 export default globalRouter;

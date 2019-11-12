@@ -9,6 +9,8 @@ const COMPANY = "/company";
 const COMPANY_KR = "/company/kr";
 const COMPANY_JP = "/company/jp";
 const CONTACT = "/contact";
+const CONTACT_KR = "/contact/kr";
+const CONTACT_JP = "/contact/jp";
 
 //About
 const ABOUT = "/about";
@@ -61,6 +63,8 @@ const routes = {
   companyKr: COMPANY_KR,
   companyJp: COMPANY_JP,
   contact: CONTACT,
+  contactKr: CONTACT_KR,
+  contactJp: CONTACT_JP,
   about: ABOUT,
   fitness: FITNESS,
   fitness_kr: FITNESS_KR,

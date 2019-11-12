@@ -114,6 +114,7 @@ export const connectionJp = (req, res) => res.render("connection_jp");
 
 //Notice Router Controller
 export const noticeHome = async (req, res) => {
+  let errorMessage = req.flash("errorMessage");
   const renderedNotice = 4;
   const {
     params: { page }
@@ -125,13 +126,24 @@ export const noticeHome = async (req, res) => {
       .sort("-createdAt")
       .skip((page - 1) * renderedNotice)
       .limit(renderedNotice);
-    res.render("notice_home", {
-      notices,
-      maxPage,
-      page,
-      numberOfNotice,
-      renderedNotice
-    });
+    if (errorMessage.length === 0) {
+      res.render("notice_home", {
+        notices,
+        maxPage,
+        page,
+        numberOfNotice,
+        renderedNotice
+      });
+    } else {
+      res.render("notice_home", {
+        notices,
+        maxPage,
+        page,
+        numberOfNotice,
+        renderedNotice,
+        errorMessage
+      });
+    }
   } catch (e) {
     console.log(e);
     res.redirect(routes.home);
@@ -139,6 +151,7 @@ export const noticeHome = async (req, res) => {
 };
 
 export const noticeHomeKr = async (req, res) => {
+  let errorMessage = req.flash("errorMessage");
   const renderedNotice = 4;
   const {
     params: { page }
@@ -150,13 +163,24 @@ export const noticeHomeKr = async (req, res) => {
       .sort("-createdAt")
       .skip((page - 1) * renderedNotice)
       .limit(renderedNotice);
-    res.render("notice_home_kr", {
-      notices,
-      maxPage,
-      page,
-      numberOfNotice,
-      renderedNotice
-    });
+    if (errorMessage.length === 0) {
+      res.render("notice_home_kr", {
+        notices,
+        maxPage,
+        page,
+        numberOfNotice,
+        renderedNotice
+      });
+    } else {
+      res.render("notice_home_kr", {
+        notices,
+        maxPage,
+        page,
+        numberOfNotice,
+        renderedNotice,
+        errorMessage
+      });
+    }
   } catch (e) {
     console.log(e);
     res.redirect(routes.homeKr);
@@ -164,6 +188,7 @@ export const noticeHomeKr = async (req, res) => {
 };
 
 export const noticeHomeJp = async (req, res) => {
+  let errorMessage = req.flash("errorMessage");
   const renderedNotice = 4;
   const {
     params: { page }
@@ -175,13 +200,24 @@ export const noticeHomeJp = async (req, res) => {
       .sort("-createdAt")
       .skip((page - 1) * renderedNotice)
       .limit(renderedNotice);
-    res.render("notice_home_jp", {
-      notices,
-      maxPage,
-      page,
-      numberOfNotice,
-      renderedNotice
-    });
+    if (errorMessage.length === 0) {
+      res.render("notice_home_jp", {
+        notices,
+        maxPage,
+        page,
+        numberOfNotice,
+        renderedNotice
+      });
+    } else {
+      res.render("notice_home_jp", {
+        notices,
+        maxPage,
+        page,
+        numberOfNotice,
+        renderedNotice,
+        errorMessage
+      });
+    }
   } catch (e) {
     console.log(e);
     res.redirect(routes.homeJp);
@@ -249,6 +285,9 @@ export const contactUs = async (req, res) => {
   const {
     body: { username, email, description }
   } = req;
+  if (!username || !email || !description) {
+    return throwFlashMsg(req, res, "Plz fill in the blanks :(", "/notice/1");
+  }
   const smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -258,17 +297,97 @@ export const contactUs = async (req, res) => {
   });
   const mailOptions = {
     from: "fave188170@gmail.com",
-    to: "ifave5@naver.com",
-    //to: "ifave@naver.com, ifave2@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
+    to:
+      "ifave@naver.com, ifave2@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
     subject: `${username}님이 글을 남겼습니다.`,
     text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
   };
   await smtpTransport.sendMail(mailOptions, (error, response) => {
     if (error) {
       console.log(error);
-      res.redirect("/notice/1");
+      throwFlashMsg(req, res, "Something Wrong :(", "/notice/1");
     } else {
       res.redirect(routes.home);
+    }
+    smtpTransport.close();
+  });
+};
+
+export const contactUsKr = async (req, res) => {
+  const {
+    body: { username, email, description }
+  } = req;
+  if (!username || !email || !description) {
+    return throwFlashMsg(
+      req,
+      res,
+      "필수입력 값이 비었습니다 :(",
+      "/notice/1/kr"
+    );
+  }
+  const smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "fave188170@gmail.com",
+      pass: process.env.GOOGLE_PW
+    }
+  });
+  const mailOptions = {
+    from: "fave188170@gmail.com",
+    to:
+      "ifave@naver.com, ifave2@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
+    subject: `${username}님이 글을 남겼습니다.`,
+    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
+  };
+  await smtpTransport.sendMail(mailOptions, (error, response) => {
+    if (error) {
+      console.log(error);
+      throwFlashMsg(req, res, "잠시후에 다시 시도해 주세요 :(", "/notice/1/kr");
+    } else {
+      res.redirect(routes.homeKr);
+    }
+    smtpTransport.close();
+  });
+};
+
+export const contactUsJp = async (req, res) => {
+  const {
+    body: { username, email, description }
+  } = req;
+  if (!username || !email || !description) {
+    return throwFlashMsg(
+      req,
+      res,
+      "空欄を 満たしてください :(",
+      "/notice/1/jp"
+    );
+  }
+  const smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "fave188170@gmail.com",
+      pass: process.env.GOOGLE_PW
+    }
+  });
+  const mailOptions = {
+    from: "fave188170@gmail.com",
+    to:
+      "ifave@naver.com, ifave2@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
+    subject: `${username}님이 글을 남겼습니다.`,
+    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
+  };
+  await smtpTransport.sendMail(mailOptions, (error, response) => {
+    if (error) {
+      console.log(error);
+      res.redirect("/notice/1/jp");
+      throwFlashMsg(
+        req,
+        res,
+        "しばらくして また試して ください :(",
+        "/notice/1/jp"
+      );
+    } else {
+      res.redirect(routes.homeJp);
     }
     smtpTransport.close();
   });
