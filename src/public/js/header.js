@@ -8,6 +8,8 @@ if (openSide) {
   openSide.addEventListener("click", function() {
     logoResponsive.classList.add("hide");
     sideNavi.classList.add("visible");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${window.scrollY}px`;
   });
 }
 
@@ -15,6 +17,10 @@ if (closeSide) {
   closeSide.addEventListener("click", function() {
     logoResponsive.classList.remove("hide");
     sideNavi.classList.remove("visible");
+    const scrollY = document.body.style.top;
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, parseInt(scrollY || "0") * -1);
   });
 }
 
