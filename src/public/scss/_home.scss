@@ -109,6 +109,7 @@
         width: 40%;
         overflow: hidden;
         cursor: pointer;
+        flex: none;
         @include breakpoint(tablet) {
           width: 70%;
           &:nth-child(2) {
@@ -135,6 +136,7 @@
           }
           .image__item {
             border-radius: 24px;
+            position: relative;
             img {
               width: 100%;
               border-radius: 24px;
