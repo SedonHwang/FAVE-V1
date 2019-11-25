@@ -11,14 +11,13 @@ dotenv.config();
 const GOOGLE_MAP = process.env.GOOGLE_MAP;
 
 //Global Router Controller
-export const home = (req, res) => {
-  res.render("home");
-};
+export const home = (req, res) => res.render("home");
 export const homeKr = (req, res) => res.render("home_kr");
 export const homeJp = (req, res) => res.render("home_jp");
 export const company = (req, res) => res.render("company", { GOOGLE_MAP });
 export const companyKr = (req, res) => res.render("company_kr", { GOOGLE_MAP });
 export const companyJp = (req, res) => res.render("company_jp", { GOOGLE_MAP });
+
 export const getSignup = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
@@ -26,9 +25,26 @@ export const getSignup = (req, res) => {
   } else {
     res.render("signup", { errorMessage });
   }
-  //console.log(req.flash("errorMessage"));
-  //res.render("signup", { errorMessage: req.flash("errorMessage") });
 };
+
+export const getSignupKr = (req, res) => {
+  let errorMessage = req.flash("errorMessage");
+  if (errorMessage.length === 0) {
+    res.render("signup_kr");
+  } else {
+    res.render("signup_kr", { errorMessage });
+  }
+};
+
+export const getSignupJp = (req, res) => {
+  let errorMessage = req.flash("errorMessage");
+  if (errorMessage.length === 0) {
+    res.render("signup_jp");
+  } else {
+    res.render("signup_jp", { errorMessage });
+  }
+};
+
 export const postSignup = async (req, res, next) => {
   let {
     body: {
@@ -51,11 +67,16 @@ export const postSignup = async (req, res, next) => {
     sex = "N";
   }
   if (!email || !password || !password2 || !name) {
-    throwFlashMsg(req, res, "*은 필수입력값입니다.", routes.signup);
+    throwFlashMsg(req, res, "* is required.", routes.signup);
   } else if (password.length < 8) {
-    throwFlashMsg(req, res, "비밀번호를 8자 이상 입력해주세요.", routes.signup);
+    throwFlashMsg(
+      req,
+      res,
+      "Password must be at least 8 characters.",
+      routes.signup
+    );
   } else if (password !== password2) {
-    throwFlashMsg(req, res, "비밀번호가 다릅니다.", routes.signup);
+    throwFlashMsg(req, res, "Password is different.", routes.signup);
   } else {
     try {
       const user = await User({
@@ -75,24 +96,174 @@ export const postSignup = async (req, res, next) => {
       next();
     } catch (error) {
       if (error.name === "UserExistsError") {
-        throwFlashMsg(req, res, "이미 존재하는 유저입니다.", routes.signup);
+        throwFlashMsg(req, res, "User already exists.", routes.signup);
         return;
       }
       throwFlashMsg(req, res, "Something Wrong :(", routes.signup);
     }
   }
 };
+
+export const postSignupKr = async (req, res, next) => {
+  let {
+    body: {
+      email,
+      password,
+      password2,
+      name,
+      birthDate,
+      sex,
+      country,
+      address1,
+      address2,
+      postalCode,
+      height,
+      weight,
+      job
+    }
+  } = req;
+  if (sex === undefined) {
+    sex = "N";
+  }
+  if (!email || !password || !password2 || !name) {
+    throwFlashMsg(req, res, "*은 필수입력값입니다.", routes.signup_kr);
+  } else if (password.length < 8) {
+    throwFlashMsg(
+      req,
+      res,
+      "비밀번호를 8자 이상 입력해주세요.",
+      routes.signup_kr
+    );
+  } else if (password !== password2) {
+    throwFlashMsg(req, res, "비밀번호가 다릅니다.", routes.signup_kr);
+  } else {
+    try {
+      const user = await User({
+        name,
+        email,
+        birthDate,
+        sex,
+        country,
+        address1,
+        address2,
+        postalCode,
+        height,
+        weight,
+        job
+      });
+      await User.register(user, password);
+      next();
+    } catch (error) {
+      if (error.name === "UserExistsError") {
+        throwFlashMsg(req, res, "이미 존재하는 유저입니다.", routes.signup_kr);
+        return;
+      }
+      throwFlashMsg(req, res, "Something Wrong :(", routes.signup_kr);
+    }
+  }
+};
+
+export const postSignupJp = async (req, res, next) => {
+  let {
+    body: {
+      email,
+      password,
+      password2,
+      name,
+      birthDate,
+      sex,
+      country,
+      address1,
+      address2,
+      postalCode,
+      height,
+      weight,
+      job
+    }
+  } = req;
+  if (sex === undefined) {
+    sex = "N";
+  }
+  if (!email || !password || !password2 || !name) {
+    throwFlashMsg(req, res, "*は 必須入力値です.", routes.signup_jp);
+  } else if (password.length < 8) {
+    throwFlashMsg(
+      req,
+      res,
+      "パスワードを 8文字 以上 入力してください.",
+      routes.signup_jp
+    );
+  } else if (password !== password2) {
+    throwFlashMsg(req, res, "暗証番号が 違います.", routes.signup_jp);
+  } else {
+    try {
+      const user = await User({
+        name,
+        email,
+        birthDate,
+        sex,
+        country,
+        address1,
+        address2,
+        postalCode,
+        height,
+        weight,
+        job
+      });
+      await User.register(user, password);
+      next();
+    } catch (error) {
+      if (error.name === "UserExistsError") {
+        throwFlashMsg(
+          req,
+          res,
+          "すでに 存在する ユーザーです.",
+          routes.signup_jp
+        );
+        return;
+      }
+      throwFlashMsg(req, res, "Something Wrong :(", routes.signup_jp);
+    }
+  }
+};
+
 export const getLogin = (req, res) => res.render("login");
+
+export const getLoginKr = (req, res) => res.render("login_kr");
+
+export const getLoginJp = (req, res) => res.render("login_jp");
 
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home
 });
 
+export const postLoginKr = passport.authenticate("local", {
+  failureRedirect: routes.login_kr,
+  successRedirect: routes.homeKr
+});
+
+export const postLoginJp = passport.authenticate("local", {
+  failureRedirect: routes.login_jp,
+  successRedirect: routes.homeJp
+});
+
 export const logout = (req, res) => {
   req.logout();
   req.session.destroy();
-  res.redirect("/");
+  res.redirect(routes.home);
+};
+
+export const logoutKr = (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect(routes.homeKr);
+};
+
+export const logoutJp = (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect(routes.homeJp);
 };
 
 //About Router Controller

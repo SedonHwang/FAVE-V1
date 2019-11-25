@@ -4,13 +4,13 @@ header.header
             if user
                 ul
                     li
-                        a(href="javascript:void(0);") Logout
+                        a(href=routes.logout) Logout
             else
                 ul
                     li
-                        a(href="javascript:void(0);") Login
+                        a(href=routes.login) Login
                     li
-                        a(href="javascript:void(0);") SignUp
+                        a(href=routes.signup) SignUp
             .user--language
                 span
                     i.fas.fa-globe
@@ -45,7 +45,7 @@ header.header
                             li
                                 a(href=`/about${routes.connection}`) Connection
                     li
-                        a(href="javascript:void(0);") NOTICE
+                        a(href="/notice/1") NOTICE
     .header--narrow
         .header__logo--responsive#js--logoResponsive
             a(href="/")
@@ -62,13 +62,13 @@ header.header
                     if user
                         ul.side-navi__userform
                             li
-                                a(href="javascript:void(0);") Logout
+                                a(href=routes.logout) Logout
                     else
                         ul.side-navi__userform
                             li
-                                a(href="javascript:void(0);") Login
+                                a(href=href=routes.login) Login
                             li
-                                a(href="javascript:void(0);") Signup
+                                a(href=routes.signup) Signup
                     ul.side--navi__collapsible.js--collapsible
                         li ENGLISH
                         li 
@@ -100,4 +100,4 @@ header.header
                             a(href=`/about${routes.connection}`) Connection
                     ul.side--navi__content
                         li
-                            a(href="javascript:void(0);") NOTICE
+                            a(href="/notice/1") NOTICE

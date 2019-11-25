@@ -1,4 +1,4 @@
-extends layouts/main
+extends layouts/main_jp
 
 block content
     if errorMessage
@@ -8,6 +8,7 @@ block content
         .main--image__text
             h1 
                 span JOIN
+            p 会員登録 ページです
     .current--nav
         ul
             li
@@ -15,33 +16,33 @@ block content
             li Home > Join
     .signup--form
         .form__header
-            h2 Signup
+            h2 会員登録
             p 
                 span *
-                | is required information.
-        form(action="/signup", method="post", id="js-signupForm")
+                | は 必須入力項目です.
+        form(action="/signup/jp", method="post", id="js-signupForm")
             .basic-info
-                h3 required information
+                h3 必須情報
                 .basic-info__data
                     .basic-info__wrapper
                         .basic-info__label
                             label(for="email")
-                                | ID(email)
+                                | アイディー(email)
                                 span *
                         .basic-info__input
                             input(type="email", name="email", id="email", placeholder="Email")
                     .basic-info__wrapper
                         .basic-info__label
                             label(for="password1")
-                                | Password
+                                | パスワード
                                 span *
                         .basic-info__input
-                            input(type="password", name="password" id="password1" placeholder="at least 8 characters.")
+                            input(type="password", name="password" id="password1" placeholder="8字以上 入力してください.")
                             p#js-pwLengthCheck 
                     .basic-info__wrapper
                         .basic-info__label
                             label(for="password2")
-                                | Password Check
+                                | 暗証番号の 確認
                                 span *
                         .basic-info__input
                             input(type="password", name="password2" id="password2")
@@ -49,74 +50,74 @@ block content
                     .basic-info__wrapper
                         .basic-info__label
                             label(for="name")
-                                | Name
+                                | 名前
                                 span *
                         .basic-info__input
                             input(type="text", name="name", id="name")
                             p#js-nickVerified
             .add-info
-                h3 Additional Information
+                h3 追加情報
                 .add-info__data
                     .add-info__wrapper
                         .add-info__label
-                            label(for="birthDate") Date of Birth
+                            label(for="birthDate") 生年月日
                         .add-info__input
                             input(type="text", name="birthDate", id="birthDate", placeholder="yyyymmdd")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="sex") Gender
+                            label(for="sex") 性別
                         .add-info__input--radio
                             input(type="radio", name="sex", id="man" value="M")
-                            label(for="man") Man
+                            label(for="man") 男
                             input(type="radio", name="sex",id="woman", value="F")
-                            label(for="woman") Woman
+                            label(for="woman") 女
                     .add-info__wrapper
                         .add-info__label
-                            label(for="country") Country or City
+                            label(for="country") 国及 び 都市
                         .add-info__input
                             input(type="text", name="country", id="country")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="address1") Address 1 
+                            label(for="address1") 基本 アドレス 
                         .add-info__input
                             input(type="text", name="address1", id="address1")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="address2") Address 2 
+                            label(for="address2") 詳細 アドレス
                         .add-info__input
                             input(type="text", name="address2", id="address2")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="postalCode") Postal Code 
+                            label(for="postalCode") 郵便番号 
                         .add-info__input
                             input(type="text", name="postalCode", id="postalCode")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="height") Height(cm) 
+                            label(for="height") 身長(cm) 
                         .add-info__input
                             input(type="text", name="height", id="height")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="weight") Weight(kg) 
+                            label(for="weight") 体重(kg) 
                         .add-info__input
                             input(type="text", name="weight", id="weight")
                     .add-info__wrapper
                         .add-info__label
-                            label(for="job") Job
+                            label(for="job") 職業
                         .add-info__input
                             input(type="text", name="job", id="job")
             .terms
                 .terms__wrapper
                     .terms__link
-                        a(href="#") Terms of service
+                        a(href="#") サービス 利用約款
                     .terms__check
                         input(type="checkbox", name="use", id="use")
-                        label(for="use", id="js-useLabel") agree to the terms and conditions.(required)
+                        label(for="use", id="js-useLabel") 利用約款に 同意します.(必須)
                 .terms__wrapper
                     .terms__link
-                        a(href="#") Personal Information Collection and Usage Agreement
+                        a(href="#") 個人情報の 収集およ び 利用同意内容
                     .terms__check
                         input(type="checkbox", name="privacy", id="privacy")
-                        label(for="privacy", id="js-privacy") agree to the use of personal information.(required)    
+                        label(for="privacy", id="js-privacy") 個人情報の収集およ び 利用に同意します.(必須)    
             .submit-info 
                 input.submit--Btn(type="submit", value="Signup")

@@ -1,4 +1,4 @@
-extends layouts/main
+extends layouts/main_kr
 
 block content
     .main--image
@@ -14,24 +14,23 @@ block content
             li Home > Login
     .login--form
         .form__header
-            h3 LOGIN
-        form(action="/login", method="post")
+            h3 로그인
+        form(action="/login/kr", method="post")
             .login-info__data
                 .login-info__wrapper
                     .login-info__label
-                        label(for="email") Email
+                        label(for="email") 이메일
                     .login-info__input
                         input(type="email", name="email", id="email", placeholder="Email")
                 .login-info__wrapper
                         .login-info__label
-                            label(for="password1") Password
+                            label(for="password1") 비밀번호
                         .login-info__input
                             input(type="password", name="password", id="password1", placeholder="Password")
             .login-info__Btn
-                input.login--Btn(type="submit", value="Login")
+                input.login--Btn(type="submit", value="로그인")
                 ul.login__links
                     li
-                        a(href=routes.signup) Are you not a member?
+                        a(href=routes.signup_kr) FAVE의 회원이 아니십니까?
                     li
-                        a(href="#") lost your password?
-                    
+                        a(href="#") 비밀번호를 잃어버리셨습니까?

@@ -3,8 +3,14 @@ const HOME = "/";
 const HOME_KR = "/kr";
 const HOME_JP = "/jp";
 const SIGNUP = "/signup";
+const SIGNUP_KR = "/signup/kr";
+const SIGNUP_JP = "/signup/jp";
 const LOGIN = "/login";
+const LOGIN_KR = "/login/kr";
+const LOGIN_JP = "/login/jp";
 const LOGOUT = "/logout";
+const LOGOUT_KR = "/logout/kr";
+const LOGOUT_JP = "/logout/jp";
 const COMPANY = "/company";
 const COMPANY_KR = "/company/kr";
 const COMPANY_JP = "/company/jp";
@@ -57,8 +63,14 @@ const routes = {
   homeKr: HOME_KR,
   homeJp: HOME_JP,
   signup: SIGNUP,
+  signup_kr: SIGNUP_KR,
+  signup_jp: SIGNUP_JP,
   login: LOGIN,
+  login_kr: LOGIN_KR,
+  login_jp: LOGIN_JP,
   logout: LOGOUT,
+  logout_kr: LOGOUT_KR,
+  logout_jp: LOGOUT_JP,
   company: COMPANY,
   companyKr: COMPANY_KR,
   companyJp: COMPANY_JP,

@@ -4,13 +4,13 @@ header.header
             if user
                 ul
                     li
-                        a(href="javascript:void(0);") ログアウト
+                        a(href=routes.logout_jp) ログアウト
             else
                 ul
                     li
-                        a(href="javascript:void(0);") ログイン
+                        a(href=routes.login_jp) ログイン
                     li
-                        a(href="javascript:void(0);") 会員加入
+                        a(href=routes.signup_jp) 会員加入
             .user--language
                 span
                     i.fas.fa-globe
@@ -45,7 +45,7 @@ header.header
                             li
                                 a(href=`/about${routes.connection_jp}`) Connection
                     li
-                        a(href="javascript:void(0);") NOTICE
+                        a(href="/notice/1/jp") NOTICE
     .header--narrow
         .header__logo--responsive#js--logoResponsive
             a(href="/jp")
@@ -62,13 +62,13 @@ header.header
                     if user
                         ul.side-navi__userform
                             li
-                                a(href="javascript:void(0);") ログアウト
+                                a(href=routes.logout_jp) ログアウト
                     else
                         ul.side-navi__userform
                             li
-                                a(href="javascript:void(0);") ログイン
+                                a(href=routes.login_jp) ログイン
                             li
-                                a(href="javascript:void(0);") 会員加入
+                                a(href=routes.signup_jp) 会員加入
                     ul.side--navi__collapsible.js--collapsible
                         li 日本語
                         li 
@@ -100,4 +100,4 @@ header.header
                             a(href=`/about${routes.connection_jp}`) Connection
                     ul.side--navi__content
                         li
-                            a(href="javascript:void(0);") NOTICE
+                            a(href="/notice/1/jp") NOTICE
