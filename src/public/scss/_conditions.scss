@@ -1,0 +1,110 @@
+@import "_variables";
+
+.condition__terms {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+    display: inline-block;
+    background-color: white;
+    padding-right: 12px;
+    padding-left: 12px;
+    @include breakpoint(tablet) {
+      font-size: 26px;
+      width: 85%;
+      text-align: center;
+    }
+    @include breakpoint(mobile) {
+      font-size: 20px;
+      width: 70%;
+      text-align: center;
+    }
+    span {
+      color: $font-orange;
+    }
+  }
+  .condition__border-line {
+    border: 3px solid $font-gray;
+    padding: 20px;
+    bottom: 10px;
+    position: relative;
+    bottom: 10px;
+    z-index: -1;
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      color: $font-gray;
+      @include breakpoint(tablet) {
+        font-size: 17px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 16px;
+      }
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 30px;
+      line-height: 1.2;
+      color: black;
+      @include breakpoint(tablet) {
+        font-size: 20px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 18px;
+      }
+    }
+    ul {
+      list-style: disc;
+      margin-left: 30px;
+      li {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.2;
+        @include breakpoint(tablet) {
+          font-size: 17px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 16px;
+        }
+      }
+    }
+    ol {
+      list-style: decimal;
+      margin-left: 30px;
+      li {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.2;
+        @include breakpoint(tablet) {
+          font-size: 17px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 16px;
+        }
+      }
+    }
+    table {
+      border: 1px solid black;
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+        color: black;
+      }
+    }
+  }
+}

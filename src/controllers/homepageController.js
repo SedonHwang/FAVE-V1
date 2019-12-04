@@ -563,3 +563,10 @@ export const contactUsJp = async (req, res) => {
     smtpTransport.close();
   });
 };
+
+export const privacy = (req, res) => res.render("privacy");
+export const privacyKr = (req, res) => res.render("privacy_kr");
+export const privacyJp = (req, res) => res.render("privacy_jp");
+export const termOfUse = (req, res) => res.render("termsOfUse");
+export const termOfUseKr = (req, res) => res.render("termsOfUse_kr");
+export const termOfUseJp = (req, res) => res.render("termsOfUse_jp");

@@ -45,8 +45,9 @@ const checkCookie = () => {
     openModal();
   }
 };
-
-checkCookie();
+if (modal) {
+  checkCookie();
+}
 
 if (overlay) {
   overlay.addEventListener("click", closeModal);

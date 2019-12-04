@@ -24,7 +24,13 @@ import {
   getSignupKr,
   postSignupKr,
   logoutKr,
-  logoutJp
+  logoutJp,
+  privacy,
+  privacyKr,
+  privacyJp,
+  termOfUse,
+  termOfUseJp,
+  termOfUseKr
 } from "../controllers/homepageController";
 import {
   onlyAdmin,
@@ -70,4 +76,13 @@ globalRouter.get(routes.companyJp, companyJp);
 globalRouter.post(routes.contact, contactUs);
 globalRouter.post(routes.contactKr, contactUsKr);
 globalRouter.post(routes.contactJp, contactUsJp);
+
+globalRouter.get(routes.privacy, privacy);
+globalRouter.get(routes.privacy_kr, privacyKr);
+globalRouter.get(routes.privacy_jp, privacyJp);
+
+globalRouter.get(routes.termOfUse, termOfUse);
+globalRouter.get(routes.termOfUse_kr, termOfUseKr);
+globalRouter.get(routes.termOfUse_jp, termOfUseJp);
+
 export default globalRouter;

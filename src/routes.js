@@ -17,6 +17,12 @@ const COMPANY_JP = "/company/jp";
 const CONTACT = "/contact";
 const CONTACT_KR = "/contact/kr";
 const CONTACT_JP = "/contact/jp";
+const PRIVACY = "/privacy";
+const PRIVACY_KR = "/privacy/kr";
+const PRIVACY_JP = "/privacy/jp";
+const TERMOFUSE = "/term-of-use";
+const TERMOFUSE_KR = "/term-of-use/kr";
+const TERMOFUSE_JP = "/term-of-use/jp";
 
 //About
 const ABOUT = "/about";
@@ -120,7 +126,13 @@ const routes = {
       return DELETE_NOTICE;
     }
   },
-  admin_game: ADMIN_GAME
+  admin_game: ADMIN_GAME,
+  privacy: PRIVACY,
+  privacy_kr: PRIVACY_KR,
+  privacy_jp: PRIVACY_JP,
+  termOfUse: TERMOFUSE,
+  termOfUse_kr: TERMOFUSE_KR,
+  termOfUse_jp: TERMOFUSE_JP
 };
 
 export default routes;
