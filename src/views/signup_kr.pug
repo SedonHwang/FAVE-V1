@@ -109,13 +109,13 @@ block content
             .terms
                 .terms__wrapper
                     .terms__link
-                        a(href="#") 서비스 이용약관
+                        a(href=routes.termOfUse_kr, target="_blank") 서비스 이용약관
                     .terms__check
                         input(type="checkbox", name="use", id="use")
                         label(for="use", id="js-useLabel") 이용약관에 동의합니다.(필수)
                 .terms__wrapper
                     .terms__link
-                        a(href="#") 개인정보 수집 및 이용 동의 내용
+                        a(href=routes.privacy_kr, target="_blank") 개인정보 수집 및 이용 동의 내용
                     .terms__check
                         input(type="checkbox", name="privacy", id="privacy")
                         label(for="privacy", id="js-privacy") 개인정보 수집 및 이용에 동의합니다.(필수)    

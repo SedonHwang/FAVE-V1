@@ -108,13 +108,13 @@ block content
             .terms
                 .terms__wrapper
                     .terms__link
-                        a(href="#") Terms of service
+                        a(href=routes.termOfUse, target="_blank") Terms of service
                     .terms__check
                         input(type="checkbox", name="use", id="use")
                         label(for="use", id="js-useLabel") agree to the terms and conditions.(required)
                 .terms__wrapper
                     .terms__link
-                        a(href="#") Personal Information Collection and Usage Agreement
+                        a(href=routes.privacy, target="_blank") Personal Information Collection and Usage Agreement
                     .terms__check
                         input(type="checkbox", name="privacy", id="privacy")
                         label(for="privacy", id="js-privacy") agree to the use of personal information.(required)    

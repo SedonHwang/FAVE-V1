@@ -109,13 +109,13 @@ block content
             .terms
                 .terms__wrapper
                     .terms__link
-                        a(href="#") サービス 利用約款
+                        a(href=routes.termOfUse_jp, target="_blank") サービス 利用約款
                     .terms__check
                         input(type="checkbox", name="use", id="use")
                         label(for="use", id="js-useLabel") 利用約款に 同意します.(必須)
                 .terms__wrapper
                     .terms__link
-                        a(href="#") 個人情報の 収集およ び 利用同意内容
+                        a(href=routes.privacy_jp, target="_blank") 個人情報の 収集およ び 利用同意内容
                     .terms__check
                         input(type="checkbox", name="privacy", id="privacy")
                         label(for="privacy", id="js-privacy") 個人情報の収集およ び 利用に同意します.(必須)    
