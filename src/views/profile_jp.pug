@@ -1,0 +1,87 @@
+extends layouts/main_jp
+
+block content
+    if errorMessage
+        .error--message #{errorMessage}
+    .main--image
+        img(src="/img/company-img.jpg")
+        .main--image__text
+            h1 
+                span PROFILE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Profile
+    .profile--form
+        .form__header
+            h2 プロフィール
+            p 
+                span *
+                | は 必須入力項目です.
+        form(action=`/user${routes.user_page_jp}`, method="post")
+            .basic-info
+                h3 必須情報
+                .basic-info__data 
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="name")
+                                | 名前
+                                span *
+                        .basic-info__input
+                            input(type="text", name="name", id="name", value=user.name)
+                    .change-password
+                        a(href="#") 暗証番号を 変更されますか?
+            .add-info
+                h3 追加情報
+                .add-info__data
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="birthDate") 生年月日
+                        .add-info__input
+                            input(type="text", name="birthDate", id="birthDate", placeholder="yyyymmdd", value=user.birthDate)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="sex") 性別
+                        .add-info__input--radio
+                            input(type="radio", name="sex", id="man" value="M", checked=(user.sex === "M" ? true : false))
+                            label(for="man") 男
+                            input(type="radio", name="sex",id="woman", value="F", checked=(user.sex === "F" ? true : false))
+                            label(for="woman") 女
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="country") 国及 び 都市
+                        .add-info__input
+                            input(type="text", name="country", id="country", value=user.country)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address1") 基本 アドレス 
+                        .add-info__input
+                            input(type="text", name="address1", id="address1", value=user.address1)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address2") 詳細 アドレス
+                        .add-info__input
+                            input(type="text", name="address2", id="address2", value=user.address2)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="postalCode") 郵便番号 
+                        .add-info__input
+                            input(type="text", name="postalCode", id="postalCode", value=user.postalCode)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="height") 身長(cm) 
+                        .add-info__input
+                            input(type="text", name="height", id="height", value=user.height)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="weight") 体重(kg) 
+                        .add-info__input
+                            input(type="text", name="weight", id="weight", value=user.weight)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="job") 職業
+                        .add-info__input
+                            input(type="text", name="job", id="job", value=user.job)    
+            .submit-info 
+                input.submit--Btn(type="submit", value="OK")

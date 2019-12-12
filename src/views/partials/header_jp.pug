@@ -4,6 +4,8 @@ header.header
             if user
                 ul
                     li
+                        a(href=`/user${routes.user_page_jp}`) プロフィール
+                    li
                         a(href=routes.logout_jp) ログアウト
             else
                 ul
@@ -61,6 +63,8 @@ header.header
                 .side--navi__body
                     if user
                         ul.side-navi__userform
+                            li
+                                a(href=`/user${routes.user_page_jp}`) プロフィール
                             li
                                 a(href=routes.logout_jp) ログアウト
                     else

@@ -1,0 +1,87 @@
+extends layouts/main_kr
+
+block content
+    if errorMessage
+        .error--message #{errorMessage}
+    .main--image
+        img(src="/img/company-img.jpg")
+        .main--image__text
+            h1 
+                span PROFILE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Profile
+    .profile--form
+        .form__header
+            h2 회원정보
+            p 
+                span *
+                | 표시는 필수입력항목입니다.
+        form(action=`/user${routes.user_page_ko}`, method="post")
+            .basic-info
+                h3 기본정보
+                .basic-info__data
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="name")
+                                | 이름
+                                span *
+                        .basic-info__input
+                            input(type="text", name="name", id="name", value=user.name)
+                    .change-password
+                        a(href="#") 비밀번호를 변경하시겠습니까?
+            .add-info
+                h3 추가정보
+                .add-info__data
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="birthDate") 생년월일
+                        .add-info__input
+                            input(type="text", name="birthDate", id="birthDate", placeholder="yyyymmdd", value=user.birthDate)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="sex") 성별
+                        .add-info__input--radio
+                            input(type="radio", name="sex", id="man" value="M", checked=(user.sex === "M" ? true : false))
+                            label(for="man") 남자 
+                            input(type="radio", name="sex",id="woman", value="F", checked=(user.sex === "F" ? true : false))
+                            label(for="woman") 여자
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="country") 나라 및 도시 
+                        .add-info__input
+                            input(type="text", name="country", id="country", value=user.country)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address1") 기본주소 
+                        .add-info__input
+                            input(type="text", name="address1", id="address1", value=user.address1)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address2") 상세주소 
+                        .add-info__input
+                            input(type="text", name="address2", id="address2", value=user.address2)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="postalCode") 우편번호 
+                        .add-info__input
+                            input(type="text", name="postalCode", id="postalCode", value=user.postalCode)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="height") 키(cm) 
+                        .add-info__input
+                            input(type="text", name="height", id="height", value=user.height)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="weight") 몸무게(kg) 
+                        .add-info__input
+                            input(type="text", name="weight", id="weight", value=user.weight)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="job") 직업
+                        .add-info__input
+                            input(type="text", name="job", id="job", value=user.job)   
+            .submit-info 
+                input.submit--Btn(type="submit", value="수정하기")

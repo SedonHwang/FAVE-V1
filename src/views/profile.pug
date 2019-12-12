@@ -1,0 +1,87 @@
+extends layouts/main
+
+block content
+    if errorMessage
+        .error--message #{errorMessage}
+    .main--image
+        img(src="/img/company-img.jpg")
+        .main--image__text
+            h1 
+                span PROFILE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Profile
+    .profile--form
+        .form__header
+            h2 Profile
+            p 
+                span *
+                | is required information.
+        form(action=`/user${routes.user_page}`, method="post")
+            .basic-info
+                h3 required information
+                .basic-info__data
+                    .basic-info__wrapper
+                        .basic-info__label
+                            label(for="name")
+                                | Name
+                                span *
+                        .basic-info__input
+                            input(type="text", name="name", id="name", value=user.name)
+                    .change-password
+                        a(href="#") Would you like to change your password?
+            .add-info 
+                h3 Additional Information
+                .add-info__data
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="birthDate") Date of Birth
+                        .add-info__input
+                            input(type="text", name="birthDate", id="birthDate", placeholder="yyyymmdd", value=user.birthDate)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="sex") Gender
+                        .add-info__input--radio
+                            input(type="radio", name="sex", id="man" value="M", checked=(user.sex === "M" ? true : false))
+                            label(for="man") Man
+                            input(type="radio", name="sex",id="woman", value="F", checked=(user.sex === "F" ? true : false))
+                            label(for="woman") Woman
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="country") Country or City
+                        .add-info__input
+                            input(type="text", name="country", id="country", value=user.country)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address1") Address 1 
+                        .add-info__input
+                            input(type="text", name="address1", id="address1", value=user.address1)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="address2") Address 2 
+                        .add-info__input
+                            input(type="text", name="address2", id="address2", value=user.address2)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="postalCode") Postal Code 
+                        .add-info__input
+                            input(type="text", name="postalCode", id="postalCode", value=user.postalCode)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="height") Height(cm) 
+                        .add-info__input
+                            input(type="text", name="height", id="height", value=user.height)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="weight") Weight(kg) 
+                        .add-info__input
+                            input(type="text", name="weight", id="weight", value=user.weight)
+                    .add-info__wrapper
+                        .add-info__label
+                            label(for="job") Job
+                        .add-info__input
+                            input(type="text", name="job", id="job", value=user.job)    
+            .submit-info 
+                input.submit--Btn(type="submit", value="OK")

@@ -17,7 +17,6 @@ const preventSubmit = e => {
 
 function handleTerm() {
   const checkValue = checkTerms();
-  console.log(checkValue);
   if (checkValue === true) {
     signupForm.removeEventListener("submit", preventSubmit);
   } else {
