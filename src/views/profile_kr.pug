@@ -19,7 +19,7 @@ block content
             p 
                 span *
                 | 표시는 필수입력항목입니다.
-        form(action=`/user${routes.user_page_ko}`, method="post")
+        form(action=`/user${routes.user_page_kr}`, method="post")
             .basic-info
                 h3 기본정보
                 .basic-info__data
@@ -31,7 +31,7 @@ block content
                         .basic-info__input
                             input(type="text", name="name", id="name", value=user.name)
                     .change-password
-                        a(href="#") 비밀번호를 변경하시겠습니까?
+                        a(href=`/user${routes.change_password_kr}`) 비밀번호를 변경하시겠습니까?
             .add-info
                 h3 추가정보
                 .add-info__data

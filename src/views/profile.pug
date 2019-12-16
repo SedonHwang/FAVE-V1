@@ -31,7 +31,7 @@ block content
                         .basic-info__input
                             input(type="text", name="name", id="name", value=user.name)
                     .change-password
-                        a(href="#") Would you like to change your password?
+                        a(href=`/user${routes.change_password}`) Would you like to change your password?
             .add-info 
                 h3 Additional Information
                 .add-info__data

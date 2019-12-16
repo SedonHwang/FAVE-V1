@@ -51,9 +51,11 @@ const NOTICE_DETAIL_JP = "/detail/:id/jp";
 //User
 const USER = "/user";
 const USER_PAGE = "/me";
-const USER_PAGE_KO = "/me/kr";
+const USER_PAGE_KR = "/me/kr";
 const USER_PAGE_JP = "/me/jp";
-const CHANGE_PASSWORD = "/changePassword";
+const CHANGE_PASSWORD = "/password";
+const CHANGE_PASSWORD_KR = "/password/kr";
+const CHANGE_PASSWORD_JP = "/password/jp";
 
 //Admin
 const ADMIN = "/admin";
@@ -106,9 +108,11 @@ const routes = {
   notice_detail_jp: NOTICE_DETAIL_JP,
   user: USER,
   user_page: USER_PAGE,
-  user_page_ko: USER_PAGE_KO,
+  user_page_kr: USER_PAGE_KR,
   user_page_jp: USER_PAGE_JP,
   change_password: CHANGE_PASSWORD,
+  change_password_kr: CHANGE_PASSWORD_KR,
+  change_password_jp: CHANGE_PASSWORD_JP,
   admin: ADMIN,
   admin_login: ADMIN_LOGIN,
   admin_logout: ADMIN_LOGOUT,
