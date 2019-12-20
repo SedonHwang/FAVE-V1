@@ -79,29 +79,38 @@ header.header
                             span
                                 i.fa.fa-caret-down
                     ul.collapsible__content
-                        li
-                            a(href="/") English
-                        li
-                            a(href="/kr") 한국어
-                        li
-                            a(href="/jp") 日本語
+                        a(href="/")
+                            li
+                                span English
+                        a(href="/kr")
+                            li
+                                span 한국어
+                        a(href="/jp")
+                            li
+                                span 日本語
                     ul.side--navi__content
-                        li
-                            a(href=routes.company) COMPANY
+                        a(href=routes.company)
+                            li
+                                span COMPANY
                     ul.side--navi__collapsible.js--collapsible
                         li ABOUT
                         li 
                             span
                                 i.fa.fa-caret-down
                     ul.collapsible__content
-                        li
-                            a(href=`/about${routes.fitness}`) Fitness
-                        li
-                            a(href=`/about${routes.game}`) Game
-                        li
-                            a(href=`/about${routes.character}`) Character
-                        li
-                            a(href=`/about${routes.connection}`) Connection
+                        a(href=`/about${routes.fitness}`)
+                            li
+                                span Fitness
+                        a(href=`/about${routes.game}`)
+                            li
+                                span Game
+                        a(href=`/about${routes.character}`)
+                            li
+                                span Character
+                        a(href=`/about${routes.connection}`)
+                            li
+                                span Connection
                     ul.side--navi__content
-                        li
-                            a(href="/notice/1") NOTICE
+                        a(href="/notice/1")
+                            li
+                                span NOTICE
