@@ -2,7 +2,7 @@ import passport from "passport";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import routes from "../routes";
-import { throwFlashMsg } from "../lib";
+import { throwFlashMsg, makePassword } from "../lib";
 import User from "../models/users";
 import Notice from "../models/notices";
 
@@ -570,3 +570,223 @@ export const privacyJp = (req, res) => res.render("privacy_jp");
 export const termOfUse = (req, res) => res.render("termsOfUse");
 export const termOfUseKr = (req, res) => res.render("termsOfUse_kr");
 export const termOfUseJp = (req, res) => res.render("termsOfUse_jp");
+export const forgotPassword = (req, res) => res.render("forgot_password");
+export const forgotPasswordKr = (req, res) => res.render("forgot_password_kr");
+export const forgotPasswordJp = (req, res) => res.render("forgot_password_jp");
+
+export const postForgotPassword = async (req, res) => {
+  const {
+    body: { email }
+  } = req;
+  if (!email) {
+    return throwFlashMsg(
+      req,
+      res,
+      "Plz fill in the blanks :(",
+      routes.forgotPassword
+    );
+  }
+  try {
+    let user = await User.findOne({ email });
+    if (user) {
+      const password = makePassword();
+      await user.setPassword(password);
+      await user.save();
+      const smtpTransport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "fave188170@gmail.com",
+          pass: process.env.GOOGLE_PW
+        }
+      });
+      const mailOptions = {
+        from: "fave188170@gmail.com",
+        to: email,
+        subject: "[FAVE] Issuing a temporary password",
+        html: `
+        <div class="mailwrapper" style="max-width:400px;width:100%;margin:0 auto;padding-top:30px;">
+        <div class="title" style="width:100%;padding-bottom:3px;">
+                 <img src="http://fave188170.cafe24.com//dataV1/img/ci_black.png" style="width:120px;height:auto;display:inline-block;">
+                 <h3 style="padding-left:10px;display:inline-block;margin:0;">Issuing a temporary password</h3>
+             </div>
+             <div class="line" style="width:100%;height:5px;background:#FF6905;"></div>
+             <div class="mailcontents" style="padding-top:15px;">
+                 <h3>Issuing a temporary password</h3>
+                 <p>A temporary password has been issued at your request.<br><br>
+                 Please make sure to change your password after logging in with a temporary password.<br><br>
+                 Temporary password: ${password}</p>
+             </div>
+        </div>
+        `
+      };
+      smtpTransport.sendMail(mailOptions, (error, response) => {
+        if (error) {
+          console.log(error);
+          throwFlashMsg(req, res, "Something Wrong :(", routes.forgotPassword);
+        } else {
+          res.redirect(routes.home);
+        }
+        smtpTransport.close();
+      });
+    } else {
+      res.redirect(routes.home);
+    }
+  } catch (err) {
+    res.status(400);
+    console.log(err);
+    throwFlashMsg(
+      req,
+      res,
+      "Something Wrong :(",
+      `/user${routes.forgotPassword}`
+    );
+  }
+};
+
+export const postForgotPasswordKr = async (req, res) => {
+  const {
+    body: { email }
+  } = req;
+  if (!email) {
+    return throwFlashMsg(
+      req,
+      res,
+      "*는 필수입력 항목입니다 :(",
+      routes.forgotPassword_kr
+    );
+  }
+  try {
+    let user = await User.findOne({ email });
+    if (user) {
+      const password = makePassword();
+      await user.setPassword(password);
+      await user.save();
+      const smtpTransport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "fave188170@gmail.com",
+          pass: process.env.GOOGLE_PW
+        }
+      });
+      const mailOptions = {
+        from: "fave188170@gmail.com",
+        to: email,
+        subject: "[FAVE] 임시 비밀번호 발급",
+        html: `
+        <div class="mailwrapper" style="max-width:400px;width:100%;margin:0 auto;padding-top:30px;">
+        <div class="title" style="width:100%;padding-bottom:3px;">
+                 <img src="http://fave188170.cafe24.com//dataV1/img/ci_black.png" style="width:120px;height:auto;display:inline-block;">
+                 <h3 style="padding-left:10px;display:inline-block;margin:0;">Issuing a temporary password</h3>
+             </div>
+             <div class="line" style="width:100%;height:5px;background:#FF6905;"></div>
+             <div class="mailcontents" style="padding-top:15px;">
+                 <h3>임시 비밀번호 발급</h3>
+                 <p>귀하의 요청으로 임시 비밀번호가 발급 되었습니다.<br><br>
+                 임시 비밀번호로 로그인 후 반드시 비밀번호를 변경 해주세요.<br><br>
+                 임시 비밀번호: ${password} </p>
+             </div>
+        </div>
+        `
+      };
+      smtpTransport.sendMail(mailOptions, (error, response) => {
+        if (error) {
+          console.log(error);
+          throwFlashMsg(
+            req,
+            res,
+            "Something Wrong :(",
+            routes.forgotPassword_kr
+          );
+        } else {
+          res.redirect(routes.homeKr);
+        }
+        smtpTransport.close();
+      });
+    } else {
+      res.redirect(routes.homeKr);
+    }
+  } catch (err) {
+    res.status(400);
+    console.log(err);
+    throwFlashMsg(
+      req,
+      res,
+      "Something Wrong :(",
+      `/user${routes.forgotPassword_kr}`
+    );
+  }
+};
+
+export const postForgotPasswordJp = async (req, res) => {
+  const {
+    body: { email }
+  } = req;
+  if (!email) {
+    return throwFlashMsg(
+      req,
+      res,
+      "*は 必須入力値です. :(",
+      routes.forgotPassword_jp
+    );
+  }
+  try {
+    let user = await User.findOne({ email });
+    if (user) {
+      const password = makePassword();
+      await user.setPassword(password);
+      await user.save();
+      const smtpTransport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "fave188170@gmail.com",
+          pass: process.env.GOOGLE_PW
+        }
+      });
+      const mailOptions = {
+        from: "fave188170@gmail.com",
+        to: email,
+        subject: "[FAVE] 臨時の 暗証番号発給",
+        html: `
+        <div class="mailwrapper" style="max-width:400px;width:100%;margin:0 auto;padding-top:30px;">
+        <div class="title" style="width:100%;padding-bottom:3px;">
+                 <img src="http://fave188170.cafe24.com//dataV1/img/ci_black.png" style="width:120px;height:auto;display:inline-block;">
+                 <h3 style="padding-left:10px;display:inline-block;margin:0;">Issuing a temporary password</h3>
+             </div>
+             <div class="line" style="width:100%;height:5px;background:#FF6905;"></div>
+             <div class="mailcontents" style="padding-top:15px;">
+                 <h3>臨時の 暗証番号発給</h3>
+                 <p>貴下の要請で臨時の暗証番号が発給されました。<br><br>
+                 臨時パスワードでログインした後、必ずパスワードを変更してください。<br><br>
+                 臨時の暗証番号: ${password} </p>
+             </div>
+        </div>
+        `
+      };
+      smtpTransport.sendMail(mailOptions, (error, response) => {
+        if (error) {
+          console.log(error);
+          throwFlashMsg(
+            req,
+            res,
+            "Something Wrong :(",
+            routes.forgotPassword_jp
+          );
+        } else {
+          res.redirect(routes.homeJp);
+        }
+        smtpTransport.close();
+      });
+    } else {
+      res.redirect(routes.homeJp);
+    }
+  } catch (err) {
+    res.status(400);
+    console.log(err);
+    throwFlashMsg(
+      req,
+      res,
+      "Something Wrong :(",
+      `/user${routes.forgotPassword_jp}`
+    );
+  }
+};

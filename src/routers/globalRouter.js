@@ -30,7 +30,13 @@ import {
   privacyJp,
   termOfUse,
   termOfUseJp,
-  termOfUseKr
+  termOfUseKr,
+  forgotPassword,
+  forgotPasswordKr,
+  forgotPasswordJp,
+  postForgotPassword,
+  postForgotPasswordKr,
+  postForgotPasswordJp
 } from "../controllers/homepageController";
 import {
   onlyAdmin,
@@ -84,5 +90,13 @@ globalRouter.get(routes.privacy_jp, privacyJp);
 globalRouter.get(routes.termOfUse, termOfUse);
 globalRouter.get(routes.termOfUse_kr, termOfUseKr);
 globalRouter.get(routes.termOfUse_jp, termOfUseJp);
+
+globalRouter.get(routes.forgotPassword, onlyPublic, forgotPassword);
+globalRouter.get(routes.forgotPassword_kr, onlyPublicKr, forgotPasswordKr);
+globalRouter.get(routes.forgotPassword_jp, onlyPublicJp, forgotPasswordJp);
+
+globalRouter.post(routes.forgotPassword, onlyPublic, postForgotPassword);
+globalRouter.post(routes.forgotPassword_kr, onlyPublicKr, postForgotPasswordKr);
+globalRouter.post(routes.forgotPassword_jp, onlyPublicJp, postForgotPasswordJp);
 
 export default globalRouter;

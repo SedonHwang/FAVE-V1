@@ -23,6 +23,9 @@ const PRIVACY_JP = "/privacy/jp";
 const TERMOFUSE = "/term-of-use";
 const TERMOFUSE_KR = "/term-of-use/kr";
 const TERMOFUSE_JP = "/term-of-use/jp";
+const FORGOTPASSWORD = "/password";
+const FORGOTPASSWORD_KR = "/password/kr";
+const FORGOTPASSWORD_JP = "/password/jp";
 
 //About
 const ABOUT = "/about";
@@ -138,7 +141,10 @@ const routes = {
   privacy_jp: PRIVACY_JP,
   termOfUse: TERMOFUSE,
   termOfUse_kr: TERMOFUSE_KR,
-  termOfUse_jp: TERMOFUSE_JP
+  termOfUse_jp: TERMOFUSE_JP,
+  forgotPassword: FORGOTPASSWORD,
+  forgotPassword_kr: FORGOTPASSWORD_KR,
+  forgotPassword_jp: FORGOTPASSWORD_JP
 };
 
 export default routes;
