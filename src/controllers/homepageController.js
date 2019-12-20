@@ -469,7 +469,7 @@ export const contactUs = async (req, res) => {
   const mailOptions = {
     from: "fave188170@gmail.com",
     to:
-      "ifave@naver.com, ifave2@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
+      "ifave@naver.com, ifave3@naver.com, ifave5@naver.com, ifave6@naver.com, ifave7@naver.com, ifave8@naver.com,",
     subject: `${username}님이 글을 남겼습니다.`,
     text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
   };
