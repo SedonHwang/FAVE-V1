@@ -12,7 +12,7 @@ export const localsMiddleware = (req, res, next) => {
 export const redirectWWW = (req, res, next) => {
   const host = req.get("host");
   if (host === "faves.co.kr") {
-    res.redirect(301, `http://www.faves.co.kr${req.url}`);
+    res.redirect(301, `https://www.faves.co.kr${req.url}`);
   } else {
     next();
   }
