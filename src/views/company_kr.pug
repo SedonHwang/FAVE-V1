@@ -102,9 +102,15 @@ block content
                         img(src="/img/sign.png")
     .map-wrapper
         .map__text
-            h3 Way to come
-            p 찾아오시는 길을 안내합니다.
-        #map
+            h3 the way you came to visit
+        #mapUsa
+        .map__subtext
+            ul
+                li location
+                li San Francisco 10440 Pioneer BLVD #4 Santa Fe California USA 90670-8237
+        .map__text
+                h3 찾아오시는 길
+        #mapKor
         .map__subtext
             ul
                 li 위치
@@ -114,14 +120,24 @@ block content
                 li 지하철 2호선 센텀시티역 4번 출구, 도보 15분
         script.
             function initMap(){
-                var center = {lat:35.173278, lng:129.130436};
-                var map = new google.maps.Map(document.getElementById('map'), {
+                var centerUsa = {lat: 33.939799, lng: -118.080530};
+                var mapUsa = new google.maps.Map(document.getElementById('mapUsa'), {
+                    zoom: 18,
+                    center: centerUsa
+                })
+                new google.maps.Marker({
+                    position: {lat: centerUsa.lat, lng:centerUsa.lng},
+                    map: mapUsa,
+                    title: "Strong Friends Inc."
+                })
+                var centerKor = {lat:35.173278, lng:129.130436};
+                var mapKor = new google.maps.Map(document.getElementById('mapKor'), {
                     zoom: 15,
-                    center: center
+                    center: centerKor
                 });
                 new google.maps.Marker({
-                    position: {lat: center.lat, lng:center.lng},
-                    map: map,
+                    position: {lat: centerKor.lat, lng:centerKor.lng},
+                    map: mapKor,
                     title: "(주)건강한친구"
                 })
             }

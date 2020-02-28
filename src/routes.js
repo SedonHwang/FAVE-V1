@@ -70,6 +70,17 @@ const DELETE_NOTICE = "/notice/:id/delete";
 const EDIT_NOTICE = "/notice/:id/edit";
 const ADMIN_GAME = "/game";
 
+//Store
+const STORE = "/store";
+const STORE_KR = "/store/kr";
+const STORE_JP = "/store/jp";
+const FAVE350 = "/fave350";
+const FAVE350_KR = "/fave350/kr";
+const FAVE350_JP = "/fave350/jp";
+const FAVE450 = "/fave450";
+const FAVE450_KR = "/fave450/kr";
+const FAVE450_JP = "/fave450/jp";
+
 const routes = {
   home: HOME,
   homeKr: HOME_KR,
@@ -144,7 +155,16 @@ const routes = {
   termOfUse_jp: TERMOFUSE_JP,
   forgotPassword: FORGOTPASSWORD,
   forgotPassword_kr: FORGOTPASSWORD_KR,
-  forgotPassword_jp: FORGOTPASSWORD_JP
+  forgotPassword_jp: FORGOTPASSWORD_JP,
+  store: STORE,
+  store_kr: STORE_KR,
+  store_jp: STORE_JP,
+  fave350: FAVE350,
+  fave350_kr: FAVE350_KR,
+  fave350_jp: FAVE350_JP,
+  fave450: FAVE450,
+  fave450_kr: FAVE450_KR,
+  fave450_jp: FAVE450_JP
 };
 
 export default routes;

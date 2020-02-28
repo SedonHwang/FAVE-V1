@@ -16,6 +16,7 @@
 @import "_modal.scss";
 @import "_conditions.scss";
 @import "_profile.scss";
+@import "_store.scss";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -118,14 +119,38 @@ body {
         border-bottom: 1px solid $font-white;
         .footer-info {
           display: flex;
+          align-items: center;
           margin-bottom: 8px;
           @include breakpoint(mobile) {
             flex-direction: column;
+            align-items: flex-start;
           }
           @include breakpoint(tablet) {
             flex-direction: column;
+            align-items: flex-start;
           }
-          li {
+          ul {
+            border-left: 1.5px solid $font-white;
+            line-height: 1.3;
+            @include breakpoint(mobile) {
+              border-left: none;
+              margin-top: 8px;
+            }
+            @include breakpoint(tablet) {
+              border-left: none;
+              margin-top: 8px;
+            }
+            li {
+              padding-left: 7px;
+              @include breakpoint(mobile) {
+                padding-left: 0;
+              }
+              @include breakpoint(tablet) {
+                padding-left: 0;
+              }
+            }
+          }
+          & > li {
             &:first-child {
               padding-right: 7px;
               @include breakpoint(mobile) {

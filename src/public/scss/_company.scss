@@ -309,8 +309,23 @@
       height: 350px;
     }
   }
+  #mapUsa,
+  #mapKor {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+    @include breakpoint(tablet) {
+      width: 85%;
+      height: 400px;
+    }
+    @include breakpoint(mobile) {
+      width: 90%;
+      height: 350px;
+    }
+  }
   .map__subtext {
     margin-top: 15px;
+    margin-bottom: 30px;
     ul {
       display: flex;
       width: 65%;

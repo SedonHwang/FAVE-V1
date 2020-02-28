@@ -16,6 +16,7 @@ import aboutRouter from "./routers/aboutRouter";
 import noticeRouter from "./routers/noticeRouter";
 import adminRouter from "./routers/adminRouter";
 import userRouter from "./routers/userRouter";
+import storeRouter from "./routers/storeRouter";
 import { localsMiddleware, redirectWWW } from "./middlewares";
 
 dotenv.config();
@@ -64,5 +65,6 @@ app.use(routes.about, aboutRouter);
 app.use(routes.notice, noticeRouter);
 app.use(routes.admin, adminRouter);
 app.use(routes.user, userRouter);
+app.use(routes.store, storeRouter);
 
 export default app;

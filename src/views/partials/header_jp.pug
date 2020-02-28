@@ -47,6 +47,8 @@ header.header
                             li
                                 a(href=`/about${routes.connection_jp}`) Connection
                     li
+                        a(href=routes.store_jp) STORE
+                    li
                         a(href="/notice/1/jp") NOTICE
     .header--narrow
         .header__logo--responsive#js--logoResponsive
@@ -110,6 +112,10 @@ header.header
                         a(href=`/about${routes.connection_jp}`)
                             li
                                 span Connection
+                    ul.side--navi__content
+                        a(href=routes.store_jp)
+                            li
+                                span STORE            
                     ul.side--navi__content
                         a(href="/notice/1/jp")
                             li
