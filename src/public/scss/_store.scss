@@ -121,3 +121,85 @@
     }
   }
 }
+.shipping--policy {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  margin-top: 40px;
+  box-sizing: border-box;
+  padding: 15px;
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    @include breakpoint(tablet) {
+      font-size: 28px;
+    }
+    @include breakpoint(mobile) {
+      font-size: 20px;
+    }
+  }
+  .policy--wrapper {
+    display: flex;
+    @include breakpoint(tablet) {
+      flex-direction: column;
+    }
+    .policy--header {
+      width: 30%;
+      background-color: $background-gray;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid white;
+      @include breakpoint(tablet) {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12px;
+      }
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+        @include breakpoint(tablet) {
+          font-size: 21px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 18px;
+        }
+      }
+      p {
+        margin-top: 12px;
+        line-height: 1.5;
+        width: 80%;
+        @include breakpoint(tablet) {
+          text-align: center;
+        }
+      }
+    }
+    .policy--para {
+      flex: 1;
+      padding: 10px;
+      line-height: 1.2;
+      background-color: $light-gray;
+      border: 1px solid white;
+      ol {
+        li {
+          font-weight: 500;
+          margin-bottom: 8px;
+        }
+      }
+      &.align {
+        ol {
+          display: flex;
+        }
+      }
+      h4 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        margin-top: 16px;
+      }
+    }
+  }
+}
