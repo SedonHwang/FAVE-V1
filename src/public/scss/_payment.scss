@@ -1,0 +1,325 @@
+@import "_variables";
+
+.payment--form {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  .form__header {
+    display: flex;
+    align-items: flex-end;
+    color: $font-gray;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $font-gray;
+    @include breakpoint(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    p {
+      @include breakpoint(mobile) {
+        margin-top: 9px;
+      }
+      span {
+        color: $font-orange;
+      }
+    }
+  }
+  form {
+    .orderer--info {
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        padding: 12px;
+        margin-top: 12px;
+        color: black;
+        background-color: #f6f5f6;
+        border-top: 0.9px solid $font-gray;
+        border-bottom: 0.9px solid $font-gray;
+      }
+      .orderer--info__data {
+        padding: 15px;
+        .orderer--info__wrapper {
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          padding: 4px;
+          @include breakpoint(mobile) {
+            flex-direction: column;
+          }
+          .orderer--info__label {
+            width: 20%;
+            @include breakpoint(tablet) {
+              width: 30%;
+            }
+            @include breakpoint(mobile) {
+              width: 90%;
+              margin-bottom: 10px;
+            }
+            label {
+              span {
+                color: $font-orange;
+              }
+            }
+          }
+          .orderer--info__input {
+            @include breakpoint(mobile) {
+              width: 90%;
+            }
+            input {
+              padding: 6px 13px;
+              font-size: 16px;
+              border-radius: 4px;
+              border: 1px solid $font-gray;
+              width: 100%;
+              @include breakpoint(mobile) {
+                width: 90%;
+              }
+            }
+            p {
+              font-size: 14px;
+              color: $font-orange;
+            }
+          }
+        }
+      }
+    }
+    .recipient--info {
+      margin-top: 25px;
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        padding: 12px;
+        margin-top: 12px;
+        color: black;
+        background-color: #f6f5f6;
+        border-top: 0.9px solid $font-gray;
+        border-bottom: 0.9px solid $font-gray;
+      }
+      .recipient--info__data {
+        padding: 15px;
+        .recipient--checkbox {
+          input {
+            transform: scale(1.3);
+          }
+        }
+        .recipient--info__wrapper {
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          padding: 4px;
+          @include breakpoint(mobile) {
+            flex-direction: column;
+          }
+          .recipient--info__label {
+            width: 20%;
+            @include breakpoint(tablet) {
+              width: 30%;
+            }
+            @include breakpoint(mobile) {
+              width: 90%;
+              margin-bottom: 10px;
+            }
+            label {
+              span {
+                color: $font-orange;
+              }
+            }
+          }
+          .recipient--info__input {
+            @include breakpoint(mobile) {
+              width: 90%;
+            }
+            input {
+              padding: 6px 13px;
+              font-size: 16px;
+              border-radius: 4px;
+              border: 1px solid $font-gray;
+              width: 100%;
+              @include breakpoint(mobile) {
+                width: 90%;
+              }
+            }
+            textarea {
+              padding: 6px 13px;
+              font-size: 16px;
+              border-radius: 4px;
+              border: 1px solid $font-gray;
+              width: 100%;
+              height: 120px;
+              resize: none;
+            }
+            p {
+              font-size: 14px;
+              color: $font-orange;
+            }
+          }
+        }
+      }
+    }
+  }
+  .payment--info {
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      padding: 12px;
+      margin-top: 16px;
+      margin-bottom: 25px;
+      color: black;
+      background-color: #f6f5f6;
+      border-top: 0.9px solid $font-gray;
+      border-bottom: 0.9px solid $font-gray;
+    }
+    .spec--table {
+      width: 80%;
+      margin: 0 auto;
+      @include breakpoint(tablet) {
+        width: 90%;
+      }
+      @include breakpoint(mobile) {
+        width: 95%;
+      }
+      table {
+        width: 100%;
+        margin-bottom: 20px;
+        &:first-child {
+          border-radius: 24px;
+          overflow: hidden;
+          border-collapse: collapse;
+          tr {
+            border: 1.5px solid white;
+            &:nth-child(odd) {
+              background-color: $light-gray;
+            }
+            &:nth-child(even) {
+              background-color: $background-gray;
+            }
+            th {
+              border: 1.5px solid white;
+              white-space: normal;
+              &:first-child {
+                background-color: #27ae60;
+                color: white;
+              }
+            }
+            border: none;
+            td {
+              border: 1.5px solid white;
+              white-space: normal;
+              &:first-child {
+                background-color: #27ae60;
+                color: white;
+              }
+            }
+          }
+        }
+        tr,
+        th,
+        td {
+          border: 1.5px solid gray;
+        }
+        th,
+        td {
+          font-size: 20px;
+          font-weight: 500;
+          padding: 8px;
+          text-align: center;
+          @include breakpoint(tablet) {
+            font-size: 18px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 16px;
+          }
+          i {
+            color: green;
+            font-size: 20px;
+            @include breakpoint(mobile) {
+              font-size: 16px;
+            }
+          }
+        }
+        th {
+          background-color: $light-gray;
+        }
+      }
+      p {
+        color: $font-orange;
+        text-align: center;
+      }
+    }
+    .payment--verification {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 25px;
+      @include breakpoint(tablet) {
+        width: 90%;
+      }
+      @include breakpoint(mobile) {
+        width: 95%;
+      }
+      .payment--table {
+        table {
+          width: 100%;
+          border-top: 2px solid $main-gray;
+          border-bottom: 2px solid $main-gray;
+          tr {
+            border-bottom: 1px solid $main-gray;
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+          th,
+          td {
+            padding: 8px 12px;
+            font-size: 20px;
+            @include breakpoint(tablet) {
+              font-size: 19px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 18px;
+            }
+          }
+          th {
+            background-color: $light-gray;
+            font-weight: 600;
+            width: 20%;
+            @include breakpoint(tablet) {
+              width: 35%;
+            }
+            @include breakpoint(mobile) {
+              width: 40%;
+            }
+          }
+        }
+      }
+      .payment--btn {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+          background-color: $main-gray;
+          font-size: 20px;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          cursor: pointer;
+          &:hover {
+            background-color: $font-orange;
+          }
+        }
+      }
+    }
+  }
+}

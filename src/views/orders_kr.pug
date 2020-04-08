@@ -1,0 +1,53 @@
+extends layouts/main_kr
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .orders--wrapper
+        .orders__header
+            h3 주문 조회
+        if isData === false
+            .order--lists
+                h3 배송정보가 없습니다 :(
+        else
+            each passedPurchaseList in passedPurchaseLists        
+                .order--lists
+                    h3 배송정보
+                    table
+                        tr
+                            th 주문번호
+                            td(colspan="2")= `${passedPurchaseList.purchaseInfo}`
+                        tr
+                            th 제품
+                            td(colspan="2")= `${passedPurchaseList.productName} ${Number(passedPurchaseList.pinkCnt) > 0? `Pink ${passedPurchaseList.pinkCnt}` : ""} ${Number(passedPurchaseList.greenCnt) > 0? `Green ${passedPurchaseList.greenCnt}` : ""}`
+                        tr
+                            th 배송상태
+                            td(colspan="2")= `${passedPurchaseList.shipStatus_kr}`
+                        tr
+                            th 수령인
+                            td= `${hideInfo(passedPurchaseList.recipientName)}`
+                            th 주문자 정보
+                        tr
+                            th 연락처
+                            td= `${hideInfo(passedPurchaseList.recipientPhoneNum)}`
+                            td= `${hideInfo(passedPurchaseList.ordererName)}`
+                        tr
+                            th(rowspan="2") 배송지
+                            td= `${hideInfo(passedPurchaseList.postalCode)}`
+                            td= `${hideInfo(passedPurchaseList.ordererPhoneNum)}`
+                        tr
+                            td= `${hideInfo(passedPurchaseList.address)}`
+                            td= `${hideInfo(passedPurchaseList.ordererEmail)}`
+                        tr
+                            th 배송메모
+                            td= `${passedPurchaseList.shipMessage}`
+                            td

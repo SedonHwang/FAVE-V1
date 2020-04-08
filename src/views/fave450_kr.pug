@@ -1,0 +1,74 @@
+extends layouts/main_kr
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .purchase--page--wrapper
+        h2 Smart Balance Trainer_FAVE 450
+        .purchase--item--wrapper
+            .item--block
+                .img--wrapper
+                    img#displayImg(src="/img/store/450-pink-diagonal.jpg")
+                .img--desc
+                    p
+                        | FAVE 450은 일반인 및 어린이들이 사용하시기 좋은 제품입니다.   
+                        | 발의 접지면이 넓고 지면에서의 높이가 낮아 안정감있게 사용할 수 있습니다.
+                .img--wrapper--small
+                    .small--img.choice
+                        img(src="/img/store/450-pink-diagonal.jpg")
+                    .small--img
+                        img(src="/img/store/450-green-diagonal.jpg")
+                    .small--img
+                        img(src="/img/store/450-pink-top.jpg")
+                    .small--img
+                        img(src="/img/store/450-green-top.jpg")
+                    .small--img
+                        img(src="/img/store/450-pink-side.jpg")
+                    .small--img
+                        img(src="/img/store/450-green-side.jpg")
+            .item--block
+                form(action=`/store${routes.payment_kr}` method="get")
+                    .option--wrapper
+                        label.label--text(for="product") 제품
+                        .option--detail
+                            .detail--product
+                                input(type="text",id="product", name="product",value="FAVE 450" readOnly)
+                                .option__icon
+                                    span
+                                        i.fa.fa-caret-down
+                    .option--wrapper
+                        .label--text 색상
+                        .option--detail
+                            .color--select
+                                ul.select--selected.js--selected
+                                    li 색상을 선택해주세요.
+                                    li
+                                        span
+                                            i.fa.fa-caret-down
+                                .select--items.select--hide
+                                    .select--item Pink
+                                    .select--item Green
+                    .option--wrapper
+                        .products--wrapper                        
+                    .option--wrapper
+                        .label--text 총 상품금액
+                        .option--detail
+                            .product--price
+                                ul
+                                    li
+                                        input(type="text", value="0", readOnly, name="totalPrice", id="totalPrice")
+                                    li 원
+                    .option--wrapper
+                        .option--detail
+                            .button--wrapper
+                                .button--border
+                                    input.purchase--button(type="submit", value="구매하기")

@@ -1,0 +1,53 @@
+extends layouts/main_jp
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .orders--wrapper
+        .orders__header
+            h3 注文照会
+        if isData === false
+            .order--lists
+                h3 Nothing :(
+        else
+            each passedPurchaseList in passedPurchaseLists        
+                .order--lists
+                    h3 配送情報
+                    table
+                        tr
+                            th 注文番号
+                            td(colspan="2")= `${passedPurchaseList.purchaseInfo}`
+                        tr
+                            th 製品
+                            td(colspan="2")= `${passedPurchaseList.productName} ${Number(passedPurchaseList.pinkCnt) > 0? `Pink ${passedPurchaseList.pinkCnt}` : ""} ${Number(passedPurchaseList.greenCnt) > 0? `Green ${passedPurchaseList.greenCnt}` : ""}`
+                        tr
+                            th 配送状態
+                            td(colspan="2")= `${passedPurchaseList.shipStatus_jp}`
+                        tr
+                            th 受領印
+                            td= `${hideInfo(passedPurchaseList.recipientName)}`
+                            th 注文者情報
+                        tr
+                            th 連絡先
+                            td= `${hideInfo(passedPurchaseList.recipientPhoneNum)}`
+                            td= `${hideInfo(passedPurchaseList.ordererName)}`
+                        tr
+                            th(rowspan="2") お届け先
+                            td= `${hideInfo(passedPurchaseList.postalCode)}`
+                            td= `${hideInfo(passedPurchaseList.ordererPhoneNum)}`
+                        tr
+                            td= `${hideInfo(passedPurchaseList.address)}`
+                            td= `${hideInfo(passedPurchaseList.ordererEmail)}`
+                        tr
+                            th 配送メモ
+                            td= `${passedPurchaseList.shipMessage}`
+                            td

@@ -1,0 +1,114 @@
+@import "_variables";
+
+.orders--form {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  .form__header {
+    margin-top: 40px;
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      padding: 12px;
+      margin-top: 12px;
+      color: black;
+      background-color: #f6f5f6;
+      border-top: 0.9px solid $font-gray;
+      border-bottom: 0.9px solid $font-gray;
+    }
+  }
+  .orders-info__data {
+    padding: 15px;
+    .orders-info__wrapper {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      @include breakpoint(mobile) {
+        flex-direction: column;
+      }
+      .orders-info__label {
+        width: 20%;
+        @include breakpoint(tablet) {
+          width: 30%;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+          margin-bottom: 10px;
+        }
+        label {
+          span {
+            color: $font-orange;
+          }
+        }
+      }
+      .orders-info__input {
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        input {
+          padding: 6px 13px;
+          font-size: 16px;
+          border-radius: 4px;
+          border: 1px solid $font-gray;
+          width: 100%;
+          @include breakpoint(mobile) {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+  .orders-info__Btn {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .orders--Btn {
+      width: 40%;
+      padding: 8px 16px;
+      background-color: #f6f5f6;
+      border: 1px solid $font-gray;
+      cursor: pointer;
+      border-radius: 6px;
+      &:hover {
+        background-color: $font-orange;
+        color: white;
+      }
+      @include breakpoint(tablet) {
+        width: 50%;
+      }
+    }
+  }
+  .orders--text {
+    border-top: 1px solid $font-gray;
+    margin: 20px 0;
+    padding: 20px 0;
+    @include breakpoint(tablet) {
+      margin: 18px 0;
+      padding: 18px 0;
+    }
+    @include breakpoint(mobile) {
+      margin: 16px 0;
+      padding: 16px 0;
+    }
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      &:hover {
+        span {
+          color: $font-orange;
+        }
+      }
+      @include breakpoint(tablet) {
+        font-size: 19px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+extends layouts/main_jp
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .orders--form
+        .form__header
+            h3 注文照会
+        form(action=`/store${routes.orders_check_jp}`, method="post")
+            .orders-info__data
+                .orders-info__wrapper
+                    .orders-info__label
+                        label(for="orderInfo") 注文番号
+                    .orders-info__input
+                        input(type="text", name="orderInfo", id="orderInfo", placeholder="XXXXXX-XXX-XXXXXX")
+                .orders-info__wrapper
+                        .orders-info__label
+                            label(for="email") Eメール
+                        .orders-info__input
+                            input(type="text", name="email", id="email", placeholder="Eメール")
+            .orders-info__Btn
+                input.orders--Btn(type="submit", value="続き")
+        .orders--text
+            p
+                | 何かご用がありましたら,  
+                span fave188170@faves.co.kr  
+                | にてご連絡ください.

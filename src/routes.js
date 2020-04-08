@@ -80,6 +80,17 @@ const FAVE350_JP = "/fave350/jp";
 const FAVE450 = "/fave450";
 const FAVE450_KR = "/fave450/kr";
 const FAVE450_JP = "/fave450/jp";
+const PAYMENT = "/payment";
+const PAYMENT_KR = "/payment/kr";
+const PAYMENT_INFO = "/payment/info";
+const PAYMENT_COMPLETE = "/payment/complete";
+const PAYMENT_COMPLETE_MOBILE = "/payment/complete/mobile";
+const ORDERS = "/orders";
+const ORDERS_KR = "/orders/kr";
+const ORDERS_JP = "/orders/jp";
+const ORDERS_CHECK = "/orders/check";
+const ORDERS_CHECK_KR = "/orders/check/kr";
+const ORDERS_CHECK_JP = "/orders/check/jp";
 
 const routes = {
   home: HOME,
@@ -132,14 +143,14 @@ const routes = {
   admin_logout: ADMIN_LOGOUT,
   admin_notice: ADMIN_NOTICE,
   upload_notice: UPLOAD_NOTICE,
-  editNotice: id => {
+  editNotice: (id) => {
     if (id) {
       return `/notice/${id}/edit`;
     } else {
       return EDIT_NOTICE;
     }
   },
-  deleteNotice: id => {
+  deleteNotice: (id) => {
     if (id) {
       return `/notice/${id}/delete`;
     } else {
@@ -164,7 +175,18 @@ const routes = {
   fave350_jp: FAVE350_JP,
   fave450: FAVE450,
   fave450_kr: FAVE450_KR,
-  fave450_jp: FAVE450_JP
+  fave450_jp: FAVE450_JP,
+  payment: PAYMENT,
+  payment_kr: PAYMENT_KR,
+  payment_complete: PAYMENT_COMPLETE,
+  payment_complete_mobile: PAYMENT_COMPLETE_MOBILE,
+  payment_info: PAYMENT_INFO,
+  orders: ORDERS,
+  orders_kr: ORDERS_KR,
+  orders_jp: ORDERS_JP,
+  orders_check: ORDERS_CHECK,
+  orders_check_kr: ORDERS_CHECK_KR,
+  orders_check_jp: ORDERS_CHECK_JP,
 };
 
 export default routes;

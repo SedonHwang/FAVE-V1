@@ -1,0 +1,80 @@
+@import "_variables";
+
+.orders--wrapper {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  @include breakpoint(tablet) {
+    padding: 12px;
+  }
+  @include breakpoint(mobile) {
+    padding: 8px;
+  }
+  .orders__header {
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      padding: 12px;
+      margin-top: 12px;
+      color: black;
+      background-color: #f6f5f6;
+      border-top: 0.9px solid $font-gray;
+      border-bottom: 0.9px solid $font-gray;
+      @include breakpoint(tablet) {
+        font-size: 19px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 18px;
+        padding: 8px;
+      }
+    }
+  }
+  .order--lists {
+    margin-top: 20px;
+    h3 {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 600;
+      @include breakpoint(tablet) {
+        font-size: 19px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 18px;
+      }
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-top: 2px solid $main-gray;
+      border-bottom: 2px solid $main-gray;
+      @include breakpoint(tablet) {
+        width: 90%;
+      }
+      @include breakpoint(mobile) {
+        width: 95%;
+      }
+    }
+    th,
+    td {
+      font-size: 19px;
+      padding: 8px;
+      @include breakpoint(tablet) {
+        font-size: 18px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 16.5px;
+        padding: 4px;
+      }
+    }
+    th {
+      background-color: $light-gray;
+      font-weight: bold;
+    }
+  }
+}

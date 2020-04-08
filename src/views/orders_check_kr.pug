@@ -1,0 +1,36 @@
+extends layouts/main_kr
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .orders--form
+        .form__header
+            h3 주문 조회
+        form(action=`/store${routes.orders_check_kr}`, method="post")
+            .orders-info__data
+                .orders-info__wrapper
+                    .orders-info__label
+                        label(for="orderInfo") 주문 번호
+                    .orders-info__input
+                        input(type="text", name="orderInfo", id="orderInfo", placeholder="XXXXXX-XXX-XXXXXX")
+                .orders-info__wrapper
+                        .orders-info__label
+                            label(for="email") 이메일
+                        .orders-info__input
+                            input(type="text", name="email", id="email", placeholder="이메일 주소")
+            .orders-info__Btn
+                input.orders--Btn(type="submit", value="계속")
+        .orders--text
+            p
+                | 도움이 필요하시면  
+                span fave188170@faves.co.kr  
+                | 로 연락주세요.

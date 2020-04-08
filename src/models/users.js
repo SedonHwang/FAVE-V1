@@ -4,16 +4,16 @@ import passportLocalMongoose from "passport-local-mongoose";
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: "Name is required"
+    required: "Name is required",
   },
   email: {
     type: String,
-    required: "Email is required"
+    required: "Email is required",
   },
   birthDate: String,
   sex: {
     type: String,
-    enum: ["M", "F", "N"]
+    enum: ["M", "F", "N"],
   },
   country: String,
   address1: String,
@@ -24,12 +24,18 @@ const UserSchema = new mongoose.Schema({
   job: String,
   isAdmin: {
     type: Boolean,
-    default: false
+    default: false,
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
+  purchaselists: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Purchaselist",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

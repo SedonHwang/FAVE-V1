@@ -1,0 +1,36 @@
+extends layouts/main
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .orders--form
+        .form__header
+            h3 Find your order
+        form(action=`/store${routes.orders_check}`, method="post")
+            .orders-info__data
+                .orders-info__wrapper
+                    .orders-info__label
+                        label(for="orderInfo") Order number
+                    .orders-info__input
+                        input(type="text", name="orderInfo", id="orderInfo", placeholder="XXXXXX-XXX-XXXXXX")
+                .orders-info__wrapper
+                        .orders-info__label
+                            label(for="email") Email
+                        .orders-info__input
+                            input(type="text", name="email", id="email", placeholder="Email")
+            .orders-info__Btn
+                input.orders--Btn(type="submit", value="Continue")
+        .orders--text
+            p
+                | Need more help?
+                | Contact  
+                span fave188170@faves.co.kr

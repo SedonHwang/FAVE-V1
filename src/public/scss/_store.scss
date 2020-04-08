@@ -100,23 +100,26 @@
         height: 170px;
       }
     }
-    .item--btn {
-      background-color: $background-gray;
-      width: 150px;
-      padding: 15px;
-      display: flex;
-      margin: 0 auto;
-      margin-top: 25px;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      &:hover {
-        background-color: $font-gray;
-      }
-      span {
-        color: white;
-        font-size: 20px;
-        font-weight: 600;
+    a {
+      text-decoration: none;
+      .item--btn {
+        background-color: $background-gray;
+        width: 150px;
+        padding: 15px;
+        display: flex;
+        margin: 0 auto;
+        margin-top: 25px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          background-color: $font-gray;
+        }
+        span {
+          color: white;
+          font-size: 20px;
+          font-weight: 600;
+        }
       }
     }
   }
