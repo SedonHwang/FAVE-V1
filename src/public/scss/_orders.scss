@@ -76,5 +76,53 @@
       background-color: $light-gray;
       font-weight: bold;
     }
+    input[type="submit"] {
+      background: $background-gray;
+      padding: 4px 8px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      &:hover {
+        background: $main-gray;
+        color: white;
+      }
+    }
+    a {
+      background: $background-gray;
+      padding: 4px 8px;
+      border: none;
+      font-size: 18px;
+      text-decoration: none;
+      color: black;
+      display: inline-block;
+      cursor: pointer;
+      &:hover {
+        background: $main-gray;
+        color: white;
+      }
+    }
+  }
+  .order--paginations {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    ul {
+      display: flex;
+      font-size: 18px;
+      font-weight: 600;
+      justify-content: center;
+      a {
+        text-decoration: none;
+        &:active,
+        &:visited,
+        &:link {
+          color: black;
+        }
+      }
+      li {
+        margin-right: 15px;
+        margin-left: 15px;
+      }
+    }
   }
 }

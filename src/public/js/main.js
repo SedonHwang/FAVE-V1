@@ -6,3 +6,4 @@ import "./signup.js";
 import "./modal.js";
 import "./purchase.js";
 import "./payment.js";
+import "./admin.js";

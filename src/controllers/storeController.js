@@ -59,7 +59,7 @@ export const postPayment = async (req, res) => {
       purchaseInfo: merchant_uid,
       shipMessage,
       shipStatus: "Payment completed",
-      shipStatus_kr: "결제완료",
+      shipStatus_kr: "결제 완료",
       shipStatus_jp: "決済済み",
     });
     await productList.save();
@@ -139,6 +139,7 @@ export const paymentComplete = async (req, res) => {
         shipPrice: getShipPay,
         productPrice: getProductPay,
         totalPrice: amountToBePaid,
+        imp_uid,
       };
       console.log(updatePrices);
       const purchaselist = await Purchaselist.findOneAndUpdate(
@@ -176,8 +177,8 @@ export const paymentComplete = async (req, res) => {
       const { response } = getCancelData.data;
       console.log(response);
       const updateData = {
-        shipStatus: "cancellation of payment",
-        shipStatus_kr: "결제취소",
+        shipStatus: "cancel",
+        shipStatus_kr: "결제 취소",
         shipStatus_jp: "決済取消し",
       };
       await Purchaselist.findOneAndUpdate(
@@ -273,8 +274,8 @@ export const paymentCompleteMobile = async (req, res) => {
       const { response } = getCancelData.data;
       console.log(response);
       const updateData = {
-        shipStatus: "cancellation of payment",
-        shipStatus_kr: "결제취소",
+        shipStatus: "cancel",
+        shipStatus_kr: "결제 취소",
         shipStatus_jp: "決済取消し",
       };
       await Purchaselist.findOneAndUpdate(
@@ -303,12 +304,24 @@ export const orders = (req, res) => {
   return res.render("orders", { passedPurchaseLists, hideInfo, isData });
 };
 export const ordersKr = async (req, res) => {
+  const currentPage = parseInt(req.query.page || "1", 10);
+  let lastPage = 1;
+  if (currentPage < 1) {
+    return res.redirect(`/store${routes.orders_kr}`);
+  }
   console.log("req.user is", req.user);
   let passedPurchaseLists;
   // 유저에 저장된 구매 목록을 불러와서 리버스해서 위의 변수에 넣는다.
   if (req.user) {
+    const viewLists = 2;
     const user = await User.findById(req.user._id).populate("purchaselists");
-    passedPurchaseLists = user.purchaselists.reverse();
+    passedPurchaseLists = user.purchaselists
+      .reverse()
+      .slice(
+        viewLists * (currentPage - 1),
+        viewLists * (currentPage - 1) + viewLists
+      );
+    lastPage = Math.ceil(user.purchaselists.length / viewLists);
   } else {
     passedPurchaseLists = req.session.purchaseLists;
   }
@@ -316,7 +329,13 @@ export const ordersKr = async (req, res) => {
   req.session.purchaseLists = [];
   const isData =
     passedPurchaseLists !== undefined && passedPurchaseLists.length !== 0;
-  return res.render("orders_kr", { passedPurchaseLists, hideInfo, isData });
+  return res.render("orders_kr", {
+    passedPurchaseLists,
+    hideInfo,
+    isData,
+    lastPage,
+    currentPage,
+  });
 };
 export const ordersJp = (req, res) => {
   const passedPurchaseLists = req.session.purchaseLists;
@@ -380,5 +399,53 @@ export const postOrdersCheckJp = async (req, res) => {
   } catch (e) {
     console.log(e);
     res.redirect(`/store${routes.orders_check_jp}`);
+  }
+};
+
+export const refundKr = async (req, res) => {
+  const currentPage = parseInt(req.query.page || "1", 10);
+  const { purchaseInfo, ordererEmail } = req.body;
+  console.log("purchaseInfo is", purchaseInfo);
+  console.log("ordererEmail is", ordererEmail);
+  const item = await Purchaselist.findOne({ purchaseInfo, ordererEmail });
+  console.log("item is ", item);
+  try {
+    const getToken = await axios({
+      url: "https://api.iamport.kr/users/getToken",
+      method: "post", // POST method
+      headers: { "Content-Type": "application/json" }, // "Content-Type": "application/json"
+      data: {
+        imp_key: process.env.REST_API,
+        imp_secret: process.env.REST_SECRET,
+      },
+    });
+    const { access_token } = getToken.data.response;
+    const getCancelData = await axios({
+      url: "https://api.iamport.kr/payments/cancel",
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: access_token,
+      },
+      data: {
+        reason: "사용자 결제 취소",
+        imp_uid: item.imp_uid,
+      },
+    });
+    const { response } = getCancelData.data;
+    console.log("response is", response);
+    const updateData = {
+      shipStatus: "cancel",
+      shipStatus_kr: "결제 취소",
+      shipStatus_jp: "決済取消し",
+    };
+    await Purchaselist.findOneAndUpdate(
+      { purchaseInfo, ordererEmail },
+      updateData
+    );
+    res.redirect(`/store${routes.orders_kr}?page=${currentPage}`);
+  } catch (e) {
+    console.log(e);
+    res.redirect(`/store${routes.orders_kr}?page=${currentPage}`);
   }
 };

@@ -4,14 +4,16 @@ header.header-admin
         if user
             ul
                 li
-                    a(href="/admin/notice/1") Notices
+                    a(href="/admin/notice/1") 공지사항
                 li
-                    a(href="/admin/game") Games
+                    a(href=`/admin${routes.payments}`) 구매내역
+                li
+                    a(href="/admin/game") 게임
                 li
                     a(href="/admin/logout") Logout
         else
             ul
                 li
-                    a(href="/admin/notice/1") Notices
+                    a(href="/admin/notice/1") 공지사항
                 li
-                    a(href="/admin/game") Games
+                    a(href="/admin/game") 게임

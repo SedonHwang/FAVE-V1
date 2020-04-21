@@ -281,4 +281,109 @@
       }
     }
   }
+  .fave-material {
+    width: 100%;
+    max-width: 1170px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+    .fave-material__header {
+      h3 {
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        color: $font-orange;
+        @include breakpoint(tablet) {
+          font-size: 30px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 24px;
+        }
+      }
+    }
+    .fave-material__body {
+      display: flex;
+      padding-top: 30px;
+      @include breakpoint(tablet) {
+        flex-direction: column;
+      }
+      @include breakpoint(mobile) {
+        flex-direction: column;
+      }
+      .fave-material__img {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include breakpoint(tablet) {
+          width: 70%;
+          margin: 0 auto;
+          margin-bottom: 20px;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+          margin: 0 auto;
+          margin-bottom: 20px;
+        }
+        img {
+          width: 40%;
+          @include breakpoint(tablet) {
+            width: 80%;
+          }
+          @include breakpoint(mobile) {
+            width: 90%;
+          }
+        }
+      }
+      .fave-material__text {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        @include breakpoint(tablet) {
+          width: 70%;
+          margin: 0 auto;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+          margin: 0 auto;
+        }
+        h4 {
+          font-size: 30px;
+          font-weight: 600;
+          @include breakpoint(tablet) {
+            font-size: 25px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 20px;
+          }
+        }
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.4;
+          margin-top: 20px;
+          @include breakpoint(tablet) {
+            font-size: 17px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 16px;
+          }
+          span {
+            font-weight: 20px;
+            font-weight: 600;
+            @include breakpoint(tablet) {
+              font-size: 19px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

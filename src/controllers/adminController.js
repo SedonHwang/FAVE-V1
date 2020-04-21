@@ -1,13 +1,14 @@
 import passport from "passport";
 import routes from "../routes";
 import Notice from "../models/notices";
+import Purchaselist from "../models/purchaseLists";
 
 //Global Router Controller
 
 export const adminLogin = (req, res) => res.render("admin_login");
 export const postAdminLogin = passport.authenticate("local", {
   failureRedirect: routes.admin_login,
-  successRedirect: "/admin/notice/1"
+  successRedirect: "/admin/notice/1",
 });
 
 export const adminLogout = (req, res) => {
@@ -19,7 +20,7 @@ export const adminLogout = (req, res) => {
 export const adminNotice = async (req, res) => {
   const renderedNotice = 3;
   const {
-    params: { page }
+    params: { page },
   } = req;
   try {
     const numberOfNotice = await Notice.countDocuments();
@@ -33,7 +34,7 @@ export const adminNotice = async (req, res) => {
       maxPage,
       page,
       numberOfNotice,
-      renderedNotice
+      renderedNotice,
     });
   } catch (e) {
     console.log(e);
@@ -41,7 +42,7 @@ export const adminNotice = async (req, res) => {
       notices: [],
       maxPage: 1,
       page,
-      numberOfNotice
+      numberOfNotice,
     });
   }
 };
@@ -57,8 +58,8 @@ export const postUploadNotice = async (req, res) => {
       title_jp,
       description_kr,
       description_en,
-      description_jp
-    }
+      description_jp,
+    },
   } = req;
   if (req.file) {
     path = req.file.path;
@@ -71,7 +72,7 @@ export const postUploadNotice = async (req, res) => {
       description_kr,
       description_en,
       description_jp,
-      notice_img: path
+      notice_img: path,
     });
     console.log(newNotice);
     res.redirect("/admin/notice/1");
@@ -83,7 +84,7 @@ export const postUploadNotice = async (req, res) => {
 
 export const editNotice = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
     const notice = await Notice.findById(id);
@@ -103,8 +104,8 @@ export const postEditNotice = async (req, res) => {
       title_jp,
       description_kr,
       description_en,
-      description_jp
-    }
+      description_jp,
+    },
   } = req;
   try {
     await Notice.findOneAndUpdate(
@@ -115,7 +116,7 @@ export const postEditNotice = async (req, res) => {
         title_jp,
         description_kr,
         description_en,
-        description_jp
+        description_jp,
       }
     );
     res.redirect("/admin/notice/1");
@@ -127,7 +128,7 @@ export const postEditNotice = async (req, res) => {
 
 export const deleteNotice = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
     await Notice.findOneAndDelete({ _id: id });
@@ -138,3 +139,85 @@ export const deleteNotice = async (req, res) => {
 };
 
 export const adminGame = (req, res) => res.send("admin_game");
+
+export const payments = async (req, res) => {
+  const currentPage = parseInt(req.query.page || "1", 10);
+  if (currentPage < 1) {
+    return res.redirect(`/admin${routes.payments}`);
+  }
+  let isData;
+  try {
+    const lists = await Purchaselist.find()
+      .sort({ _id: -1 })
+      .limit(10)
+      .skip((currentPage - 1) * 10);
+    if (lists.length === 0) {
+      isData = false;
+    } else {
+      isData = true;
+    }
+    const paymentCnt = await Purchaselist.countDocuments();
+    const lastPage = Math.ceil(paymentCnt / 10);
+    console.log("lastPage is", lastPage);
+    console.log("currentPage is", currentPage);
+    res.render("admin_payments", {
+      passedPurchaseLists: lists,
+      isData,
+      lastPage,
+      currentPage,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect(`/admin${routes.payments}`);
+  }
+};
+
+export const postPayments = async (req, res) => {
+  const { purchaseInfo, ordererName, shipStatus } = req.body;
+  const currentPage = parseInt(req.query.page || "1", 10);
+  let update;
+  if (shipStatus === "결제 완료") {
+    update = {
+      shipStatus: "Payment completed",
+      shipStatus_kr: "결제 완료",
+      shipStatus_jp: "決済済み",
+    };
+  } else if (shipStatus === "결제 취소") {
+    update = {
+      shipStatus: "cancel",
+      shipStatus_kr: "결제 취소",
+      shipStatus_jp: "決済取消し",
+    };
+  } else if (shipStatus === "배송준비 중") {
+    update = {
+      shipStatus: "preparing for delivery",
+      shipStatus_kr: "배송준비 중",
+      shipStatus_jp: "配送準備中",
+    };
+  } else if (shipStatus === "배송중") {
+    update = {
+      shipStatus: "shipping",
+      shipStatus_kr: "배송중",
+      shipStatus_jp: "配送中",
+    };
+  } else {
+    update = {
+      shipStatus: "Delivery completed",
+      shipStatus_kr: "배송 완료",
+      shipStatus_jp: "Shipment complete",
+    };
+  }
+  try {
+    const list = await Purchaselist.findOneAndUpdate(
+      { purchaseInfo, ordererName },
+      update,
+      {
+        new: true,
+      }
+    );
+    console.log(list);
+  } catch (e) {
+    console.log("e");
+  }
+  res.redirect(`/admin${routes.payments}?page=${currentPage}`);
+};

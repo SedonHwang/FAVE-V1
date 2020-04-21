@@ -69,6 +69,7 @@ const UPLOAD_NOTICE = "/upload/notice";
 const DELETE_NOTICE = "/notice/:id/delete";
 const EDIT_NOTICE = "/notice/:id/edit";
 const ADMIN_GAME = "/game";
+const PAYMENTS = "/payments";
 
 //Store
 const STORE = "/store";
@@ -91,6 +92,7 @@ const ORDERS_JP = "/orders/jp";
 const ORDERS_CHECK = "/orders/check";
 const ORDERS_CHECK_KR = "/orders/check/kr";
 const ORDERS_CHECK_JP = "/orders/check/jp";
+const REFUND_KR = "/refund/kr";
 
 const routes = {
   home: HOME,
@@ -158,6 +160,7 @@ const routes = {
     }
   },
   admin_game: ADMIN_GAME,
+  payments: PAYMENTS,
   privacy: PRIVACY,
   privacy_kr: PRIVACY_KR,
   privacy_jp: PRIVACY_JP,
@@ -187,6 +190,7 @@ const routes = {
   orders_check: ORDERS_CHECK,
   orders_check_kr: ORDERS_CHECK_KR,
   orders_check_jp: ORDERS_CHECK_JP,
+  refund_kr: REFUND_KR,
 };
 
 export default routes;

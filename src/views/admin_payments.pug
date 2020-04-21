@@ -1,0 +1,68 @@
+extends layouts/admin.pug
+
+block content
+    .admin--payments 
+        h1 구매내역
+        .payment--lists
+            if isData === false
+                .order--lists
+                    h3 주문목록이 없습니다.
+            else
+                each passedPurchaseList in passedPurchaseLists
+                    .order--lists
+                        h3 배송정보
+                        table
+                            tr
+                                th 주문번호
+                                td(colspan="2")= `${passedPurchaseList.purchaseInfo}`
+                            tr
+                                th 제품
+                                td(colspan="2")= `${passedPurchaseList.productName} ${Number(passedPurchaseList.pinkCnt) > 0? `Pink ${passedPurchaseList.pinkCnt}` : ""} ${Number(passedPurchaseList.greenCnt) > 0? `Green ${passedPurchaseList.greenCnt}` : ""}`
+                            tr
+                                th 배송상태
+                                td= `${passedPurchaseList.shipStatus_kr}`
+                                td
+                                    form(action=`/admin${routes.payments}?page=${currentPage}` method="post").status--select
+                                        input(type="hidden", name="purchaseInfo", value=`${passedPurchaseList.purchaseInfo}`)
+                                        input(type="hidden", name="ordererName", value=`${passedPurchaseList.recipientName}`)
+                                        select(name="shipStatus")
+                                            option(value="결제 완료") 결제 완료
+                                            option(value="결제 취소") 결제 취소
+                                            option(value="배송준비 중") 배송준비 중
+                                            option(value="배송중") 배송중
+                                            option(value="배송 완료") 배송 완료 
+                                        input(type="submit", value="수정하기")
+                            tr
+                                th 수령인
+                                td= `${passedPurchaseList.recipientName}`
+                                th 주문자 정보
+                            tr
+                                th 연락처
+                                td= `${passedPurchaseList.recipientPhoneNum}`
+                                td= `${passedPurchaseList.ordererName}`
+                            tr
+                                th(rowspan="2") 배송지
+                                td= `${passedPurchaseList.postalCode}`
+                                td= `${passedPurchaseList.ordererPhoneNum}`
+                            tr
+                                td= `${passedPurchaseList.address}`
+                                td= `${passedPurchaseList.ordererEmail}`
+                            tr
+                                th 배송메모
+                                td= `${passedPurchaseList.shipMessage}`
+                                td
+            .paginations
+                if currentPage <= lastPage
+                    ul
+                        if currentPage !== 1
+                            a(href=`/admin${routes.payments}?page=${Number(currentPage)-1}`)
+                                li < 이전
+                        else
+                            li
+                        li= currentPage
+                        if currentPage !== lastPage
+                            a(href=`/admin${routes.payments}?page=${Number(currentPage)+1}`)
+                                li 다음 >
+                        else
+                            li
+        

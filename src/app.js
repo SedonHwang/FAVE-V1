@@ -51,8 +51,8 @@ app.use(
     store: new CokieStore({ mongooseConnection: mongoose.connection }),
     cookie: {
       httpOnly: true,
-      secure: false
-    }
+      secure: false,
+    },
   })
 );
 app.use(flash());
@@ -60,6 +60,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(localsMiddleware);
 
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.send(
+    "User-agent: *\nDisallow: /admin/\nDisallow: /store/orders/\nDisallow: /store/orders/kr/\nDisallow: /store/orders/jp/\n"
+  );
+});
 app.use(routes.home, globalRouter);
 app.use(routes.about, aboutRouter);
 app.use(routes.notice, noticeRouter);

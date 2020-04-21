@@ -24,6 +24,7 @@ import {
   postOrdersCheckJp,
   paymentInfo,
   paymentCompleteMobile,
+  refundKr,
 } from "../controllers/storeController";
 
 const storeRouter = express.Router();
@@ -58,5 +59,7 @@ storeRouter.get(routes.orders_check_jp, ordersCheckJp);
 storeRouter.post(routes.orders_check, postOrdersCheck);
 storeRouter.post(routes.orders_check_kr, postOrdersCheckKr);
 storeRouter.post(routes.orders_check_jp, postOrdersCheckJp);
+
+storeRouter.post(routes.refund_kr, refundKr);
 
 export default storeRouter;

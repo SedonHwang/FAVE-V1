@@ -50,6 +50,7 @@ const PurchaselistSchema = new mongoose.Schema({
     type: String,
     required: "purchaseInfo is required",
   },
+  imp_uid: String,
   createdAt: {
     type: Date,
     default: Date.now,

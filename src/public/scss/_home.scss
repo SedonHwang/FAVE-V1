@@ -329,3 +329,66 @@
     }
   }
 }
+.main__videos {
+  width: 100%;
+  max-width: 1170px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  h2 {
+    font-size: 40px;
+    font-weight: 600;
+    width: 70%;
+    color: $font-gray;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @include breakpoint(tablet) {
+      font-size: 30px;
+      width: 80%;
+    }
+    @include breakpoint(mobile) {
+      font-size: 22px;
+      width: 90%;
+    }
+    span {
+      padding-top: 8px;
+      padding-left: 8px;
+      border-left: 7px solid $font-orange;
+      border-top: 7px solid $font-orange;
+      display: inline-block;
+      @include breakpoint(tablet) {
+        padding-top: 7px;
+        padding-left: 7px;
+        border-left: 6px solid $font-orange;
+        border-top: 6px solid $font-orange;
+      }
+      @include breakpoint(mobile) {
+        padding-top: 6px;
+        padding-left: 6px;
+        border-left: 5px solid $font-orange;
+        border-top: 5px solid $font-orange;
+      }
+    }
+  }
+  .videos {
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    &::after {
+      padding-top: 56.25%;
+      display: block;
+      content: "";
+    }
+    &:last-child {
+      margin-top: 40px;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

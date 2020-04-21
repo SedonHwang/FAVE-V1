@@ -10,7 +10,9 @@ import {
   postUploadNotice,
   editNotice,
   postEditNotice,
-  deleteNotice
+  deleteNotice,
+  payments,
+  postPayments,
 } from "../controllers/adminController";
 import { onlyAdmin, onlyPublic, onlyPrivate, uploadImg } from "../middlewares";
 
@@ -19,7 +21,7 @@ const adminRouter = express.Router();
 adminRouter.get(routes.admin_login, onlyPublic, adminLogin);
 adminRouter.post(routes.admin_login, onlyPublic, postAdminLogin);
 
-adminRouter.get(routes.admin_logout, onlyPrivate, adminLogout);
+adminRouter.get(routes.admin_logout, onlyAdmin, adminLogout);
 
 adminRouter.get(routes.admin_game, onlyAdmin, adminGame);
 
@@ -32,5 +34,8 @@ adminRouter.get(routes.editNotice(), onlyAdmin, editNotice);
 adminRouter.post(routes.editNotice(), onlyAdmin, postEditNotice);
 
 adminRouter.get(routes.deleteNotice(), onlyAdmin, deleteNotice);
+
+adminRouter.get(routes.payments, onlyAdmin, payments);
+adminRouter.post(routes.payments, onlyAdmin, postPayments);
 
 export default adminRouter;
