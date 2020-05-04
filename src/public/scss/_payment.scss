@@ -87,6 +87,54 @@
               color: $font-orange;
             }
           }
+          .orderer--info__select {
+            @include breakpoint(mobile) {
+              width: 90%;
+            }
+            @include breakpoint(tablet) {
+              width: 60%;
+            }
+            width: 20%;
+            .country--select {
+              position: relative;
+              border: 1px solid $font-gray;
+              width: 100%;
+              padding: 6px 13px;
+              border-radius: 4px;
+              box-sizing: border-box;
+              .country--selected {
+                display: flex;
+                justify-content: space-around;
+                li {
+                  font-size: 16px;
+                  &:first-child {
+                    flex: 1;
+                  }
+                  span {
+                    margin-left: 18px;
+                  }
+                }
+              }
+              .select--countries {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: $background-gray;
+                width: 100%;
+                .orderer--country {
+                  padding: 8px 13px;
+                  border-bottom: 1px solid $font-gray;
+                  color: white;
+                  &:hover {
+                    background-color: $main-gray;
+                  }
+                }
+              }
+              .select--hide {
+                display: none;
+              }
+            }
+          }
         }
       }
     }
@@ -130,6 +178,54 @@
             label {
               span {
                 color: $font-orange;
+              }
+            }
+          }
+          .recipient--info__select {
+            @include breakpoint(mobile) {
+              width: 90%;
+            }
+            @include breakpoint(tablet) {
+              width: 60%;
+            }
+            width: 20%;
+            .country--select {
+              position: relative;
+              border: 1px solid $font-gray;
+              width: 100%;
+              padding: 6px 13px;
+              border-radius: 4px;
+              box-sizing: border-box;
+              .country--selected {
+                display: flex;
+                justify-content: space-around;
+                li {
+                  font-size: 16px;
+                  &:first-child {
+                    flex: 1;
+                  }
+                  span {
+                    margin-left: 18px;
+                  }
+                }
+              }
+              .select--countries {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: $background-gray;
+                width: 100%;
+                .recipient--country {
+                  padding: 8px 13px;
+                  border-bottom: 1px solid $font-gray;
+                  color: white;
+                  &:hover {
+                    background-color: $main-gray;
+                  }
+                }
+              }
+              .select--hide {
+                display: none;
               }
             }
           }

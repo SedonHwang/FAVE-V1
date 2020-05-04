@@ -1,0 +1,75 @@
+extends layouts/main_jp
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .purchase--page--wrapper
+        h2 Smart Balance Trainer_FAVE 350
+        .purchase--item--wrapper
+            .item--block
+                .img--wrapper
+                    img#displayImg(src="/img/store/350-pink-diagonal.jpg")
+                .img--desc
+                    p
+                        | 接地面が狭く, 地面からの 高さが高くて
+                        | 専門選手や 運動熟練者が 使いやすいです.
+                .img--wrapper--small
+                    .small--img.choice
+                        img(src="/img/store/350-pink-diagonal.jpg")
+                    .small--img
+                        img(src="/img/store/350-green-diagonal.jpg")
+                    .small--img
+                        img(src="/img/store/350-pink-top.jpg")
+                    .small--img
+                        img(src="/img/store/350-green-top.jpg")
+                    .small--img
+                        img(src="/img/store/350-pink-side.jpg")
+                    .small--img
+                        img(src="/img/store/350-green-side.jpg")
+            .item--block
+                form(action=`/store${routes.payment_jp}` method="get")
+                    .option--wrapper
+                        label.label--text(for="product") 製品
+                        .option--detail
+                            .detail--product
+                                input(type="text",id="product", name="product",value="FAVE 350" readOnly)
+                                .option__icon
+                                    span
+                                        i.fa.fa-caret-down
+                    .option--wrapper
+                        .label--text 色相
+                        .option--detail
+                            .color--select
+                                ul.select--selected.js--selected
+                                    li 色を選択してください.
+                                    li
+                                        span
+                                            i.fa.fa-caret-down
+                                .select--items.select--hide
+                                    .select--item Pink
+                                    .select--item Green
+                    .option--wrapper
+                        .products--wrapper                        
+                    .option--wrapper
+                        .label--text 商品総額
+                        .option--detail
+                            .product--price
+                                ul
+                                    li
+                                        input(type="text", value="0", readOnly, name="totalPrice", id="totalPrice")
+                                    li JPY
+                    .option--wrapper
+                        .option--detail
+                            .button--wrapper
+                                .button--border
+                                    input.purchase--button(type="submit", value="購買する")
+                        

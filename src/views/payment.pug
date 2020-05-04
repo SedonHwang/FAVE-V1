@@ -1,4 +1,4 @@
-extends layouts/main_kr
+extends layouts/main
 
 block content
     .current--nav
@@ -8,200 +8,231 @@ block content
             li Home > Store
     .payment--form
         .form__header
-            h2 결제 정보
+            h2 Payment information
             p
                 span *
-                | 표시는 필수입력항목입니다.
+                | is required
         form(name="orderForm")
             .orderer--info
-                h3 주문자 정보
+                h3 Orderer information
                 .orderer--info__data
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererName")
-                                | 이름
+                                | Name
                                 span *
                         .orderer--info__input
                             input(type="text", name="ordererName", id="ordererName")
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererphoneNumber")
-                                | 휴대폰번호
+                                | Phone Number
                                 span *
                         .orderer--info__input
-                            input(type="text", name="ordererPhoneNumber", id="ordererPhoneNumber", placeholder="-을 제외")
+                            input(type="text", name="ordererPhoneNumber", id="ordererPhoneNumber", placeholder="Exclude -")
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererEmail")
-                                | 이메일주소
+                                | Email address
                                 span *
                         .orderer--info__input
                             input(type="email", name="ordererEmail", id="ordererEmail")
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererCountry")
-                                | 국가
+                                | Country
                                 span *
-                        .orderer--info__input
-                            input(type="text", name="ordererCountry", id="ordererCountry", value="대한민국", readOnly)
+                        .orderer--info__select
+                            .country--select
+                                ul.country--selected.js--countrySelected
+                                    li Please select a country
+                                    li
+                                        span
+                                            i.fa.fa-caret-down
+                                .select--countries.select--hide
+                                    .orderer--country Australia
+                                    .orderer--country Canada
+                                    .orderer--country China
+                                    .orderer--country Germany
+                                    .orderer--country HongKong
+                                    .orderer--country Israel
+                                    .orderer--country Taiwan
+                                    .orderer--country USA
+                            input(type="hidden", name="ordererCountry", id="ordererCountry", readOnly )
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererAddress1")
-                                | 주소1
+                                | Address 1
                                 span *
                         .orderer--info__input
                             input(type="text", name="ordererAddress1", id="ordererAddress1")
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererAddress2")
-                                | 주소2
+                                | Address 2
                                 span *
                         .orderer--info__input
                             input(type="text", name="ordererAddress2", id="ordererAddress2")
                     .orderer--info__wrapper
                         .orderer--info__label
                             label(for="ordererPostalCode")
-                                | 우편번호
+                                | Postal code
                                 span *
                         .orderer--info__input
                             input(type="text", name="ordererPostalCode", id="ordererPostalCode")
             .recipient--info      
-                h3 수령인 정보
+                h3 Recipient information
                 .recipient--info__data
                     .recipient--checkbox
-                        label(for="sameRecipient") 주문자와 동일
+                        label(for="sameRecipient") Same as orderer
                         input(type="checkbox", id="sameRecipient")
                     .recipient--info__wrapper
                         .recipient--info__label
                             label(for="recipientName")
-                                    | 이름
+                                    | Name
                                     span *
                         .recipient--info__input
                             input(type="text", name="recipientName", id="recipientName")
                     .recipient--info__wrapper
                         .recipient--info__label
                             label(for="recipientPhoneNumber")
-                                | 휴대폰번호
+                                | Phone Number
                                 span *
                         .recipient--info__input
-                            input(type="text", name="recipientPhoneNumber", id="recipientPhoneNumber", placeholder="-을 제외")
+                            input(type="text", name="recipientPhoneNumber", id="recipientPhoneNumber", placeholder="Exclude -")
                     .recipient--info__wrapper
                         .recipient--info__label
                             label(for="recipientCountry")
-                                | 국가
+                                | Country
                                 span *
-                        .recipient--info__input
-                            input(type="text", name="recipientCountry", id="recipientCountry", value="대한민국", readOnly)
+                        .recipient--info__select
+                            .country--select
+                                ul.country--selected.js--countrySelected
+                                    li Please select a country
+                                    li
+                                        span
+                                            i.fa.fa-caret-down
+                                .select--countries.select--hide
+                                    .recipient--country Australia
+                                    .recipient--country Canada
+                                    .recipient--country China
+                                    .recipient--country Germany
+                                    .recipient--country HongKong
+                                    .recipient--country Israel
+                                    .recipient--country Taiwan
+                                    .recipient--country USA
+                            input(type="hidden", name="recipientCountry", id="recipientCountry", readOnly )
                     .recipient--info__wrapper
                         .recipient--info__label
                             label(for="recipientAddress1")
-                                | 주소1
+                                | Address 1
                                 span *
                         .recipient--info__input
                             input(type="text", name="recipientAddress1", id="recipientAddress1")
                     .recipient--info__wrapper
                         .recipient--info__label
                             label(for="recipientAddress2")
-                                | 주소2
+                                | Address 2
                                 span *
                         .recipient--info__input
                             input(type="text", name="recipientAddress2", id="recipientAddress2")
                     .recipient--info__wrapper
                         .recipient--info__label
                             label(for="recipientPostalCode")
-                                | 우편번호
+                                | Postal code
                                 span *
                         .recipient--info__input
                             input(type="text", name="recipientPostalCode", id="recipientPostalCode")
                     .recipient--info__wrapper
                         .recipient--info__label
-                            label(for="shipMessage") 배송메세지
+                            label(for="shipMessage") Shipping message
                         .recipient--info__input
                             textarea(name="shipMessage", id="shipMessage")  
         .payment--info
-            h3 결제정보
+            h3 Payment information
             .spec--table
                 table
                     tr
                         th
-                        th 지원 언어
-                        th Android (5.0 이상)
-                        th IOS (9.0 이상)
+                        th Supporting Language
+                        th Android (5.0 and above)
+                        th IOS (9.0 and above)
                     tr
                         td FAVE FIT
-                        td 영어 / 한국어 / 일본어
+                        td en / kr / jp
                         td
                             i.fas.fa-check
                         td
                             i.fas.fa-check
-                    tr 
-                        td(colspan=4) 안드로이드 10에서 FAVE FIT은 추후 지원 예정입니다.
+                    tr
+                        td(colspan=4) On Android 10, FAVE FIT will be supported in the future.
                     tr
                         td Mad runner
-                        td 영어 / 한국어
+                        td en / kr
                         td
                             i.fas.fa-check
                         td
                             i.fas.fa-check
                     tr
                         td Driving Master2
-                        td 모든 언어
+                        td All
                         td
                             i.fas.fa-check
                         td
                     tr
                         td Smashy world
-                        td 모든 언어
+                        td All
                         td
                             i.fas.fa-check
                         td
                     tr
                         td FAVE Surf
-                        td 영어 / 한국어 / 일본어
+                        td en / kr / jp
                         td
                             i.fas.fa-check
                         td
                             i.fas.fa-check
-                table   
+                table
                     tr
                         th(colspan="2") FAVE Surf (System Requirements)
                     tr
                         th CPU
-                        td 삼성 엑시노스 9 시리즈(8895) 이상 & 퀄컴 스냅드래곤 835 이상
+                        td Samsung Exynos 9 series(8895) or more & Qualcomn snapdragon 835 or more
                     tr
                         th GPU
                         td ARM Cortex-A53 or more
                     tr
-                        th 블루투스
-                        td 5.0 이상
+                        th Bluetooth
+                        td 5.0 or more
                     tr
-                        th 메모리
-                        td 4GB 이상
-                p 각 앱의 사양을 확인하지 않고 잘못 구매한 경우 환불이 불가능합니다.
+                        th Memory
+                        td 4GB or more
+                p
+                    | Refunds are not possible
+                    | if you make an incorrect purchase
+                    | without checking the specifications of each app.
             .payment--verification
                 .payment--table
                     table
                         tr
-                            th 제품
+                            th Product
                             td(id="productName")= `${product}`
                         if PinkCnt
                             tr
-                                th 색상
-                                td.productCnt= `Pink ${PinkCnt} 개`
+                                th Color
+                                td.productCnt= `${PinkCnt > 1? `Pink ${PinkCnt} pcs`: `Pink ${PinkCnt} pc`}`
                         if GreenCnt  
                             tr
-                                th 색상
-                                td.productCnt= `Green ${GreenCnt} 개`
+                                th Color
+                                td.productCnt= `${GreenCnt > 1? `Green ${GreenCnt} pcs` : `Green ${GreenCnt} pc`}`
                         tr
-                            th 총 상품금액
-                            td(id="productPrice")= `${totalPrice} 원`
+                            th product amount
+                            td(id="productPrice")= `${totalPrice} USD`
                         tr
-                            th 배송비
-                            td(id="shipPrice")= `${numberWithCommas(shipPay('대한민국', PinkCnt, GreenCnt))} 원`
+                            th shipping fee
+                            td(id="shipPrice")= `${numberWithCommas(shipPay('', PinkCnt, GreenCnt))} USD`
                         tr
-                            th 총 결제금액
-                            td(id="totalPrice")= `${numberWithCommas(shipPay('대한민국', PinkCnt, GreenCnt)+ Number(numberUnCommas(totalPrice)))} 원`
+                            th Total price
+                            td(id="totalPrice")= `${numberWithCommas(shipPay('', PinkCnt, GreenCnt)+ Number(numberUnCommas(totalPrice)))} USD`
                 .payment--btn
-                    button(id="paymentBtnKr") 결제하기
-
-
+                    button(id="paymentBtn") Purchase

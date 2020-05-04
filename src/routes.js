@@ -83,6 +83,7 @@ const FAVE450_KR = "/fave450/kr";
 const FAVE450_JP = "/fave450/jp";
 const PAYMENT = "/payment";
 const PAYMENT_KR = "/payment/kr";
+const PAYMENT_JP = "/payment/jp";
 const PAYMENT_INFO = "/payment/info";
 const PAYMENT_COMPLETE = "/payment/complete";
 const PAYMENT_COMPLETE_MOBILE = "/payment/complete/mobile";
@@ -181,6 +182,7 @@ const routes = {
   fave450_jp: FAVE450_JP,
   payment: PAYMENT,
   payment_kr: PAYMENT_KR,
+  payment_jp: PAYMENT_JP,
   payment_complete: PAYMENT_COMPLETE,
   payment_complete_mobile: PAYMENT_COMPLETE_MOBILE,
   payment_info: PAYMENT_INFO,

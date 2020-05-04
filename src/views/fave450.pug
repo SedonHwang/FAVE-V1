@@ -1,0 +1,76 @@
+extends layouts/main
+
+block content
+    .main--image--right
+        img(src="/img/store/store-img.jpg")
+        .main--image__text
+            h1
+                span STO 
+                | RE
+    .current--nav
+        ul
+            li
+                i.fas.fa-home
+            li Home > Store
+    .purchase--page--wrapper
+        h2 Smart Balance Trainer_FAVE 450
+        .purchase--item--wrapper
+            .item--block
+                .img--wrapper
+                    img#displayImg(src="/img/store/450-pink-diagonal.jpg")
+                .img--desc
+                    p
+                        | The wide ground plane and low ground height
+                        | make it safe to use, reducing the risk of injury.
+                        | Great for use by the general public and children.
+                        | It can be used for women and the elderly.
+                .img--wrapper--small
+                    .small--img.choice
+                        img(src="/img/store/450-pink-diagonal.jpg")
+                    .small--img
+                        img(src="/img/store/450-green-diagonal.jpg")
+                    .small--img
+                        img(src="/img/store/450-pink-top.jpg")
+                    .small--img
+                        img(src="/img/store/450-green-top.jpg")
+                    .small--img
+                        img(src="/img/store/450-pink-side.jpg")
+                    .small--img
+                        img(src="/img/store/450-green-side.jpg")
+            .item--block
+                form(action=`/store${routes.payment}` method="get")
+                    .option--wrapper
+                        label.label--text(for="product") Product
+                        .option--detail
+                            .detail--product
+                                input(type="text",id="product", name="product",value="FAVE 450" readOnly)
+                                .option__icon
+                                    span
+                                        i.fa.fa-caret-down
+                    .option--wrapper
+                        .label--text Color
+                        .option--detail
+                            .color--select
+                                ul.select--selected.js--selected
+                                    li Please select a color
+                                    li
+                                        span
+                                            i.fa.fa-caret-down
+                                .select--items.select--hide
+                                    .select--item Pink
+                                    .select--item Green
+                    .option--wrapper
+                        .products--wrapper                        
+                    .option--wrapper
+                        .label--text Total product price
+                        .option--detail
+                            .product--price
+                                ul
+                                    li
+                                        input(type="text", value="0", readOnly, name="totalPrice", id="totalPrice")
+                                    li USD
+                    .option--wrapper
+                        .option--detail
+                            .button--wrapper
+                                .button--border
+                                    input.purchase--button(type="submit", value="Purchase")
