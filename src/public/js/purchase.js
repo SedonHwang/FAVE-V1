@@ -10,7 +10,14 @@ const faveNum = document.getElementById("product");
 const totalPrice = document.getElementById("totalPrice");
 const productsWrapper = document.getElementsByClassName("products--wrapper")[0];
 const displayImg = document.getElementById("displayImg");
-const krPrice = 84500;
+const productPrice = {
+  kr: 124000,
+  en: 129,
+  jp: 14000,
+};
+const [urlProduct, urlLanguage] = extractFromUrl(
+  window.location.href.split("/store/")[1]
+);
 console.dir(productsWrapper);
 
 if (selectSelected) {
@@ -36,11 +43,6 @@ if (selectItems.length) {
     selectItems[i].addEventListener("click", function () {
       selectSelected.children[0].innerHTML = this.innerHTML;
 
-      // 글은 바뀌어야 하고, 여기에서 분기를 넣어서
-      // this.innerHTML 비교
-      const [urlProduct, urlLanguage] = extractFromUrl(
-        window.location.href.split("/store/")[1]
-      );
       if (checkExistedItem(`${urlProduct} ${this.innerHTML}`)) {
         // 같은 값이 있음
         selectSelected.click();
@@ -148,7 +150,7 @@ if (selectItems.length) {
 
         //totalPrice 값이 바뀜
         totalPrice.value = numberWithCommas(
-          Number(numberUnCommas(totalPrice.value)) + krPrice
+          Number(numberUnCommas(totalPrice.value)) + productPrice[urlLanguage]
         );
         selectSelected.click();
       }
@@ -212,7 +214,7 @@ function cancelBtnHandler() {
   productWrapper.parentElement.removeChild(productWrapper);
   totalPrice.value = numberWithCommas(
     Number(numberUnCommas(totalPrice.value)) -
-      Number(inputCount.value) * krPrice
+      Number(inputCount.value) * productPrice[urlLanguage]
   );
 }
 
@@ -223,7 +225,7 @@ function countHandler(e) {
   if (this.children[0].classList.contains("fa-caret-up")) {
     countInput.value = Number(countInput.value) + 1;
     totalPrice.value = numberWithCommas(
-      Number(numberUnCommas(totalPrice.value)) + krPrice
+      Number(numberUnCommas(totalPrice.value)) + productPrice[urlLanguage]
     );
   } else {
     if (Number(countInput.value) <= 1) {
@@ -231,30 +233,44 @@ function countHandler(e) {
     }
     countInput.value = Number(countInput.value) - 1;
     totalPrice.value = numberWithCommas(
-      Number(numberUnCommas(totalPrice.value)) - krPrice
+      Number(numberUnCommas(totalPrice.value)) - productPrice[urlLanguage]
     );
   }
 }
 
 function extractFromUrl(splitedUrl) {
   let product, language;
-  const fave350 = ["fave350", "fave350/kr", "fave350/jp"];
+  const fave350 = [
+    "fave350",
+    "fave350/",
+    "fave350/kr",
+    "fave350/kr/",
+    "fave350/jp",
+    "fave350/jp/",
+  ];
   // 서프가 추가될 상황을 대비해서 남겨둠
-  const fave450 = ["fave450", "fave450/kr", "fave450/jp"];
+  const fave450 = [
+    "fave450",
+    "fave450/",
+    "fave450/kr",
+    "fave450/kr/",
+    "fave450/jp",
+    "fave450/jp/",
+  ];
   if (fave350.includes(splitedUrl)) {
     product = "FAVE 350";
-    if (splitedUrl === "fave350") {
+    if (splitedUrl === "fave350" || splitedUrl === "fave350/") {
       language = "en";
-    } else if (splitedUrl === "fave350/kr") {
+    } else if (splitedUrl === "fave350/kr" || splitedUrl === "fave350/kr/") {
       language = "kr";
     } else {
       language = "jp";
     }
   } else {
     product = "FAVE 450";
-    if (splitedUrl === "fave450") {
+    if (splitedUrl === "fave450" || splitedUrl === "fave450/") {
       language = "en";
-    } else if (splitedUrl === "fave450/kr") {
+    } else if (splitedUrl === "fave450/kr" || splitedUrl === "fave450/kr/") {
       language = "kr";
     } else {
       language = "jp";

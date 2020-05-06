@@ -87,13 +87,17 @@ const PAYMENT_JP = "/payment/jp";
 const PAYMENT_INFO = "/payment/info";
 const PAYMENT_COMPLETE = "/payment/complete";
 const PAYMENT_COMPLETE_MOBILE = "/payment/complete/mobile";
+const PAYMENT_COMPLETE_PAYPAL = "/payment/complete/paypal";
+const PAYMENT_COMPLETE_PAYPAL_JP = "/payment/complete/paypal/jp";
 const ORDERS = "/orders";
 const ORDERS_KR = "/orders/kr";
 const ORDERS_JP = "/orders/jp";
 const ORDERS_CHECK = "/orders/check";
 const ORDERS_CHECK_KR = "/orders/check/kr";
 const ORDERS_CHECK_JP = "/orders/check/jp";
+const REFUND = "/refund";
 const REFUND_KR = "/refund/kr";
+const REFUND_JP = "/refund/jp";
 
 const routes = {
   home: HOME,
@@ -185,6 +189,8 @@ const routes = {
   payment_jp: PAYMENT_JP,
   payment_complete: PAYMENT_COMPLETE,
   payment_complete_mobile: PAYMENT_COMPLETE_MOBILE,
+  payment_complete_paypal: PAYMENT_COMPLETE_PAYPAL,
+  payment_complete_paypal_jp: PAYMENT_COMPLETE_PAYPAL_JP,
   payment_info: PAYMENT_INFO,
   orders: ORDERS,
   orders_kr: ORDERS_KR,
@@ -192,7 +198,9 @@ const routes = {
   orders_check: ORDERS_CHECK,
   orders_check_kr: ORDERS_CHECK_KR,
   orders_check_jp: ORDERS_CHECK_JP,
+  refund: REFUND,
   refund_kr: REFUND_KR,
+  refund_jp: REFUND_JP,
 };
 
 export default routes;

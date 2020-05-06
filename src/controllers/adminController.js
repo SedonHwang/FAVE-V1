@@ -2,6 +2,7 @@ import passport from "passport";
 import routes from "../routes";
 import Notice from "../models/notices";
 import Purchaselist from "../models/purchaseLists";
+import axios from "axios";
 
 //Global Router Controller
 
@@ -208,6 +209,32 @@ export const postPayments = async (req, res) => {
     };
   }
   try {
+    if (shipStatus === "결제 취소") {
+      const list = await Purchaselist.findOne({ purchaseInfo, ordererName });
+      const getToken = await axios({
+        url: "https://api.iamport.kr/users/getToken",
+        method: "post", // POST method
+        headers: { "Content-Type": "application/json" }, // "Content-Type": "application/json"
+        data: {
+          imp_key: process.env.REST_API,
+          imp_secret: process.env.REST_SECRET,
+        },
+      });
+      const { access_token } = getToken.data.response;
+      const getCancelData = await axios({
+        url: "https://api.iamport.kr/payments/cancel",
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: access_token,
+        },
+        data: {
+          reason: "관리자 결제 취소",
+          imp_uid: list.imp_uid,
+        },
+      });
+      const { response } = getCancelData.data;
+    }
     const list = await Purchaselist.findOneAndUpdate(
       { purchaseInfo, ordererName },
       update,
@@ -217,7 +244,7 @@ export const postPayments = async (req, res) => {
     );
     console.log(list);
   } catch (e) {
-    console.log("e");
+    console.log(e);
   }
   res.redirect(`/admin${routes.payments}?page=${currentPage}`);
 };

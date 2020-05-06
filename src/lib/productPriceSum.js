@@ -10,12 +10,12 @@ export default function (country, productName, productCnt) {
   // }
   const products = {
     "FAVE 350": {
-      krPrice: 84500,
+      krPrice: 124000,
       enPrice: 129,
       jpPrice: 14000,
     },
     "FAVE 450": {
-      krPrice: 84500,
+      krPrice: 124000,
       enPrice: 129,
       jpPrice: 14000,
     },

@@ -6,6 +6,8 @@ header.header
                     li
                         a(href=`/user${routes.user_page_jp}`) プロフィール
                     li
+                        a(href=`/store${routes.orders_jp}`) 注文情報
+                    li
                         a(href=routes.logout_jp) ログアウト
             else
                 ul
@@ -13,6 +15,8 @@ header.header
                         a(href=routes.login_jp) ログイン
                     li
                         a(href=routes.signup_jp) 会員加入
+                    li
+                        a(href=`/store${routes.orders_check_jp}`) 注文情報
             .user--language
                 span
                     i.fas.fa-globe
@@ -68,6 +72,8 @@ header.header
                             li
                                 a(href=`/user${routes.user_page_jp}`) プロフィール
                             li
+                                a(href=`/store${routes.orders_jp}`) 注文情報
+                            li
                                 a(href=routes.logout_jp) ログアウト
                     else
                         ul.side-navi__userform
@@ -75,6 +81,8 @@ header.header
                                 a(href=routes.login_jp) ログイン
                             li
                                 a(href=routes.signup_jp) 会員加入
+                            li
+                                a(href=`/store${routes.orders_check_jp}`) 注文情報
                     ul.side--navi__collapsible.js--collapsible
                         li 日本語
                         li 

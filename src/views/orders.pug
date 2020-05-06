@@ -29,9 +29,23 @@ block content
                         tr
                             th Products
                             td(colspan="2")= `${passedPurchaseList.productName} ${Number(passedPurchaseList.pinkCnt) > 0? `Pink ${passedPurchaseList.pinkCnt}` : ""} ${Number(passedPurchaseList.greenCnt) > 0? `Green ${passedPurchaseList.greenCnt}` : ""}`
-                        tr
-                            th Delivery status
-                            td(colspan="2")= `${passedPurchaseList.shipStatus}`
+                        if user
+                            tr
+                                th Delivery status
+                                td= `${passedPurchaseList.shipStatus}`
+                                if passedPurchaseList.shipStatus_kr === "결제 완료" || passedPurchaseList.shipStatus_kr === "배송준비 중"
+                                    td
+                                        form(action=`/store${routes.refund}?page=${currentPage}`, method="post")
+                                            input(type="hidden", name="purchaseInfo", value=`${passedPurchaseList.purchaseInfo}`)
+                                            input(type="hidden", name="ordererEmail", value=`${passedPurchaseList.ordererEmail}`)
+                                            input(type="submit", value="Refund")
+                                else
+                                    td
+                                        a(href="/notice/1#contact--us") Contact
+                        else
+                            tr
+                                th Delivery status
+                                td(colspan="2")= `${passedPurchaseList.shipStatus}`
                         tr
                             th Recipient
                             td= `${hideInfo(passedPurchaseList.recipientName)}`
@@ -51,4 +65,17 @@ block content
                             th Memo
                             td= `${passedPurchaseList.shipMessage}`
                             td
-
+        .order--paginations
+            if currentPage <= lastPage
+                ul
+                    if currentPage !== 1
+                        a(href=`/store${routes.orders}?page=${Number(currentPage)-1}`)
+                            li < Prev
+                    else
+                        li
+                    li= currentPage
+                    if currentPage !== lastPage
+                        a(href=`/store${routes.orders}?page=${Number(currentPage)+1}`)
+                            li Next >
+                    else
+                        li

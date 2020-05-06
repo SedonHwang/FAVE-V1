@@ -6,6 +6,8 @@ header.header
                     li
                         a(href=`/user${routes.user_page}`) Profile
                     li
+                        a(href=`/store${routes.orders}`) Orders
+                    li
                         a(href=routes.logout) Logout
             else
                 ul
@@ -13,6 +15,8 @@ header.header
                         a(href=routes.login) Login
                     li
                         a(href=routes.signup) SignUp
+                    li
+                        a(href=`/store${routes.orders_check}`) Orders
             .user--language
                 span
                     i.fas.fa-globe
@@ -68,6 +72,8 @@ header.header
                             li
                                 a(href=`/user${routes.user_page}`) Profile
                             li
+                                a(href=`/store${routes.orders}`) Orders
+                            li
                                 a(href=routes.logout) Logout
                     else
                         ul.side-navi__userform
@@ -75,6 +81,8 @@ header.header
                                 a(href=href=routes.login) Login
                             li
                                 a(href=routes.signup) Signup
+                            li
+                                a(href=`/store${routes.orders_check}`) Orders
                     ul.side--navi__collapsible.js--collapsible
                         li ENGLISH
                         li 

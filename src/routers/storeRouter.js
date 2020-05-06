@@ -11,7 +11,9 @@ import {
   getFave450Kr,
   getFave450jp,
   postPayment,
+  getPayment,
   getPaymentKr,
+  getPaymentJp,
   paymentComplete,
   orders,
   ordersKr,
@@ -25,6 +27,10 @@ import {
   paymentInfo,
   paymentCompleteMobile,
   refundKr,
+  paymentCompletePaypal,
+  paymentCompletePaypalJp,
+  refund,
+  refundJp,
 } from "../controllers/storeController";
 
 const storeRouter = express.Router();
@@ -43,10 +49,14 @@ storeRouter.get(routes.fave450_jp, getFave450jp);
 
 storeRouter.post(routes.payment, postPayment);
 
+storeRouter.get(routes.payment, getPayment);
 storeRouter.get(routes.payment_kr, getPaymentKr);
+storeRouter.get(routes.payment_jp, getPaymentJp);
 
 storeRouter.post(routes.payment_complete, paymentComplete);
 storeRouter.get(routes.payment_complete_mobile, paymentCompleteMobile);
+storeRouter.get(routes.payment_complete_paypal, paymentCompletePaypal);
+storeRouter.get(routes.payment_complete_paypal_jp, paymentCompletePaypalJp);
 
 storeRouter.get(routes.orders, orders);
 storeRouter.get(routes.orders_kr, ordersKr);
@@ -60,6 +70,8 @@ storeRouter.post(routes.orders_check, postOrdersCheck);
 storeRouter.post(routes.orders_check_kr, postOrdersCheckKr);
 storeRouter.post(routes.orders_check_jp, postOrdersCheckJp);
 
+storeRouter.post(routes.refund, refund);
 storeRouter.post(routes.refund_kr, refundKr);
+storeRouter.post(routes.refund_jp, refundJp);
 
 export default storeRouter;

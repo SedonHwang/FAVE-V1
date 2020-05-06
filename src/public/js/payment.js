@@ -1,5 +1,7 @@
 import axios from "axios";
 import numberUnCommas from "../../lib/numberUnCommas";
+import shipPay from "../../lib/shipPay";
+import numberWithComma from "../../lib/numberWithComma";
 
 const IMP = window.IMP;
 IMP.init("imp99764133");
@@ -174,7 +176,7 @@ const paymentBtnHandler = async (e) => {
         pg: "paypal",
         currency: "USD",
         tax_free: amount,
-        m_redirect_url: "http://localhost:4000/store/payment/complete/paypal",
+        m_redirect_url: "https://www.faves.co.kr/store/payment/complete/paypal",
         pay_method: "card",
         merchant_uid: productList.purchaseInfo,
         name: productList.productName,
@@ -315,7 +317,7 @@ const paymentBtnHandlerKr = async (e) => {
     IMP.request_pay(
       {
         pg: "inicis",
-        m_redirect_url: "http://localhost:4000/store/payment/complete/mobile",
+        m_redirect_url: "https://www.faves.co.kr/store/payment/complete/mobile",
         pay_method: "card",
         merchant_uid: productList.purchaseInfo,
         name: productList.productName,
@@ -459,7 +461,7 @@ const paymentBtnHandlerJp = async (e) => {
         currency: "JPY",
         tax_free: amount,
         m_redirect_url:
-          "http://localhost:4000/store/payment/complete/paypal/jp",
+          "https://www.faves.co.kr/store/payment/complete/paypal/jp",
         pay_method: "card",
         merchant_uid: productList.purchaseInfo,
         name: productList.productName,
