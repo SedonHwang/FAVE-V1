@@ -1,6 +1,11 @@
 # Fave v1 Homepage for StrongFriend
 
-(주)건강한친구의 홈페이지 코드입니다.
+(주)건강한친구의 홈페이지 코드입니다.  
+반응형으로 디자인되었습니다.  
+**데스크탑 화면입니다.**
+![데스크탑 화면](https://user-images.githubusercontent.com/29043491/81529677-4c259700-939a-11ea-9666-c8ffe1085129.PNG)  
+**모바일 화면입니다.**  
+![모바일 화면](https://user-images.githubusercontent.com/29043491/81529687-4fb91e00-939a-11ea-80a9-f42c6c466e94.PNG)
 
 ## 기술스택
 
@@ -53,7 +58,8 @@ Express의 미들웨어를 통해서 robots.txt를 추가했고, admin 페이지
 
 일정량의 메일을 무료로 제공하는 nodemailer를 통해서 메일 보내기 기능이 구현되었습니다.  
 [노드메일러 공식홈페이지 가기](https://nodemailer.com/about/)  
-비밀번호 찾기 및 사용자의 문의 및 질문이 관리자에게 전달되는 기능을 만드는데 사용중입니다.
+비밀번호 찾기 및 사용자의 문의 및 질문이 관리자에게 전달되는 기능을 만드는데 사용중입니다.  
+![ContactUs](https://user-images.githubusercontent.com/29043491/81529712-5e073a00-939a-11ea-866b-46e00206e918.PNG)
 
 ## 회원가입 구현
 
@@ -61,3 +67,4 @@ Express의 미들웨어를 통해서 robots.txt를 추가했고, admin 페이지
 [passport-local-mongoose 문서 확인하기](https://github.com/saintedlama/passport-local-mongoose)  
 passport-local-mongoose를 사용하면 회원가입 시 salt 및 암호화가 자동으로 진행되기 때문에  
 passport-local과 mongoose를 사용하고 있다면 사용할만한 모듈이라고 생각합니다.
+![회원가입 페이지](https://user-images.githubusercontent.com/29043491/81529703-58a9ef80-939a-11ea-9f07-9a712e0e4713.PNG)
