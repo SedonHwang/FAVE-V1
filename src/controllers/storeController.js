@@ -36,12 +36,9 @@ export const postPayment = async (req, res) => {
   } = req.body;
   let { pinkCnt, greenCnt } = req.body;
   if (!pinkCnt || !greenCnt) {
-    console.log("선택 안한게 있다.");
     pinkCnt = pinkCnt === undefined ? "0" : pinkCnt;
     greenCnt = greenCnt === undefined ? "0" : greenCnt;
   }
-  console.log("pinkCnt is", pinkCnt);
-  console.log("greenCnt is", greenCnt);
   try {
     const merchant_uid = await paymentInfo();
     const productList = new Purchaselist({
@@ -71,7 +68,6 @@ export const postPayment = async (req, res) => {
 };
 
 export const getPayment = (req, res) => {
-  console.log(req.user);
   const { product, PinkCnt, GreenCnt, totalPrice } = req.query;
   const redirectName = product.replace(" ", "").toLowerCase();
   if (!PinkCnt && !GreenCnt) return res.redirect(`/store/${redirectName}/kr`);
@@ -88,14 +84,9 @@ export const getPayment = (req, res) => {
 };
 
 export const getPaymentKr = (req, res) => {
-  console.log(req.user);
   const { product, PinkCnt, GreenCnt, totalPrice } = req.query;
   const redirectName = product.replace(" ", "").toLowerCase();
   if (!PinkCnt && !GreenCnt) return res.redirect(`/store/${redirectName}/kr`);
-  console.log("product is", product);
-  console.log("PinkCnt is", PinkCnt);
-  console.log("GreenCnt is", GreenCnt);
-  console.log("totalPrice is", totalPrice);
   // 쿼리를 받아옴
   res.render("payment_kr", {
     product,
@@ -127,8 +118,6 @@ export const getPaymentJp = (req, res) => {
 export const paymentComplete = async (req, res) => {
   try {
     const { imp_uid, merchant_uid } = req.body;
-    console.log("imp_uid is", imp_uid);
-    console.log("merchant_uid is", merchant_uid);
     //액세스 토큰(access token)발급 받기
     const getToken = await axios({
       url: "https://api.iamport.kr/users/getToken",
@@ -150,13 +139,6 @@ export const paymentComplete = async (req, res) => {
     const purchaseList = await Purchaselist.findOne({
       purchaseInfo: paymentData.merchant_uid,
     });
-    console.log("purchaseList is", purchaseList);
-
-    // DB에서 결제되어야 하는 금액을 찾는다
-    console.log("purchaseList.country is ", purchaseList.country);
-    console.log("purchaseList.pinkCnt is", purchaseList.pinkCnt);
-    console.log("purchaseList.greenCnt is", purchaseList.greenCnt);
-    console.log("purchaseList.productName is", purchaseList.productName);
 
     const { country, productName, pinkCnt, greenCnt } = purchaseList;
     const getShipPay = shipPay(country, pinkCnt, greenCnt);
@@ -174,7 +156,6 @@ export const paymentComplete = async (req, res) => {
         totalPrice: amountToBePaid,
         imp_uid,
       };
-      console.log(updatePrices);
       const purchaselist = await Purchaselist.findOneAndUpdate(
         { purchaseInfo: paymentData.merchant_uid },
         updatePrices,
@@ -253,7 +234,6 @@ export const paymentCompleteMobile = async (req, res) => {
     const purchaseList = await Purchaselist.findOne({
       purchaseInfo: paymentData.merchant_uid,
     });
-    console.log("purchaseList is", purchaseList);
 
     // DB에서 결제되어야 하는 금액을 찾는다
 
@@ -349,7 +329,6 @@ export const paymentCompletePaypal = async (req, res) => {
     const purchaseList = await Purchaselist.findOne({
       purchaseInfo: paymentData.merchant_uid,
     });
-    console.log("purchaseList is", purchaseList);
 
     // DB에서 결제되어야 하는 금액을 찾는다
 
@@ -440,7 +419,6 @@ export const paymentCompletePaypalJp = async (req, res) => {
     const purchaseList = await Purchaselist.findOne({
       purchaseInfo: paymentData.merchant_uid,
     });
-    console.log("purchaseList is", purchaseList);
 
     // DB에서 결제되어야 하는 금액을 찾는다
 
@@ -549,7 +527,6 @@ export const ordersKr = async (req, res) => {
   if (currentPage < 1) {
     return res.redirect(`/store${routes.orders_kr}`);
   }
-  console.log("req.user is", req.user);
   let passedPurchaseLists;
   // 유저에 저장된 구매 목록을 불러와서 리버스해서 위의 변수에 넣는다.
   if (req.user) {
@@ -565,7 +542,6 @@ export const ordersKr = async (req, res) => {
   } else {
     passedPurchaseLists = req.session.purchaseLists;
   }
-  console.log("ordersKr in", passedPurchaseLists);
   req.session.purchaseLists = [];
   const isData =
     passedPurchaseLists !== undefined && passedPurchaseLists.length !== 0;
@@ -583,7 +559,6 @@ export const ordersJp = async (req, res) => {
   if (currentPage < 1) {
     return res.redirect(`/store${routes.orders_jp}`);
   }
-  console.log("req.user is", req.user);
   let passedPurchaseLists;
   // 유저에 저장된 구매 목록을 불러와서 리버스해서 위의 변수에 넣는다.
   if (req.user) {
@@ -599,7 +574,6 @@ export const ordersJp = async (req, res) => {
   } else {
     passedPurchaseLists = req.session.purchaseLists;
   }
-  console.log("ordersJp in", passedPurchaseLists);
   req.session.purchaseLists = [];
   const isData =
     passedPurchaseLists !== undefined && passedPurchaseLists.length !== 0;
@@ -618,8 +592,6 @@ export const ordersCheckJp = (req, res) => res.render("orders_check_jp");
 
 export const postOrdersCheck = async (req, res) => {
   const { orderInfo, email } = req.body;
-  console.log("orderInfo is", orderInfo);
-  console.log("email is", email);
   try {
     const purchaseLists = await Purchaselist.find({
       purchaseInfo: orderInfo,
@@ -635,14 +607,11 @@ export const postOrdersCheck = async (req, res) => {
 
 export const postOrdersCheckKr = async (req, res) => {
   const { orderInfo, email } = req.body;
-  console.log("orderInfo is", orderInfo);
-  console.log("email is", email);
   try {
     const purchaseLists = await Purchaselist.find({
       purchaseInfo: orderInfo,
       ordererEmail: email,
     });
-    console.log("postOrdersCheckKr", purchaseLists);
     req.session.purchaseLists = purchaseLists;
     res.redirect(`/store${routes.orders_kr}`);
   } catch (e) {
@@ -653,14 +622,11 @@ export const postOrdersCheckKr = async (req, res) => {
 
 export const postOrdersCheckJp = async (req, res) => {
   const { orderInfo, email } = req.body;
-  console.log("orderInfo is", orderInfo);
-  console.log("email is", email);
   try {
     const purchaseLists = await Purchaselist.find({
       purchaseInfo: orderInfo,
       ordererEmail: email,
     });
-    console.log(purchaseLists);
     req.session.purchaseLists = purchaseLists;
     res.redirect(`/store${routes.orders_jp}`);
   } catch (e) {
@@ -716,10 +682,7 @@ export const refund = async (req, res) => {
 export const refundKr = async (req, res) => {
   const currentPage = parseInt(req.query.page || "1", 10);
   const { purchaseInfo, ordererEmail } = req.body;
-  console.log("purchaseInfo is", purchaseInfo);
-  console.log("ordererEmail is", ordererEmail);
   const item = await Purchaselist.findOne({ purchaseInfo, ordererEmail });
-  console.log("item is ", item);
   try {
     const getToken = await axios({
       url: "https://api.iamport.kr/users/getToken",
@@ -744,7 +707,6 @@ export const refundKr = async (req, res) => {
       },
     });
     const { response } = getCancelData.data;
-    console.log("response is", response);
     const updateData = {
       shipStatus: "cancel",
       shipStatus_kr: "결제 취소",
@@ -765,7 +727,6 @@ export const refundJp = async (req, res) => {
   const currentPage = parseInt(req.query.page || "1", 10);
   const { purchaseInfo, ordererEmail } = req.body;
   const item = await Purchaselist.findOne({ purchaseInfo, ordererEmail });
-  console.log("item is ", item);
   try {
     const getToken = await axios({
       url: "https://api.iamport.kr/users/getToken",

@@ -73,7 +73,6 @@ if (sameRecipientCheck) {
       orderForm.recipientCountry.value = country;
       const checkLang = extractPathname(window.location.pathname);
       if (checkLang === "en") {
-        console.log("country is", country);
         countrySelected[1].children[0].innerHTML = country;
         let pinkCnt, greenCnt;
         // 여기서 나라에 따라 배송비와 계산비가 달라지는게 처리되어야함
@@ -122,7 +121,6 @@ const paymentBtnHandler = async (e) => {
   const buyer_postcode = orderForm.ordererPostalCode.value;
   const recipient_postcode = orderForm.recipientPostalCode.value;
   const shipMessage = orderForm.shipMessage.value;
-  console.log("recipientCountry is", recipientCountry);
   let pinkCnt, greenCnt;
   // 제품의 개수까지 보내야함
   for (let i = 0; i < productCnt.length; i++) {
@@ -198,10 +196,6 @@ const paymentBtnHandler = async (e) => {
               merchant_uid: rsp.merchant_uid,
             },
           });
-          console.log(data);
-          // 성공하면 data 잘뜨네
-          // 성공했으니 리다이렉트 시켜줘야함
-
           switch (data.status) {
             case "success":
               // 성공시 로직인데 물건 산 곳을 확인할 수 있는 곳으로 리다이렉트 되어야함
@@ -210,7 +204,6 @@ const paymentBtnHandler = async (e) => {
               // 왜냐면 폼을 만들면 postOrdersCheck로 보내야 하니까?
               let lang = window.location.pathname.split("/"); // /payment, /payment/kr, /payment/jp
               lang = lang[lang.length - 1];
-              console.log(lang);
               let form = document.createElement("form");
               if (lang === "kr") {
                 form.action = "/store/orders/check/kr";
@@ -232,7 +225,6 @@ const paymentBtnHandler = async (e) => {
               form.appendChild(orderInfoInput);
               form.appendChild(emailInput);
               orderForm.appendChild(form);
-              console.log(form);
               document.getElementById("redirectForm").submit();
               break;
           }
@@ -339,10 +331,6 @@ const paymentBtnHandlerKr = async (e) => {
               merchant_uid: rsp.merchant_uid,
             },
           });
-          console.log(data);
-          // 성공하면 data 잘뜨네
-          // 성공했으니 리다이렉트 시켜줘야함
-
           switch (data.status) {
             case "success":
               // 성공시 로직인데 물건 산 곳을 확인할 수 있는 곳으로 리다이렉트 되어야함
@@ -351,7 +339,6 @@ const paymentBtnHandlerKr = async (e) => {
               // 왜냐면 폼을 만들면 postOrdersCheck로 보내야 하니까?
               let lang = window.location.pathname.split("/"); // /payment, /payment/kr, /payment/jp
               lang = lang[lang.length - 1];
-              console.log(lang);
               let form = document.createElement("form");
               if (lang === "kr") {
                 form.action = "/store/orders/check/kr";
@@ -373,7 +360,6 @@ const paymentBtnHandlerKr = async (e) => {
               form.appendChild(orderInfoInput);
               form.appendChild(emailInput);
               orderForm.appendChild(form);
-              console.log(form);
               document.getElementById("redirectForm").submit();
               break;
           }
@@ -483,10 +469,6 @@ const paymentBtnHandlerJp = async (e) => {
               merchant_uid: rsp.merchant_uid,
             },
           });
-          console.log(data);
-          // 성공하면 data 잘뜨네
-          // 성공했으니 리다이렉트 시켜줘야함
-
           switch (data.status) {
             case "success":
               // 성공시 로직인데 물건 산 곳을 확인할 수 있는 곳으로 리다이렉트 되어야함
@@ -495,7 +477,6 @@ const paymentBtnHandlerJp = async (e) => {
               // 왜냐면 폼을 만들면 postOrdersCheck로 보내야 하니까?
               let lang = window.location.pathname.split("/"); // /payment, /payment/kr, /payment/jp
               lang = lang[lang.length - 1];
-              console.log(lang);
               let form = document.createElement("form");
               if (lang === "kr") {
                 form.action = "/store/orders/check/kr";
@@ -517,7 +498,6 @@ const paymentBtnHandlerJp = async (e) => {
               form.appendChild(orderInfoInput);
               form.appendChild(emailInput);
               orderForm.appendChild(form);
-              console.log(form);
               document.getElementById("redirectForm").submit();
               break;
           }
@@ -560,7 +540,6 @@ if (countrySelected.length) {
         carret.classList.add("fa-caret-down");
       }
       this.nextSibling.classList.toggle("select--hide");
-      console.log("clicked");
     });
   }
 }
@@ -571,7 +550,6 @@ if (ordererCountries.length) {
       countrySelected[0].children[0].innerHTML = this.innerHTML;
       const ordererInput = document.getElementById("ordererCountry");
       ordererInput.value = this.innerHTML;
-      console.dir(ordererInput.value);
       countrySelected[0].click();
     });
   }

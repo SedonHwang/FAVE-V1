@@ -18,7 +18,6 @@ const productPrice = {
 const [urlProduct, urlLanguage] = extractFromUrl(
   window.location.href.split("/store/")[1]
 );
-console.dir(productsWrapper);
 
 if (selectSelected) {
   selectSelected.addEventListener("click", function () {
@@ -31,7 +30,6 @@ if (selectSelected) {
       carret.classList.add("fa-caret-down");
     }
     this.nextSibling.classList.toggle("select--hide");
-    console.log("clicked");
   });
 }
 
@@ -188,14 +186,12 @@ if (displayImg) {
 // }
 
 function checkExistedItem(item) {
-  console.log(item);
   if (productsWrapper.children.length == 0) return false;
   // 자식의 수가 없다는건 아이템이 하나도 없다는 뜻이니 함수는 바로 false를 리턴
   let result = false; //같은 아이템이 들어있으면 true 아니면 false
   for (let i = 0; i < productsWrapper.children.length; i++) {
     //자식들 숫자만큼 돈다.
     const existedItem = productsWrapper.children[i].children[0].innerHTML;
-    console.log(existedItem); //label--text
     if (existedItem === item) {
       result = true;
       // 이미 같은 아이템이 들어있다면 true

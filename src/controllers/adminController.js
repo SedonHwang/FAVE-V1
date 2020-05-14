@@ -75,7 +75,6 @@ export const postUploadNotice = async (req, res) => {
       description_jp,
       notice_img: path,
     });
-    console.log(newNotice);
     res.redirect("/admin/notice/1");
   } catch (e) {
     console.log(e);
@@ -159,8 +158,6 @@ export const payments = async (req, res) => {
     }
     const paymentCnt = await Purchaselist.countDocuments();
     const lastPage = Math.ceil(paymentCnt / 10);
-    console.log("lastPage is", lastPage);
-    console.log("currentPage is", currentPage);
     res.render("admin_payments", {
       passedPurchaseLists: lists,
       isData,
@@ -242,7 +239,6 @@ export const postPayments = async (req, res) => {
         new: true,
       }
     );
-    console.log(list);
   } catch (e) {
     console.log(e);
   }
