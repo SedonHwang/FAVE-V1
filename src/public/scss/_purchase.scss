@@ -318,4 +318,257 @@
       }
     }
   }
+  .purchase--tab {
+    .purchase--detail {
+      margin-top: 40px;
+      @include breakpoint(tablet) {
+        margin-top: 35px;
+      }
+      @include breakpoint(mobile) {
+        margin-top: 30px;
+      }
+      .purchase--headers {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h3 {
+          font-size: 32px;
+          font-weight: 600;
+          color: $font-gray;
+          display: inline-block;
+          border-bottom: 2.5px solid $font-gray;
+          margin: 20px 0;
+          padding-bottom: 15px;
+          @include breakpoint(tablet) {
+            font-size: 27px;
+            margin: 18px 0;
+          }
+          @include breakpoint(mobile) {
+            font-size: 22px;
+            margin: 16px 0;
+          }
+        }
+      }
+      .purchase--imgs {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        @include breakpoint(tablet) {
+          margin-top: 23px;
+          margin-bottom: 23px;
+        }
+        @include breakpoint(mobile) {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+        .detail--img {
+          width: 70%;
+          margin: 0 auto;
+          @include breakpoint(tablet) {
+            width: 80%;
+          }
+          @include breakpoint(mobile) {
+            width: 90%;
+          }
+          img {
+            width: 100%;
+          }
+          &:nth-child(2) {
+            margin-top: 20px;
+            @include breakpoint(tablet) {
+              margin-top: 18px;
+            }
+            @include breakpoint(mobile) {
+              margin-top: 16px;
+            }
+          }
+        }
+      }
+      .purchase--desc {
+        width: 60%;
+        margin: 0 auto;
+        @include breakpoint(tablet) {
+          width: 80%;
+        }
+        @include breakpoint(mobile) {
+          width: 90%;
+        }
+        p {
+          font-size: 18px;
+          line-height: 1.5;
+          text-align: center;
+          @include breakpoint(tablet) {
+            font-size: 17px;
+            line-height: 1.4;
+          }
+          @include breakpoint(mobile) {
+            font-size: 16px;
+            line-height: 1.3;
+          }
+        }
+        .space {
+          height: 18px;
+        }
+      }
+    }
+  }
+  .purchase--spec {
+    margin: 30px auto;
+    display: flex;
+    width: 70%;
+    @include breakpoint(tablet) {
+      width: 80%;
+      flex-direction: column;
+    }
+    @include breakpoint(mobile) {
+      width: 95%;
+      flex-direction: column;
+    }
+    .spec--img {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include breakpoint(tablet) {
+        width: 75%;
+        margin: 0 auto;
+      }
+      @include breakpoint(mobile) {
+        width: 80%;
+        margin: 0 auto;
+      }
+      img {
+        width: 85%;
+      }
+    }
+    .spec--desc {
+      width: 50%;
+      @include breakpoint(tablet) {
+        width: 83%;
+        margin: 0 auto;
+      }
+      @include breakpoint(mobile) {
+        width: 90%;
+        margin: 0 auto;
+      }
+      h4 {
+        font-size: 20px;
+        font-weight: 600;
+        padding: 12px 8px;
+        border-bottom: 2px solid $font-gray;
+        text-align: right;
+        margin-bottom: 20px;
+        @include breakpoint(tablet) {
+          font-size: 19px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 18px;
+        }
+      }
+      ul {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        li {
+          font-size: 17px;
+          color: $font-gray;
+          @include breakpoint(tablet) {
+            font-size: 16px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 15px;
+          }
+          &:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+.center--icons {
+  width: 100%;
+  background-color: $light-gray;
+  margin-top: 45px;
+  @include breakpoint(tablet) {
+    margin-top: 35px;
+  }
+  @include breakpoint(mobile) {
+    margin-top: 30px;
+  }
+  .center--icons__wrapper {
+    width: 100%;
+    max-width: 1170px;
+    padding: 30px 15px;
+    display: flex;
+    margin: 0 auto;
+    @include breakpoint(tablet) {
+      flex-direction: column;
+      width: 80%;
+    }
+    @include breakpoint(mobile) {
+      flex-direction: column;
+      width: 90%;
+    }
+    .icon--columns {
+      display: flex;
+      width: 50%;
+      @include breakpoint(tablet) {
+        width: 100%;
+        &:first-child {
+          margin-bottom: 20px;
+        }
+      }
+      @include breakpoint(mobile) {
+        width: 100%;
+        &:first-child {
+          margin-bottom: 18px;
+        }
+      }
+      .center--icon {
+        width: 50%;
+        .icon--img {
+          width: 80%;
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i {
+            font-size: 50px;
+            color: $font-gray;
+            @include breakpoint(tablet) {
+              font-size: 40px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 35px;
+            }
+          }
+        }
+        h4 {
+          font-size: 20px;
+          font-weight: bold;
+          margin: 15px 0;
+          text-align: center;
+          @include breakpoint(tablet) {
+            font-size: 19px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 18px;
+          }
+        }
+        p {
+          width: 60%;
+          margin: 0 auto;
+          color: $font-gray;
+          line-height: 1.3;
+          @include breakpoint(tablet) {
+            font-size: 15px;
+          }
+          @include breakpoint(mobile) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }
