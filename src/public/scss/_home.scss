@@ -110,7 +110,7 @@
             color: white;
             position: absolute;
             top: 24px;
-            left: 24px;
+            left: 12px;
             z-index: 3;
             @include breakpoint(tablet) {
               font-size: 28px;
@@ -118,7 +118,7 @@
             @include breakpoint(mobile) {
               font-size: 18px;
               top: 15px;
-              left: 15px;
+              left: 7px;
             }
           }
           .image__item {
@@ -147,7 +147,7 @@
           a {
             h3 {
               color: $font-orange;
-              transform: scale(1.1);
+              transform: scale(1.05);
               transition: 0.2s;
             }
             .image__item {
