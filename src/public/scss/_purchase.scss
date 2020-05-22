@@ -484,6 +484,84 @@
       }
     }
   }
+  .desc--accordion {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+    @include breakpoint(tablet) {
+      width: 80%;
+      margin-top: 45px;
+    }
+    @include breakpoint(mobile) {
+      width: 95%;
+      margin-top: 40px;
+    }
+    .accordion__header {
+      display: flex;
+      border-bottom: 0.9px solid $font-gray;
+      border-top: 0.9px solid $font-gray;
+      box-shadow: 0 0 0 0 $font-gray, 0 0.9px 0 0 $font-gray,
+        0 0 0 0 $font-gray inset, 0 0.9px 0 0 $font-gray inset;
+      align-items: center;
+      padding: 6px 9px;
+      cursor: pointer;
+      h3 {
+        font-size: 24px;
+        font-weight: bold;
+        color: $font-gray;
+        flex: 1;
+        @include breakpoint(tablet) {
+          font-size: 22px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 20px;
+        }
+      }
+      .icons {
+        span {
+          i {
+            font-size: 28px;
+            color: $font-gray;
+            @include breakpoint(tablet) {
+              font-size: 26px;
+            }
+            @include breakpoint(mobile) {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+      &.current + .accordion__body {
+        display: block;
+      }
+    }
+    .accordion__body {
+      display: none;
+      padding: 8px 14px;
+      line-height: 1.5;
+      .text--header {
+        font-size: 18px;
+        font-weight: 600;
+        color: $font-gray;
+        @include breakpoint(tablet) {
+          font-size: 17px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 16px;
+        }
+      }
+      p {
+        font-size: 17px;
+        margin: 12px 0 12px 40px;
+        @include breakpoint(tablet) {
+          font-size: 16px;
+        }
+        @include breakpoint(mobile) {
+          font-size: 15px;
+        }
+      }
+    }
+  }
 }
 
 .center--icons {

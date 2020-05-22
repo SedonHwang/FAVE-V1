@@ -18,6 +18,7 @@ const productPrice = {
 const [urlProduct, urlLanguage] = extractFromUrl(
   window.location.href.split("/store/")[1]
 );
+const accordionHeaders = document.getElementsByClassName("accordion__header");
 
 if (selectSelected) {
   selectSelected.addEventListener("click", function () {
@@ -176,6 +177,40 @@ if (displayImg) {
   }
 }
 
+if (accordionHeaders.length) {
+  function carretToggle(carret) {
+    if (carret.classList.contains("fa-caret-down")) {
+      carret.classList.remove("fa-caret-down");
+      carret.classList.add("fa-caret-up");
+    } else {
+      carret.classList.remove("fa-caret-up");
+      carret.classList.add("fa-caret-down");
+    }
+  }
+  for (let i = 0; i < accordionHeaders.length; i++) {
+    accordionHeaders[i].addEventListener("click", function () {
+      const siblings = this.parentElement.children;
+      const carret = this.children[1].children[0].children[0];
+      for (let j = 0; j < siblings.length; j += 2) {
+        if (siblings[j].classList.contains("current")) {
+          // 펼쳐져있는 것을 누르면 닫힘
+          if (siblings[j].innerHTML === this.innerHTML) {
+            siblings[j].classList.toggle("current");
+            carretToggle(carret);
+            return;
+          }
+          siblings[j].classList.remove("current");
+          const siblingsCarret =
+            siblings[j].children[1].children[0].children[0];
+          carretToggle(siblingsCarret);
+          break;
+        }
+      }
+      this.classList.add("current");
+      carretToggle(carret);
+    });
+  }
+}
 // function numberWithCommas(x) {
 //   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 // }
