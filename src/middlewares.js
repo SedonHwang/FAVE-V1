@@ -11,7 +11,8 @@ export const localsMiddleware = (req, res, next) => {
 
 export const redirectWWW = (req, res, next) => {
   const host = req.get("host");
-  if (host === "faves.co.kr") {
+  const protocol = req.headers["x-forwarded-proto"] || req.protocol;
+  if (host === "faves.co.kr" || protocol !== "https") {
     res.redirect(301, `https://www.faves.co.kr${req.url}`);
   } else {
     next();
