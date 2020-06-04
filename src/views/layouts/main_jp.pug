@@ -4,7 +4,7 @@ html
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no")
         meta(property="og:site_name", content="FAVE")
-        meta(name="keywords", content="fave, balance, fitness")
+        meta(name="keywords", content="fave, フェーブ, 健康な友達")
         meta(property="og:title", content="FAVE")
         meta(property="og:site_name", content="FAVE")
         meta(property="og:description", content="Smart Balance Trainer FAVE")
@@ -33,3 +33,20 @@ html
         //- iamprot.payment.js
         script(type="text/javascript", src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js")
         script(src="/js/main.js")
+        script(type='application/ld+json').
+            [
+             {
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "name": "FAVE",
+              "url": "https://www.faves.co.kr",
+              "sameAs" : [
+               "https://smartstore.naver.com/healthyfriends/products/4891822755",
+               "https://www.facebook.com/FAVE.world/",
+               "https://www.instagram.com/fave.korea/",
+               "https://www.instagram.com/fave.korea/",
+               "https://twitter.com/57vt2EMECU3aBE8",
+               "https://www.youtube.com/channel/UCJY5aiBe5M9wKhzKTI1OuA?view_as=subscriber"
+              ]
+             }
+            ]
