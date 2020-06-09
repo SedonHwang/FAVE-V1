@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     .main--image--right
-        img(src="/img/store/store-img.jpg")
+        img(src="/img/store/store-img.jpg", alt="")
         .main--image__text
             h1
                 span STO 
@@ -17,7 +17,7 @@ block content
         .purchase--item--wrapper
             .item--block
                 .img--wrapper
-                    img#displayImg(src="/img/store/350-pink-diagonal.jpg")
+                    img#displayImg(src="/img/store/350-pink-diagonal.jpg", alt="fave display view")
                 .img--desc
                     p
                         | The narrow ground plane and
@@ -25,17 +25,17 @@ block content
                         | for athletes.
                 .img--wrapper--small
                     .small--img.choice
-                        img(src="/img/store/350-pink-diagonal.jpg")
+                        img(src="/img/store/350-pink-diagonal.jpg", alt="fave pink diagonal view")
                     .small--img
-                        img(src="/img/store/350-green-diagonal.jpg")
+                        img(src="/img/store/350-green-diagonal.jpg", alt="fave green diagonal view")
                     .small--img
-                        img(src="/img/store/350-pink-top.jpg")
+                        img(src="/img/store/350-pink-top.jpg", alt="fave pink top view")
                     .small--img
-                        img(src="/img/store/350-green-top.jpg")
+                        img(src="/img/store/350-green-top.jpg", alt="fave green top view")
                     .small--img
-                        img(src="/img/store/350-pink-side.jpg")
+                        img(src="/img/store/350-pink-side.jpg", alt="fave pink side view")
                     .small--img
-                        img(src="/img/store/350-green-side.jpg")
+                        img(src="/img/store/350-green-side.jpg", alt="fave green side view")
             .item--block
                 form(action=`/store${routes.payment}` method="get")
                     .option--wrapper
@@ -79,9 +79,9 @@ block content
                     h3 Smart Balance Trainer 350
                 .purchase--imgs
                     .detail--img
-                        img(src="/img/store/350-natural.jpg")
+                        img(src="/img/store/350-natural.jpg", alt="fave 350 on the table")
                     .detail--img
-                        img(src="/img/store/350-natural2.jpg")
+                        img(src="/img/store/350-natural2.jpg", alt="fave 350 on the bed")
                 .purchase--desc
                     p FAVE350 is recommended for professional athletes and athletic professionals.  
                     p This product is optimized for use in fitness centers or professional fitness centers. 
@@ -121,7 +121,7 @@ block content
     .purchase--page--wrapper
         .purchase--spec
             .spec--img
-                img(src="/img/store/350-spec.jpg")
+                img(src="/img/store/350-spec.jpg", alt="fave 350 spec")
             .spec--desc
                 h4 FAVE spec
                 ul

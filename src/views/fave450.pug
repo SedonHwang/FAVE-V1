@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     .main--image--right
-        img(src="/img/store/store-img.jpg")
+        img(src="/img/store/store-img.jpg", alt="")
         .main--image__text
             h1
                 span STO 
@@ -17,7 +17,7 @@ block content
         .purchase--item--wrapper
             .item--block
                 .img--wrapper
-                    img#displayImg(src="/img/store/450-pink-diagonal.jpg")
+                    img#displayImg(src="/img/store/450-pink-diagonal.jpg", alt="fave display view")
                 .img--desc
                     p
                         | The wide ground plane and low ground height
@@ -26,17 +26,17 @@ block content
                         | It can be used for women and the elderly.
                 .img--wrapper--small
                     .small--img.choice
-                        img(src="/img/store/450-pink-diagonal.jpg")
+                        img(src="/img/store/450-pink-diagonal.jpg", alt="fave pink diagonal view")
                     .small--img
-                        img(src="/img/store/450-green-diagonal.jpg")
+                        img(src="/img/store/450-green-diagonal.jpg", alt="fave green diagonal view")
                     .small--img
-                        img(src="/img/store/450-pink-top.jpg")
+                        img(src="/img/store/450-pink-top.jpg", alt="fave pink top view")
                     .small--img
-                        img(src="/img/store/450-green-top.jpg")
+                        img(src="/img/store/450-green-top.jpg", alt="fave green top view")
                     .small--img
-                        img(src="/img/store/450-pink-side.jpg")
+                        img(src="/img/store/450-pink-side.jpg", alt="fave pink side view")
                     .small--img
-                        img(src="/img/store/450-green-side.jpg")
+                        img(src="/img/store/450-green-side.jpg", alt="fave green side view")
             .item--block
                 form(action=`/store${routes.payment}` method="get")
                     .option--wrapper
@@ -80,9 +80,9 @@ block content
                     h3 Smart Balance Trainer 450
                 .purchase--imgs
                     .detail--img
-                        img(src="/img/store/450-natural.jpg")
+                        img(src="/img/store/450-natural.jpg", alt="fave 450 on the chair")
                     .detail--img
-                        img(src="/img/store/450-natural2.jpg")
+                        img(src="/img/store/450-natural2.jpg", alt="fave 450 on the table")
                 .purchase--desc
                     p FAVE450 is recommended for the general public and children.  
                     p It is recommended for young children, elderly people, or sports beginners. 
@@ -122,7 +122,7 @@ block content
     .purchase--page--wrapper
         .purchase--spec
             .spec--img
-                img(src="/img/store/450-spec.jpg")
+                img(src="/img/store/450-spec.jpg", alt="fave 450 spec")
             .spec--desc
                 h4 FAVE spec
                 ul
@@ -130,7 +130,7 @@ block content
                     li FAVE smart balance trainer
                 ul
                     li Weight
-                    li 3.3 lb
+                    li 3.9 lb
                 ul
                     li Width
                     li 17.7 in

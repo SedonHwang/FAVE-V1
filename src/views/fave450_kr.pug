@@ -2,7 +2,7 @@ extends layouts/main_kr
 
 block content
     .main--image--right
-        img(src="/img/store/store-img.jpg")
+        img(src="/img/store/store-img.jpg", alt="")
         .main--image__text
             h1
                 span STO 
@@ -17,24 +17,24 @@ block content
         .purchase--item--wrapper
             .item--block
                 .img--wrapper
-                    img#displayImg(src="/img/store/450-pink-diagonal.jpg")
+                    img#displayImg(src="/img/store/450-pink-diagonal.jpg", alt="fave display view")
                 .img--desc
                     p
                         | FAVE 450은 일반인 및 어린이들이 사용하시기 좋은 제품입니다.   
                         | 발의 접지면이 넓고 지면에서의 높이가 낮아 안정감있게 사용할 수 있습니다.
                 .img--wrapper--small
                     .small--img.choice
-                        img(src="/img/store/450-pink-diagonal.jpg")
+                        img(src="/img/store/450-pink-diagonal.jpg", alt="fave pink diagonal view")
                     .small--img
-                        img(src="/img/store/450-green-diagonal.jpg")
+                        img(src="/img/store/450-green-diagonal.jpg", alt="fave green diagonal view")
                     .small--img
-                        img(src="/img/store/450-pink-top.jpg")
+                        img(src="/img/store/450-pink-top.jpg", alt="fave pink top view")
                     .small--img
-                        img(src="/img/store/450-green-top.jpg")
+                        img(src="/img/store/450-green-top.jpg", alt="fave green top view")
                     .small--img
-                        img(src="/img/store/450-pink-side.jpg")
+                        img(src="/img/store/450-pink-side.jpg", alt="fave pink side view")
                     .small--img
-                        img(src="/img/store/450-green-side.jpg")
+                        img(src="/img/store/450-green-side.jpg", alt="fave green side view")
             .item--block
                 form(action=`/store${routes.payment_kr}` method="get")
                     .option--wrapper
@@ -78,9 +78,9 @@ block content
                     h3 Smart Balance Trainer 450
                 .purchase--imgs
                     .detail--img
-                        img(src="/img/store/450-natural.jpg")
+                        img(src="/img/store/450-natural.jpg", alt="fave 450 on the chair")
                     .detail--img
-                        img(src="/img/store/450-natural2.jpg")
+                        img(src="/img/store/450-natural2.jpg", alt="fave 450 on the table")
                 .purchase--desc
                     p FAVE450은 일반인 및 어린이들이 사용하기가 좋습니다. 
                     p 어린아이나 노인 또는 운동초입자에게 추천해드립니다. 
@@ -121,7 +121,7 @@ block content
     .purchase--page--wrapper
         .purchase--spec
             .spec--img
-                img(src="/img/store/350-spec.jpg")
+                img(src="/img/store/450-spec.jpg", alt="fave 450 spec")
             .spec--desc
                 h4 제원
                 ul
@@ -129,10 +129,10 @@ block content
                     li FAVE 스마트 밸런스 트레이닝
                 ul
                     li 무게
-                    li 1.5 kg
+                    li 1.8 kg
                 ul
                     li 넓이
-                    li 350 mm
+                    li 450 mm
                 ul
                     li 높이
                     li 150 mm

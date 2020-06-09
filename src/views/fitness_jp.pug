@@ -2,7 +2,7 @@ extends layouts/main_jp
 
 block content
     .main--image--right
-        img(src="/img/fitness-img.png")
+        img(src="/img/fitness-img.png", alt="")
         .main--image__text
             h1
                 span FITN
@@ -14,7 +14,7 @@ block content
             li Home > About > FITNESS
     .fitness-wrapper
         .paragon
-            img(src="/img/pentagon-balance-jp.png")
+            img(src="/img/pentagon-balance-jp.png", alt="fave's feature")
         .download-wrapper
             h2 Smart Balance Training
             .header-rect
@@ -28,17 +28,17 @@ block content
                 .link__wrapper
                     .link
                         a(href="https://play.google.com/store/apps/details?id=com.strongfriends.apps.favefitness&hl=ja")
-                            img(src="/img/googleplay.png")
+                            img(src="/img/googleplay.png", alt="fave fit download on the google play")
                     .link
                         a(href="https://apps.apple.com/jp/app/favefit/id1487576884")
-                            img(src="/img/appstore.png")
+                            img(src="/img/appstore.png", alt="fave fit download on the app store")
                 .download__desc
                     p フィットネスアプリは グーグルストアと アップストアからダウンロードできます.
                     p &#8251; アンドロイド 5.0以上 / IOS 9.0以上 / ブルートゥース 4.2以上
         .balance-trainer
             .balance-trainer__wrapper
                 .balance-trainer__img
-                    img(src="/img/together-fave.png")
+                    img(src="/img/together-fave.png", alt="couple with fave")
                 p.balance-trainer__text
                     span スマートバランストレーナー
                     | は 中心軸の様々な 変化を通じて, 短時間内に多くの運動量と
@@ -57,10 +57,10 @@ block content
                             | 標準値と 自分のボディ情報を 比較することができます.
                             | 使用者の体力測定結果を もとにオーダーメード運動プログラムを 設計します.
                     .app__img
-                        img(src="/img/fitness/app-mybody.png")
+                        img(src="/img/fitness/app-mybody.png", alt="my info page")
                 .app__columns.reverse
                     .app__img
-                        img(src="/img/fitness/app-cop.png")
+                        img(src="/img/fitness/app-cop.png", alt="cop page")
                     .app__text
                         .app__header
                             h4.align-right Training Mode
@@ -82,10 +82,10 @@ block content
                             | COP(Center Of Pressure), VO2MAX, カロリー消耗量など
                             | 様々な 情報を 測定して 皆さんの健康を スマートに管理してくれます.
                     .app__img
-                        img(src="/img/fitness/app-result.png")
+                        img(src="/img/fitness/app-result.png", alt="result page")
                 .app__columns.reverse
                     .app__img
-                        img(src="/img/fitness/app-history.png")
+                        img(src="/img/fitness/app-history.png", alt="history page")
                     .app__text
                         .app__header
                             h4.align-right Record

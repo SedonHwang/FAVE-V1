@@ -2,7 +2,7 @@ extends layouts/main_jp
 
 block content
     .main--image--right
-        img(src="/img/store/store-img.jpg")
+        img(src="/img/store/store-img.jpg", alt="")
         .main--image__text
             h1
                 span STO 
@@ -17,7 +17,7 @@ block content
         .purchase--item--wrapper
             .item--block
                 .img--wrapper
-                    img#displayImg(src="/img/store/450-pink-diagonal.jpg")
+                    img#displayImg(src="/img/store/450-pink-diagonal.jpg", alt="fave display view")
                 .img--desc
                     p
                         | 接地面が 広く, 地面からの高さが 低く 安全に
@@ -26,17 +26,17 @@ block content
                         | 女性と お年寄りまで 多様に 使用できます.
                 .img--wrapper--small
                     .small--img.choice
-                        img(src="/img/store/450-pink-diagonal.jpg")
+                        img(src="/img/store/450-pink-diagonal.jpg", alt="fave pink diagonal view")
                     .small--img
-                        img(src="/img/store/450-green-diagonal.jpg")
+                        img(src="/img/store/450-green-diagonal.jpg", alt="fave green diagonal view")
                     .small--img
-                        img(src="/img/store/450-pink-top.jpg")
+                        img(src="/img/store/450-pink-top.jpg", alt="fave pink top view")
                     .small--img
-                        img(src="/img/store/450-green-top.jpg")
+                        img(src="/img/store/450-green-top.jpg", alt="fave green top view")
                     .small--img
-                        img(src="/img/store/450-pink-side.jpg")
+                        img(src="/img/store/450-pink-side.jpg", alt="fave pink side view")
                     .small--img
-                        img(src="/img/store/450-green-side.jpg")
+                        img(src="/img/store/450-green-side.jpg", alt="fave green side view")
             .item--block
                 form(action=`/store${routes.payment_jp}` method="get")
                     .option--wrapper
@@ -80,9 +80,9 @@ block content
                     h3 Smart Balance Trainer 450
                 .purchase--imgs
                     .detail--img
-                        img(src="/img/store/450-natural.jpg")
+                        img(src="/img/store/450-natural.jpg", alt="fave 450 on the chair")
                     .detail--img
-                        img(src="/img/store/450-natural2.jpg")
+                        img(src="/img/store/450-natural2.jpg", alt="fave 450 on the table")
                 .purchase--desc
                     p FAVE450は専門選手または, 運動熟練者にお勧めします. 
                     p ジムや専門フィットネス場で使用することが最適化された製品です. 
@@ -121,7 +121,7 @@ block content
     .purchase--page--wrapper
         .purchase--spec
             .spec--img
-                img(src="/img/store/450-spec.jpg")
+                img(src="/img/store/450-spec.jpg", alt="fave 450 spec")
             .spec--desc
                 h4 諸元
                 ul
@@ -129,7 +129,7 @@ block content
                     li FAVEスマートアバランストレーニング
                 ul
                     li 重さ
-                    li 1 kg
+                    li 1.8 kg
                 ul
                     li 広さ
                     li 450 mm
