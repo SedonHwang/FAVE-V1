@@ -9,6 +9,8 @@ html
         meta(property="og:site_name", content="FAVE")
         meta(property="og:description", content="Smart Balance Trainer FAVE")
         meta(property="og:image", content="img/img-link.jpg")
+        meta(property="og:url", content="https://www.faves.co.kr")
+        meta(property="og:type", content="website")
         meta(name="description", content="실시간 분석을 제공하여 홈트, 밸런스 교정, 다이어트 효과를 높이는 스마트한 운동기구, FAVE를 제작하는 (주)건강한친구입니다.")
         meta(name="naver-site-verification" content="fd324afff14ff30a594559f86d784c1ba15f7674")
         link(rel="icon", href="/img/favicon16.ico", sizes="16x16")
@@ -22,7 +24,10 @@ html
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'UA-151319325-1');
-        title FAVE
+        if title          
+            title= `${title} FAVE`
+        else
+            title FAVE
     body
         include ../partials/header_kr
         main

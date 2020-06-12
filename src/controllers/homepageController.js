@@ -14,34 +14,37 @@ const GOOGLE_MAP = process.env.GOOGLE_MAP;
 export const home = (req, res) => res.render("home");
 export const homeKr = (req, res) => res.render("home_kr");
 export const homeJp = (req, res) => res.render("home_jp");
-export const company = (req, res) => res.render("company", { GOOGLE_MAP });
-export const companyKr = (req, res) => res.render("company_kr", { GOOGLE_MAP });
-export const companyJp = (req, res) => res.render("company_jp", { GOOGLE_MAP });
+export const company = (req, res) =>
+  res.render("company", { GOOGLE_MAP, title: "StrongFriend" });
+export const companyKr = (req, res) =>
+  res.render("company_kr", { GOOGLE_MAP, title: "건강한친구" });
+export const companyJp = (req, res) =>
+  res.render("company_jp", { GOOGLE_MAP, title: "健康な友達" });
 
 export const getSignup = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("signup");
+    res.render("signup", { title: "Signup -" });
   } else {
-    res.render("signup", { errorMessage });
+    res.render("signup", { errorMessage, title: "Signup -" });
   }
 };
 
 export const getSignupKr = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("signup_kr");
+    res.render("signup_kr", { title: "회원가입 -" });
   } else {
-    res.render("signup_kr", { errorMessage });
+    res.render("signup_kr", { errorMessage, title: "회원가입 -" });
   }
 };
 
 export const getSignupJp = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("signup_jp");
+    res.render("signup_jp", { title: "会員登録 -" });
   } else {
-    res.render("signup_jp", { errorMessage });
+    res.render("signup_jp", { errorMessage, title: "会員登録 -" });
   }
 };
 
@@ -60,8 +63,8 @@ export const postSignup = async (req, res, next) => {
       postalCode,
       height,
       weight,
-      job
-    }
+      job,
+    },
   } = req;
   if (sex === undefined) {
     sex = "N";
@@ -90,7 +93,7 @@ export const postSignup = async (req, res, next) => {
         postalCode,
         height,
         weight,
-        job
+        job,
       });
       await User.register(user, password);
       next();
@@ -119,8 +122,8 @@ export const postSignupKr = async (req, res, next) => {
       postalCode,
       height,
       weight,
-      job
-    }
+      job,
+    },
   } = req;
   if (sex === undefined) {
     sex = "N";
@@ -149,7 +152,7 @@ export const postSignupKr = async (req, res, next) => {
         postalCode,
         height,
         weight,
-        job
+        job,
       });
       await User.register(user, password);
       next();
@@ -178,8 +181,8 @@ export const postSignupJp = async (req, res, next) => {
       postalCode,
       height,
       weight,
-      job
-    }
+      job,
+    },
   } = req;
   if (sex === undefined) {
     sex = "N";
@@ -208,7 +211,7 @@ export const postSignupJp = async (req, res, next) => {
         postalCode,
         height,
         weight,
-        job
+        job,
       });
       await User.register(user, password);
       next();
@@ -227,25 +230,27 @@ export const postSignupJp = async (req, res, next) => {
   }
 };
 
-export const getLogin = (req, res) => res.render("login");
+export const getLogin = (req, res) => res.render("login", { title: "Login -" });
 
-export const getLoginKr = (req, res) => res.render("login_kr");
+export const getLoginKr = (req, res) =>
+  res.render("login_kr", { title: "로그인 -" });
 
-export const getLoginJp = (req, res) => res.render("login_jp");
+export const getLoginJp = (req, res) =>
+  res.render("login_jp", { title: "ログイン -" });
 
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
-  successRedirect: routes.home
+  successRedirect: routes.home,
 });
 
 export const postLoginKr = passport.authenticate("local", {
   failureRedirect: routes.login_kr,
-  successRedirect: routes.homeKr
+  successRedirect: routes.homeKr,
 });
 
 export const postLoginJp = passport.authenticate("local", {
   failureRedirect: routes.login_jp,
-  successRedirect: routes.homeJp
+  successRedirect: routes.homeJp,
 });
 
 export const logout = (req, res) => {
@@ -267,28 +272,40 @@ export const logoutJp = (req, res) => {
 };
 
 //About Router Controller
-export const fitness = (req, res) => res.render("fitness");
-export const fitnessKr = (req, res) => res.render("fitness_kr");
-export const fitnessJp = (req, res) => res.render("fitness_jp");
+export const fitness = (req, res) =>
+  res.render("fitness", { title: "Fitness - " });
+export const fitnessKr = (req, res) =>
+  res.render("fitness_kr", { title: "피트니스 톺아보기 -" });
+export const fitnessJp = (req, res) =>
+  res.render("fitness_jp", { title: "フィットネス -" });
 
-export const game = (req, res) => res.render("game");
-export const gameKr = (req, res) => res.render("game_kr");
-export const gameJp = (req, res) => res.render("game_jp");
+export const game = (req, res) =>
+  res.render("game", { title: "Funny Games with" });
+export const gameKr = (req, res) =>
+  res.render("game_kr", { title: "게임 톺아보기 -" });
+export const gameJp = (req, res) =>
+  res.render("game_jp", { title: "ゲーム -" });
 
-export const character = (req, res) => res.render("character");
-export const characterKr = (req, res) => res.render("character_kr");
-export const characterJp = (req, res) => res.render("character_jp");
+export const character = (req, res) =>
+  res.render("character", { title: "Character of" });
+export const characterKr = (req, res) =>
+  res.render("character_kr", { title: "특징 알아보기 -" });
+export const characterJp = (req, res) =>
+  res.render("character_jp", { title: "特徴 -" });
 
-export const connection = (req, res) => res.render("connection");
-export const connectionKr = (req, res) => res.render("connection_kr");
-export const connectionJp = (req, res) => res.render("connection_jp");
+export const connection = (req, res) =>
+  res.render("connection", { title: "Connection of" });
+export const connectionKr = (req, res) =>
+  res.render("connection_kr", { title: "연결방법 알아보기 -" });
+export const connectionJp = (req, res) =>
+  res.render("connection_jp", { title: "接続方法 -" });
 
 //Notice Router Controller
 export const noticeHome = async (req, res) => {
   let errorMessage = req.flash("errorMessage");
   const renderedNotice = 4;
   const {
-    params: { page }
+    params: { page },
   } = req;
   try {
     const numberOfNotice = await Notice.countDocuments();
@@ -303,7 +320,8 @@ export const noticeHome = async (req, res) => {
         maxPage,
         page,
         numberOfNotice,
-        renderedNotice
+        renderedNotice,
+        title: "Notice of",
       });
     } else {
       res.render("notice_home", {
@@ -312,7 +330,8 @@ export const noticeHome = async (req, res) => {
         page,
         numberOfNotice,
         renderedNotice,
-        errorMessage
+        errorMessage,
+        title: "Notice of",
       });
     }
   } catch (e) {
@@ -325,7 +344,7 @@ export const noticeHomeKr = async (req, res) => {
   let errorMessage = req.flash("errorMessage");
   const renderedNotice = 4;
   const {
-    params: { page }
+    params: { page },
   } = req;
   try {
     const numberOfNotice = await Notice.countDocuments();
@@ -340,7 +359,8 @@ export const noticeHomeKr = async (req, res) => {
         maxPage,
         page,
         numberOfNotice,
-        renderedNotice
+        renderedNotice,
+        title: "공지사항 -",
       });
     } else {
       res.render("notice_home_kr", {
@@ -349,7 +369,8 @@ export const noticeHomeKr = async (req, res) => {
         page,
         numberOfNotice,
         renderedNotice,
-        errorMessage
+        errorMessage,
+        title: "공지사항 -",
       });
     }
   } catch (e) {
@@ -362,7 +383,7 @@ export const noticeHomeJp = async (req, res) => {
   let errorMessage = req.flash("errorMessage");
   const renderedNotice = 4;
   const {
-    params: { page }
+    params: { page },
   } = req;
   try {
     const numberOfNotice = await Notice.countDocuments();
@@ -377,7 +398,8 @@ export const noticeHomeJp = async (req, res) => {
         maxPage,
         page,
         numberOfNotice,
-        renderedNotice
+        renderedNotice,
+        title: "お知らせ事項 -",
       });
     } else {
       res.render("notice_home_jp", {
@@ -386,7 +408,8 @@ export const noticeHomeJp = async (req, res) => {
         page,
         numberOfNotice,
         renderedNotice,
-        errorMessage
+        errorMessage,
+        title: "お知らせ事項 -",
       });
     }
   } catch (e) {
@@ -397,17 +420,22 @@ export const noticeHomeJp = async (req, res) => {
 
 export const noticeDetail = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
     const notice = await Notice.findById(id);
     const prevNotice = await Notice.findOne({ _id: { $lt: id } }).sort({
-      _id: -1
+      _id: -1,
     });
     const nextNotice = await Notice.findOne({ _id: { $gt: id } }).sort({
-      _id: 1
+      _id: 1,
     });
-    res.render("notice_detail", { notice, prevNotice, nextNotice });
+    res.render("notice_detail", {
+      notice,
+      prevNotice,
+      nextNotice,
+      title: "Notice of",
+    });
   } catch (e) {
     console.log(e);
     res.redirect(routes.notice_home);
@@ -416,17 +444,22 @@ export const noticeDetail = async (req, res) => {
 
 export const noticeDetailKr = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
     const notice = await Notice.findById(id);
     const prevNotice = await Notice.findOne({ _id: { $lt: id } }).sort({
-      _id: -1
+      _id: -1,
     });
     const nextNotice = await Notice.findOne({ _id: { $gt: id } }).sort({
-      _id: 1
+      _id: 1,
     });
-    res.render("notice_detail_kr", { notice, prevNotice, nextNotice });
+    res.render("notice_detail_kr", {
+      notice,
+      prevNotice,
+      nextNotice,
+      title: "공지사항 -",
+    });
   } catch (e) {
     console.log(e);
     res.redirect(routes.notice_home_kr);
@@ -435,17 +468,22 @@ export const noticeDetailKr = async (req, res) => {
 
 export const noticeDetailJp = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
     const notice = await Notice.findById(id);
     const prevNotice = await Notice.findOne({ _id: { $lt: id } }).sort({
-      _id: -1
+      _id: -1,
     });
     const nextNotice = await Notice.findOne({ _id: { $gt: id } }).sort({
-      _id: 1
+      _id: 1,
     });
-    res.render("notice_detail_jp", { notice, prevNotice, nextNotice });
+    res.render("notice_detail_jp", {
+      notice,
+      prevNotice,
+      nextNotice,
+      title: "お知らせ事項",
+    });
   } catch (e) {
     console.log(e);
     res.redirect(routes.notice_home_jp);
@@ -454,7 +492,7 @@ export const noticeDetailJp = async (req, res) => {
 
 export const contactUs = async (req, res) => {
   const {
-    body: { username, email, description }
+    body: { username, email, description },
   } = req;
   if (!username || !email || !description) {
     return throwFlashMsg(req, res, "Plz fill in the blanks :(", "/notice/1");
@@ -463,15 +501,15 @@ export const contactUs = async (req, res) => {
     service: "Gmail",
     auth: {
       user: "fave188170@gmail.com",
-      pass: process.env.GOOGLE_PW
-    }
+      pass: process.env.GOOGLE_PW,
+    },
   });
   const mailOptions = {
     from: "fave188170@gmail.com",
     to:
       "ceo@faves.co.kr, minhan.park@faves.co.kr, ahyeon.lee@faves.co.kr, jeongyeon.lee@faves.co.kr, sumin.woo@faves.co.kr, kwanglae.jo@faves.co.kr",
     subject: `${username}님이 글을 남겼습니다.`,
-    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
+    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`,
   };
   await smtpTransport.sendMail(mailOptions, (error, response) => {
     if (error) {
@@ -486,7 +524,7 @@ export const contactUs = async (req, res) => {
 
 export const contactUsKr = async (req, res) => {
   const {
-    body: { username, email, description }
+    body: { username, email, description },
   } = req;
   if (!username || !email || !description) {
     return throwFlashMsg(
@@ -500,15 +538,15 @@ export const contactUsKr = async (req, res) => {
     service: "Gmail",
     auth: {
       user: "fave188170@gmail.com",
-      pass: process.env.GOOGLE_PW
-    }
+      pass: process.env.GOOGLE_PW,
+    },
   });
   const mailOptions = {
     from: "fave188170@gmail.com",
     to:
       "ceo@faves.co.kr, minhan.park@faves.co.kr, ahyeon.lee@faves.co.kr, jeongyeon.lee@faves.co.kr, sumin.woo@faves.co.kr, kwanglae.jo@faves.co.kr",
     subject: `${username}님이 글을 남겼습니다.`,
-    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
+    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`,
   };
   await smtpTransport.sendMail(mailOptions, (error, response) => {
     if (error) {
@@ -523,7 +561,7 @@ export const contactUsKr = async (req, res) => {
 
 export const contactUsJp = async (req, res) => {
   const {
-    body: { username, email, description }
+    body: { username, email, description },
   } = req;
   if (!username || !email || !description) {
     return throwFlashMsg(
@@ -537,15 +575,15 @@ export const contactUsJp = async (req, res) => {
     service: "Gmail",
     auth: {
       user: "fave188170@gmail.com",
-      pass: process.env.GOOGLE_PW
-    }
+      pass: process.env.GOOGLE_PW,
+    },
   });
   const mailOptions = {
     from: "fave188170@gmail.com",
     to:
       "ceo@faves.co.kr, minhan.park@faves.co.kr, ahyeon.lee@faves.co.kr, jeongyeon.lee@faves.co.kr, sumin.woo@faves.co.kr, kwanglae.jo@faves.co.kr",
     subject: `${username}님이 글을 남겼습니다.`,
-    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`
+    text: `"${description}" 라는 글이 홈페이지에 등록되었습니다. "${email}"로 답변을 보내주세요.`,
   };
   await smtpTransport.sendMail(mailOptions, (error, response) => {
     if (error) {
@@ -564,19 +602,28 @@ export const contactUsJp = async (req, res) => {
   });
 };
 
-export const privacy = (req, res) => res.render("privacy");
-export const privacyKr = (req, res) => res.render("privacy_kr");
-export const privacyJp = (req, res) => res.render("privacy_jp");
-export const termOfUse = (req, res) => res.render("termsOfUse");
-export const termOfUseKr = (req, res) => res.render("termsOfUse_kr");
-export const termOfUseJp = (req, res) => res.render("termsOfUse_jp");
-export const forgotPassword = (req, res) => res.render("forgot_password");
-export const forgotPasswordKr = (req, res) => res.render("forgot_password_kr");
-export const forgotPasswordJp = (req, res) => res.render("forgot_password_jp");
+export const privacy = (req, res) =>
+  res.render("privacy", { title: "Privacy -" });
+export const privacyKr = (req, res) =>
+  res.render("privacy_kr", { title: "개인정보이용내역 -" });
+export const privacyJp = (req, res) =>
+  res.render("privacy_jp", { title: "個人情報利用内訳" });
+export const termOfUse = (req, res) =>
+  res.render("termsOfUse", { title: "Term of Use -" });
+export const termOfUseKr = (req, res) =>
+  res.render("termsOfUse_kr", { title: "이용약관" });
+export const termOfUseJp = (req, res) =>
+  res.render("termsOfUse_jp", { title: "利用規約 -" });
+export const forgotPassword = (req, res) =>
+  res.render("forgot_password", { title: "Find Password -" });
+export const forgotPasswordKr = (req, res) =>
+  res.render("forgot_password_kr", { title: "비밀번호 찾기 -" });
+export const forgotPasswordJp = (req, res) =>
+  res.render("forgot_password_jp", { title: "パスワードを検索 -" });
 
 export const postForgotPassword = async (req, res) => {
   const {
-    body: { email }
+    body: { email },
   } = req;
   if (!email) {
     return throwFlashMsg(
@@ -596,8 +643,8 @@ export const postForgotPassword = async (req, res) => {
         service: "Gmail",
         auth: {
           user: "fave188170@gmail.com",
-          pass: process.env.GOOGLE_PW
-        }
+          pass: process.env.GOOGLE_PW,
+        },
       });
       const mailOptions = {
         from: "fave188170@gmail.com",
@@ -617,7 +664,7 @@ export const postForgotPassword = async (req, res) => {
                  Temporary password: ${password}</p>
              </div>
         </div>
-        `
+        `,
       };
       smtpTransport.sendMail(mailOptions, (error, response) => {
         if (error) {
@@ -645,7 +692,7 @@ export const postForgotPassword = async (req, res) => {
 
 export const postForgotPasswordKr = async (req, res) => {
   const {
-    body: { email }
+    body: { email },
   } = req;
   if (!email) {
     return throwFlashMsg(
@@ -665,8 +712,8 @@ export const postForgotPasswordKr = async (req, res) => {
         service: "Gmail",
         auth: {
           user: "fave188170@gmail.com",
-          pass: process.env.GOOGLE_PW
-        }
+          pass: process.env.GOOGLE_PW,
+        },
       });
       const mailOptions = {
         from: "fave188170@gmail.com",
@@ -686,7 +733,7 @@ export const postForgotPasswordKr = async (req, res) => {
                  임시 비밀번호: ${password} </p>
              </div>
         </div>
-        `
+        `,
       };
       smtpTransport.sendMail(mailOptions, (error, response) => {
         if (error) {
@@ -719,7 +766,7 @@ export const postForgotPasswordKr = async (req, res) => {
 
 export const postForgotPasswordJp = async (req, res) => {
   const {
-    body: { email }
+    body: { email },
   } = req;
   if (!email) {
     return throwFlashMsg(
@@ -739,8 +786,8 @@ export const postForgotPasswordJp = async (req, res) => {
         service: "Gmail",
         auth: {
           user: "fave188170@gmail.com",
-          pass: process.env.GOOGLE_PW
-        }
+          pass: process.env.GOOGLE_PW,
+        },
       });
       const mailOptions = {
         from: "fave188170@gmail.com",
@@ -760,7 +807,7 @@ export const postForgotPasswordJp = async (req, res) => {
                  臨時の暗証番号: ${password} </p>
              </div>
         </div>
-        `
+        `,
       };
       smtpTransport.sendMail(mailOptions, (error, response) => {
         if (error) {

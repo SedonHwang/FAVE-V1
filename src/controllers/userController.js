@@ -6,25 +6,25 @@ import User from "../models/users";
 export const userPage = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("profile");
+    res.render("profile", { title: "Profile -" });
   } else {
-    res.render("profile", { errorMessage });
+    res.render("profile", { errorMessage, title: "Profile -" });
   }
 };
 export const userPageKr = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("profile_kr");
+    res.render("profile_kr", { title: "프로필 -" });
   } else {
-    res.render("profile_kr", { errorMessage });
+    res.render("profile_kr", { errorMessage, title: "프로필 -" });
   }
 };
 export const userPageJp = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("profile_jp");
+    res.render("profile_jp", { title: "プロフィール -" });
   } else {
-    res.render("profile_jp", { errorMessage });
+    res.render("profile_jp", { errorMessage, title: "プロフィール -" });
   }
 };
 export const changeProfile = async (req, res) => {
@@ -39,8 +39,8 @@ export const changeProfile = async (req, res) => {
       postalCode,
       height,
       weight,
-      job
-    }
+      job,
+    },
   } = req;
   if (sex === undefined) {
     sex = "N";
@@ -59,7 +59,7 @@ export const changeProfile = async (req, res) => {
         postalCode,
         height,
         weight,
-        job
+        job,
       });
       res.redirect(routes.home);
     } catch {
@@ -80,8 +80,8 @@ export const changeProfileKr = async (req, res) => {
       postalCode,
       height,
       weight,
-      job
-    }
+      job,
+    },
   } = req;
   if (sex === undefined) {
     sex = "N";
@@ -105,7 +105,7 @@ export const changeProfileKr = async (req, res) => {
         postalCode,
         height,
         weight,
-        job
+        job,
       });
       res.redirect(routes.homeKr);
     } catch {
@@ -131,8 +131,8 @@ export const changeProfileJp = async (req, res) => {
       postalCode,
       height,
       weight,
-      job
-    }
+      job,
+    },
   } = req;
   if (sex === undefined) {
     sex = "N";
@@ -156,7 +156,7 @@ export const changeProfileJp = async (req, res) => {
         postalCode,
         height,
         weight,
-        job
+        job,
       });
       res.redirect(routes.homeJp);
     } catch {
@@ -173,31 +173,31 @@ export const changeProfileJp = async (req, res) => {
 export const changePassword = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("password");
+    res.render("password", { title: "Change Password -" });
   } else {
-    res.render("password", { errorMessage });
+    res.render("password", { errorMessage, title: "Change Password -" });
   }
 };
 export const changePasswordKr = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("password_kr");
+    res.render("password_kr", { title: "비밀번호 변경 -" });
   } else {
-    res.render("password_kr", { errorMessage });
+    res.render("password_kr", { errorMessage, title: "비밀번호 변경 -" });
   }
 };
 export const changePasswordJp = (req, res) => {
   let errorMessage = req.flash("errorMessage");
   if (errorMessage.length === 0) {
-    res.render("password_jp");
+    res.render("password_jp", { title: "パスワード変更 -" });
   } else {
-    res.render("password_jp", { errorMessage });
+    res.render("password_jp", { errorMessage, title: "パスワード変更 -" });
   }
 };
 
 export const postChangePassword = async (req, res) => {
   const {
-    body: { password, password1, password2 }
+    body: { password, password1, password2 },
   } = req;
   try {
     if (password1 !== password2) {
@@ -243,7 +243,7 @@ export const postChangePassword = async (req, res) => {
 
 export const postChangePasswordJp = async (req, res) => {
   const {
-    body: { password, password1, password2 }
+    body: { password, password1, password2 },
   } = req;
   try {
     if (password1 !== password2) {
@@ -289,7 +289,7 @@ export const postChangePasswordJp = async (req, res) => {
 
 export const postChangePasswordKr = async (req, res) => {
   const {
-    body: { password, password1, password2 }
+    body: { password, password1, password2 },
   } = req;
   try {
     if (password1 !== password2) {

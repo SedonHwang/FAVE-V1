@@ -9,17 +9,25 @@ import User from "../models/users";
 import axios from "axios";
 import productPriceSum from "../lib/productPriceSum";
 
-export const getStore = (req, res) => res.render("store");
-export const getStoreKr = (req, res) => res.render("store_kr");
-export const getStoreJp = (req, res) => res.render("store_jp");
+export const getStore = (req, res) => res.render("store", { title: "Store -" });
+export const getStoreKr = (req, res) =>
+  res.render("store_kr", { title: "스토어 -" });
+export const getStoreJp = (req, res) =>
+  res.render("store_jp", { title: "ストア -" });
 
-export const getFave350 = (req, res) => res.render("fave350");
-export const getFave350Kr = (req, res) => res.render("fave350_kr");
-export const getFave350Jp = (req, res) => res.render("fave350_jp");
+export const getFave350 = (req, res) =>
+  res.render("fave350", { title: "Smart Balance Trainer -" });
+export const getFave350Kr = (req, res) =>
+  res.render("fave350_kr", { title: "스마트 밸런스 트레이너" });
+export const getFave350Jp = (req, res) =>
+  res.render("fave350_jp", { title: "スマートバランス・トレーナー -" });
 
-export const getFave450 = (req, res) => res.render("fave450");
-export const getFave450Kr = (req, res) => res.render("fave450_kr");
-export const getFave450jp = (req, res) => res.render("fave450_jp");
+export const getFave450 = (req, res) =>
+  res.render("fave450", { title: "Smart Balance Trainer -" });
+export const getFave450Kr = (req, res) =>
+  res.render("fave450_kr", { title: "스마트 밸런스 트레이너" });
+export const getFave450jp = (req, res) =>
+  res.render("fave450_jp", { title: "スマートバランス・トレーナー -" });
 
 export const postPayment = async (req, res) => {
   const {
@@ -80,6 +88,7 @@ export const getPayment = (req, res) => {
     numberWithCommas,
     numberUnCommas,
     shipPay,
+    title: "Buy",
   });
 };
 
@@ -96,6 +105,7 @@ export const getPaymentKr = (req, res) => {
     numberWithCommas,
     numberUnCommas,
     shipPay,
+    title: "구매하기",
   });
 };
 
@@ -112,6 +122,7 @@ export const getPaymentJp = (req, res) => {
     numberWithCommas,
     numberUnCommas,
     shipPay,
+    title: "購買する -",
   });
 };
 
@@ -519,6 +530,7 @@ export const orders = async (req, res) => {
     isData,
     lastPage,
     currentPage,
+    title: "Orders -",
   });
 };
 export const ordersKr = async (req, res) => {
@@ -551,6 +563,7 @@ export const ordersKr = async (req, res) => {
     isData,
     lastPage,
     currentPage,
+    title: "주문 목록 -",
   });
 };
 export const ordersJp = async (req, res) => {
@@ -583,12 +596,16 @@ export const ordersJp = async (req, res) => {
     isData,
     lastPage,
     currentPage,
+    title: "注文目録 -",
   });
 };
 
-export const ordersCheck = (req, res) => res.render("orders_check");
-export const ordersCheckKr = (req, res) => res.render("orders_check_kr");
-export const ordersCheckJp = (req, res) => res.render("orders_check_jp");
+export const ordersCheck = (req, res) =>
+  res.render("orders_check", { title: "Order Confirmation -" });
+export const ordersCheckKr = (req, res) =>
+  res.render("orders_check_kr", { title: "주문 확인하기 -" });
+export const ordersCheckJp = (req, res) =>
+  res.render("orders_check_jp", { title: "注文確認 -" });
 
 export const postOrdersCheck = async (req, res) => {
   const { orderInfo, email } = req.body;
