@@ -186,16 +186,32 @@
           }
           .app__icon {
             padding: 5px;
-            img {
-              width: 60px;
-              height: 60px;
+            a {
+              img {
+                width: 60px;
+                height: 60px;
+                @include breakpoint(tablet) {
+                  width: 50px;
+                  height: 50px;
+                }
+                @include breakpoint(mobile) {
+                  width: 40px;
+                  height: 40px;
+                }
+              }
+            }
+            p {
+              padding: 5px;
+              margin-left: 5px;
+              display: inline-block;
+              position: relative;
+              top: -15px;
+              color: $font-gray;
               @include breakpoint(tablet) {
-                width: 50px;
-                height: 50px;
+                font-size: 14px;
               }
               @include breakpoint(mobile) {
-                width: 40px;
-                height: 40px;
+                font-size: 12px;
               }
             }
           }

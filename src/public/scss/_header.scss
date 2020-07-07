@@ -203,6 +203,9 @@
                 &:nth-child(2) {
                   border-left: 0.7px solid $font-gray;
                 }
+                &:nth-child(3) {
+                  border-left: 0.7px solid $font-gray;
+                }
                 &:hover {
                   a {
                     color: $font-orange;
