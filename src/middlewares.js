@@ -2,6 +2,8 @@ import routes from "./routes";
 import multer from "multer";
 
 const multerImg = multer({ dest: "uploads/images/" });
+// 리뷰 이미지가 저장될 서버내 주소. s3로 옮기는게 좋음
+const reviewImg = multer({ dest: "uploads/reviews/" });
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.routes = routes;
@@ -80,3 +82,5 @@ export const onlyPrivateJp = (req, res, next) => {
 };
 
 export const uploadImg = multerImg.single("imgFile");
+// 해당 부분이 미들웨어로 들어가고 input의 name이 reviewImg 되어야함
+export const uploadReviewImg = reviewImg.single("reviewImg");

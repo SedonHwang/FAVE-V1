@@ -73,7 +73,10 @@ block content
                                 .button--border
                                     input.purchase--button(type="submit", value="購買する")
         .purchase--tab
-            .purchase--detail
+            ul.tabs
+               li.tab-items.current(data-tab="detail") 詳細説明
+               li.tab-items(data-tab="review") 商品レビュー
+            .purchase--detail.tab-contents.current#detail
                 .purchase--headers
                     h3 Smart Balance Trainer 350
                 .purchase--imgs
@@ -88,6 +91,106 @@ block content
                     .space 
                     p FAVEはコアの筋肉向上、全身運動、有酸素運動などあらゆる運動ができます 
                     p また, バランスボールはリハビリテーションに使っているし, 体のバランスを上昇させます. 
+            .review--detail.tab-contents#review
+                .review-detail__container 
+                    .headers--container
+                        .headers--container__text
+                            .text__header
+                                h3 商品レビュー
+                                span 利用のお客様の後記です
+                            .text__link
+                                a(href="#")
+                                    span Total Review >
+                        .headers--container__preview
+                            .headers--container__items
+                                .preview--rating__title
+                                    h3 FAVE 350
+                                .preview--rating__container    
+                                    .preview--rating__star
+                                        span.star--rating__blank
+                                            if totalRatings.fave350TotalRating === 0
+                                                span.star--rating__shiny(style=`width: 0%`)
+                                            else
+                                                span.star--rating__shiny(style=`width: ${Number((Number(totalRatings.fave350TotalRating) / Number(totalRatings.fave350TotalCount)).toFixed(1))*20}%`)
+                                    .preview--rating__score
+                                        if totalRatings.fave350TotalRating === 0
+                                            span= `(総点: 0 / 5.0)`
+                                        else
+                                            span= `(総点: ${(Number(totalRatings.fave350TotalRating) / Number(totalRatings.fave350TotalCount)).toFixed(1)} / 5.0)`
+                            .headers--container__items
+                                .preview--img__title
+                                    h4 フォトレビュー
+                                .preview--img__wrapper
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-1] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-1]}`}`)
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-2] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-2]}`}`)
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-3] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-3]}`}`)
+                    .review--lists__container
+                        if reviews.length === 0
+                            .review--list__wrapper
+                                .review--list__desc
+                                    h3 後記がありません。
+                                    p 最初に後記を残してみてください。
+                        else
+                            each review in reviews
+                                .review--list__wrapper
+                                    .review--list__info
+                                        .review--rating__star
+                                            span.star--rating__blank
+                                                span.star--rating__shiny(style=`width: ${Number(review.rating)*20}%;`)
+                                        h4= `${review.creator.name}`
+                                        h5= `${review.createdAt.toLocaleDateString('ko-KR')}`
+                                    .review--list__desc
+                                        h3= `${review.title}`
+                                        p= `${review.comment}`
+                                    .review--list__img
+                                        img(src=`${review.imgLinks === ""? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${review.imgLinks}`}`)
+                    .review--upload__container
+                        if user
+                            .review--upload__wrapper
+                                form(action=`/store${routes.review}?urlProduct=fave350&urlLanguage=jp`, method="post", enctype="multipart/form-data")
+                                    .input--container
+                                        .label--wrapper
+                                            label(for="title") 題名
+                                        .input--wrapper
+                                            input(type="text", placeholder="タイトルを入力してください.", name="title", id="title")
+                                    .input--container
+                                        .label--wrapper
+                                            label 点数
+                                        .input--wrapper
+                                            fieldset(class="rating")
+                                                input(type="radio", name="rating", id="star5", value=5)
+                                                label(for="star5", title="very good")
+                                                input(type="radio", name="rating", id="star4", value=4)
+                                                label(for="star4", title="good")
+                                                input(type="radio", name="rating", id="star3", value=3)
+                                                label(for="star3", title="soso")
+                                                input(type="radio", name="rating", id="star2", value=2)
+                                                label(for="star2", title="bad")
+                                                input(type="radio", name="rating", id="star1", value=1)
+                                                label(for="star1", title="very bad")
+                                    .input--container
+                                        .label--wrapper
+                                            label パイル
+                                        .label--btn
+                                                label(for="file")
+                                                    i.fa.fa-camera
+                                                    | 写真を添付してください.
+                                                input(type="file", id="file", name="reviewImg", accept="image/*")
+                                    .input--container
+                                        .label--wrapper
+                                            label(for="review") 後記
+                                        .input--wrapper
+                                            textarea(name="review",id="review")
+                                    .input--container
+                                        input(name="country", value="jp", type="hidden")
+                                        input(name="product", value="fave350", type="hidden")
+                                    .input--container
+                                        .button--wrapper
+                                            .submit--btn
+                                                button(type="submit") 登録する
     .center--icons
         .center--icons__wrapper
             .icon--columns

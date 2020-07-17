@@ -13,6 +13,9 @@ import {
   deleteNotice,
   payments,
   postPayments,
+  adminReviews,
+  reviewUpdate,
+  reviewDelete,
 } from "../controllers/adminController";
 import { onlyAdmin, onlyPublic, onlyPrivate, uploadImg } from "../middlewares";
 
@@ -37,5 +40,9 @@ adminRouter.get(routes.deleteNotice(), onlyAdmin, deleteNotice);
 
 adminRouter.get(routes.payments, onlyAdmin, payments);
 adminRouter.post(routes.payments, onlyAdmin, postPayments);
+
+adminRouter.get(routes.admin_review, onlyAdmin, adminReviews);
+adminRouter.post(routes.review_update, reviewUpdate);
+adminRouter.post(routes.review_delete, reviewDelete);
 
 export default adminRouter;

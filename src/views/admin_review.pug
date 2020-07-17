@@ -1,0 +1,53 @@
+extends layouts/admin.pug
+
+block content
+    .admin--reviews
+        h3 리뷰내역
+        .admin--lists
+            if reviews.length === 0
+                h3 리뷰내역이 없습니다.
+            else
+                each review in reviews
+                    .review--wrapper
+                        table
+                            tr
+                                th 이름
+                                td(colspan=2)= `${review.creator.name}`
+                            tr
+                                th 별점
+                                td(colspan=2)= `${review.rating} / 5`
+                            tr
+                                th 후기
+                                td(colspan=2)= `${review.comment}`
+                            tr
+                                th 위치
+                                td= `${review.language}`
+                                td
+                                    form(action=`/admin${routes.review_update}?page=${currentPage}`, method="post")
+                                        input(type="hidden", name="reviewId", value=`${review._id}`)
+                                        select(name="reviewLang")
+                                            option(value="kr") kr
+                                            option(value="jp") jp
+                                            option(value="en") en
+                                        input(type="submit", value="옮기기", class="form--btn btn--green")
+                            tr
+                                td(colspan=3)
+                                    form(action=`/admin${routes.review_delete}?page=${currentPage}`, method="post")
+                                        input(type="hidden", name="reviewId", value=`${review._id}`)
+                                        input(type="hidden", name="product", value=`${review.product}`)
+                                        input(type="hidden", name="starRating", value=`${review.rating}`)
+                                        input(type="submit", value="삭제하기", class="form--btn btn--red")
+            .paginations
+                    if currentPage <= lastPage
+                        ul
+                            if currentPage !== 1
+                                a(href=`/admin${routes.admin_review}?page=${Number(currentPage)-1}`)
+                                    li < 이전
+                            else
+                                li
+                            li= currentPage
+                            if currentPage !== lastPage
+                                a(href=`/admin${routes.admin_review}?page=${Number(currentPage)+1}`)
+                                    li 다음 >
+                            else
+                                li

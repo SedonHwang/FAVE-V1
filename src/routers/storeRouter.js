@@ -31,7 +31,9 @@ import {
   paymentCompletePaypalJp,
   refund,
   refundJp,
+  postReview,
 } from "../controllers/storeController";
+import { uploadReviewImg } from "../middlewares";
 
 const storeRouter = express.Router();
 
@@ -73,5 +75,7 @@ storeRouter.post(routes.orders_check_jp, postOrdersCheckJp);
 storeRouter.post(routes.refund, refund);
 storeRouter.post(routes.refund_kr, refundKr);
 storeRouter.post(routes.refund_jp, refundJp);
+
+storeRouter.post(routes.review, uploadReviewImg, postReview);
 
 export default storeRouter;

@@ -8,6 +8,8 @@ dotenv.config();
 import "./models/users";
 import "./models/games";
 import "./models/notices";
+import "./models/reviews";
+import "./models/ratings";
 
 const PORT = process.env.PORT || 4000;
 

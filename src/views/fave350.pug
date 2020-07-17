@@ -74,7 +74,10 @@ block content
                                 .button--border
                                     input.purchase--button(type="submit", value="Purchase")
         .purchase--tab
-            .purchase--detail
+            ul.tabs
+               li.tab-items.current(data-tab="detail") Detail
+               li.tab-items(data-tab="review") Reviews
+            .purchase--detail.tab-contents.current#detail
                 .purchase--headers
                     h3 Smart Balance Trainer 350
                 .purchase--imgs
@@ -89,6 +92,106 @@ block content
                     .space 
                     p FAVE enables comprehensive exercise such as core muscle enhancement, full body exercise, and aerobic exercise. 
                     p The balance ball is also used for rehabilitation and increases the body's. 
+            .review--detail.tab-contents#review
+                .review-detail__container 
+                    .headers--container
+                        .headers--container__text
+                            .text__header
+                                h3 Product review
+                                span Reviews from customers using fave 350.
+                            .text__link
+                                a(href="#")
+                                    span Total Review >
+                        .headers--container__preview
+                            .headers--container__items
+                                .preview--rating__title
+                                    h3 FAVE 350
+                                .preview--rating__container    
+                                    .preview--rating__star
+                                        span.star--rating__blank
+                                            if totalRatings.fave350TotalRating === 0
+                                                span.star--rating__shiny(style=`width: 0%`)
+                                            else
+                                                span.star--rating__shiny(style=`width: ${Number((Number(totalRatings.fave350TotalRating) / Number(totalRatings.fave350TotalCount)).toFixed(1))*20}%`)
+                                    .preview--rating__score
+                                        if totalRatings.fave350TotalRating === 0
+                                            span= `(Total: 0 / 5.0)`
+                                        else
+                                            span= `(Total: ${(Number(totalRatings.fave350TotalRating) / Number(totalRatings.fave350TotalCount)).toFixed(1)} / 5.0)`
+                            .headers--container__items
+                                .preview--img__title
+                                    h4 Photo Review
+                                .preview--img__wrapper
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-1] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-1]}`}`)
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-2] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-2]}`}`)
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-3] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-3]}`}`)
+                    .review--lists__container
+                        if reviews.length === 0
+                            .review--list__wrapper
+                                .review--list__desc
+                                    h3 No Review.
+                                    p Be the first to leave a review
+                        else
+                            each review in reviews
+                                .review--list__wrapper
+                                    .review--list__info
+                                        .review--rating__star
+                                            span.star--rating__blank
+                                                span.star--rating__shiny(style=`width: ${Number(review.rating)*20}%;`)
+                                        h4= `${review.creator.name}`
+                                        h5= `${review.createdAt.toLocaleDateString('ko-KR')}`
+                                    .review--list__desc
+                                        h3= `${review.title}`
+                                        p= `${review.comment}`
+                                    .review--list__img
+                                        img(src=`${review.imgLinks === ""? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${review.imgLinks}`}`)
+                    .review--upload__container
+                        if user
+                            .review--upload__wrapper
+                                form(action=`/store${routes.review}?urlProduct=fave350&urlLanguage=en`, method="post", enctype="multipart/form-data")
+                                    .input--container
+                                        .label--wrapper
+                                            label(for="title") Title
+                                        .input--wrapper
+                                            input(type="text", placeholder="please write title", name="title", id="title")
+                                    .input--container
+                                        .label--wrapper
+                                            label Rating
+                                        .input--wrapper
+                                            fieldset(class="rating")
+                                                input(type="radio", name="rating", id="star5", value=5)
+                                                label(for="star5", title="Very good")
+                                                input(type="radio", name="rating", id="star4", value=4)
+                                                label(for="star4", title="good")
+                                                input(type="radio", name="rating", id="star3", value=3)
+                                                label(for="star3", title="soso")
+                                                input(type="radio", name="rating", id="star2", value=2)
+                                                label(for="star2", title="bad")
+                                                input(type="radio", name="rating", id="star1", value=1)
+                                                label(for="star1", title="very bad")
+                                    .input--container
+                                        .label--wrapper
+                                            label file
+                                        .label--btn
+                                                label(for="file")
+                                                    i.fa.fa-camera
+                                                    | Attach a photo.
+                                                input(type="file", id="file", name="reviewImg", accept="image/*")
+                                    .input--container
+                                        .label--wrapper
+                                            label(for="review") Review
+                                        .input--wrapper
+                                            textarea(name="review",id="review")
+                                    .input--container
+                                        input(name="country", value="en", type="hidden")
+                                        input(name="product", value="fave350", type="hidden")
+                                    .input--container
+                                        .button--wrapper
+                                            .submit--btn
+                                                button(type="submit") Register
     .center--icons
         .center--icons__wrapper
             .icon--columns

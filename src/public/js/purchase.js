@@ -19,6 +19,8 @@ const [urlProduct, urlLanguage] = extractFromUrl(
   window.location.href.split("/store/")[1]
 );
 const accordionHeaders = document.getElementsByClassName("accordion__header");
+const tabItems = document.getElementsByClassName("tab-items");
+const tabContents = document.getElementsByClassName("tab-contents");
 
 if (selectSelected) {
   selectSelected.addEventListener("click", function () {
@@ -219,6 +221,29 @@ if (accordionHeaders.length) {
 //   let str = String(x);
 //   return str.replace(/[^\d]+/g, "");
 // }
+
+if (tabItems.length > 0) {
+  for (let i = 0; i < tabItems.length; i++) {
+    tabItems[i].addEventListener("click", function () {
+      const siblings = this.parentElement.children;
+      for (let j = 0; j < siblings.length; j++) {
+        if (siblings[j].classList.contains("current")) {
+          siblings[j].classList.remove("current");
+          continue;
+        }
+      }
+      for (let k = 0; k < tabContents.length; k++) {
+        if (tabContents[k].classList.contains("current")) {
+          tabContents[k].classList.remove("current");
+        }
+      }
+
+      const tabNum = this.dataset.tab;
+      this.classList.add("current");
+      document.getElementById(tabNum).classList.add("current");
+    });
+  }
+}
 
 function checkExistedItem(item) {
   if (productsWrapper.children.length == 0) return false;

@@ -6,6 +6,8 @@ import paymentInfo from "../lib/paymentInfo";
 import hideInfo from "../lib/hideInfo";
 import Purchaselist from "../models/purchaseLists";
 import User from "../models/users";
+import Review from "../models/reviews";
+import Rating from "../models/ratings";
 import axios from "axios";
 import productPriceSum from "../lib/productPriceSum";
 
@@ -15,19 +17,139 @@ export const getStoreKr = (req, res) =>
 export const getStoreJp = (req, res) =>
   res.render("store_jp", { title: "ストア -" });
 
-export const getFave350 = (req, res) =>
-  res.render("fave350", { title: "Smart Balance Trainer -" });
-export const getFave350Kr = (req, res) =>
-  res.render("fave350_kr", { title: "스마트 밸런스 트레이너" });
-export const getFave350Jp = (req, res) =>
-  res.render("fave350_jp", { title: "スマートバランス・トレーナー -" });
+export const getFave350 = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      language: "en",
+      product: "fave350",
+    })
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(4);
+    //역순으로 세우고, 4개가 필요함.
+    let totalRatings = await Rating.find({});
+    totalRatings = totalRatings[0];
+    res.render("fave350", {
+      title: "Smart Balance Trainer -",
+      reviews,
+      totalRatings,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+};
+export const getFave350Kr = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      language: "kr",
+      product: "fave350",
+    })
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(4);
+    //역순으로 세우고, 4개가 필요함.
+    let totalRatings = await Rating.find({});
+    totalRatings = totalRatings[0];
+    res.render("fave350_kr", {
+      title: "스마트 밸런스 트레이너",
+      reviews,
+      totalRatings,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/kr");
+  }
+};
+export const getFave350Jp = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      language: "jp",
+      product: "fave350",
+    })
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(4);
+    //역순으로 세우고, 4개가 필요함.
+    let totalRatings = await Rating.find({});
+    totalRatings = totalRatings[0];
+    res.render("fave350_jp", {
+      title: "スマートバランス・トレーナー -",
+      reviews,
+      totalRatings,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/jp");
+  }
+};
 
-export const getFave450 = (req, res) =>
-  res.render("fave450", { title: "Smart Balance Trainer -" });
-export const getFave450Kr = (req, res) =>
-  res.render("fave450_kr", { title: "스마트 밸런스 트레이너" });
-export const getFave450jp = (req, res) =>
-  res.render("fave450_jp", { title: "スマートバランス・トレーナー -" });
+export const getFave450 = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      language: "en",
+      product: "fave450",
+    })
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(4);
+    //역순으로 세우고, 4개가 필요함.
+    let totalRatings = await Rating.find({});
+    totalRatings = totalRatings[0];
+    res.render("fave450", {
+      title: "Smart Balance Trainer -",
+      reviews,
+      totalRatings,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+};
+export const getFave450Kr = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      language: "kr",
+      product: "fave450",
+    })
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(4);
+    //역순으로 세우고, 4개가 필요함.
+    let totalRatings = await Rating.find({});
+    totalRatings = totalRatings[0];
+    res.render("fave450_kr", {
+      title: "스마트 밸런스 트레이너",
+      reviews,
+      totalRatings,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/kr");
+  }
+};
+export const getFave450jp = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      language: "jp",
+      product: "fave450",
+    })
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(4);
+    //역순으로 세우고, 4개가 필요함.
+    let totalRatings = await Rating.find({});
+    totalRatings = totalRatings[0];
+    res.render("fave450_jp", {
+      title: "スマートバランス・トレーナー -",
+      reviews,
+      totalRatings,
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/jp");
+  }
+};
 
 export const postPayment = async (req, res) => {
   const {
@@ -782,4 +904,79 @@ export const refundJp = async (req, res) => {
     console.log(e);
     res.redirect(`/store${routes.orders_jp}?page=${currentPage}`);
   }
+};
+
+export const postReview = async (req, res) => {
+  let path = "";
+  const { urlProduct, urlLanguage } = req.query;
+  const redirectUrl = `/store/${urlProduct}/${
+    urlLanguage === "en" ? "" : urlLanguage
+  }`;
+  const {
+    body: { title, rating, review, country, product },
+  } = req;
+  // 값이 제대로 들어오지 앟았을 때 처리하는 로직
+  if (title === "" || review === "" || rating === undefined) {
+    // 타이틀, 리뷰(긴 글), 별점이 들어오지 않으면 원래 페이지로 다시 리다이렉트
+    return res.redirect(redirectUrl);
+  }
+  if (req.file) {
+    path = req.file.path;
+  }
+  try {
+    await Review.create({
+      title,
+      comment: review,
+      rating: Number(rating),
+      language: country,
+      product,
+      creator: req.user._id,
+      imgLinks: path,
+    });
+
+    // ratings는 별점 총합을 갖고 있는 db
+    // 먼저 데이터베이스에 하나 추가해야함.
+    let ratings = await Rating.find({});
+    ratings = ratings[0];
+    // 이미지가 있다면 여기서 저장이 됨.
+    if (path !== "") {
+      ratings.headerImg.push(path);
+      ratings.save();
+    }
+    //
+    console.log(ratings);
+    let newTotal;
+    let newTotalRating;
+    let newTotalCount;
+    if (product === "fave350") {
+      newTotalRating = Number(ratings.fave350TotalRating) + Number(rating);
+      newTotalCount = Number(ratings.fave350TotalCount) + 1;
+      newTotal = {
+        fave450TotalCount: ratings.fave450TotalCount,
+        fave450TotalRating: ratings.fave450TotalRating,
+        fave350TotalRating: newTotalRating,
+        fave350TotalCount: newTotalCount,
+      };
+    } else {
+      newTotalRating = Number(ratings.fave450TotalRating) + Number(rating);
+      newTotalCount = Number(ratings.fave450TotalCount) + 1;
+      newTotal = {
+        fave350TotalRating: ratings.fave350TotalRating,
+        fave350TotalCount: ratings.fave350TotalCount,
+        fave450TotalRating: newTotalRating,
+        fave450TotalCount: newTotalCount,
+      };
+    }
+    //newTotal을 기준으로 업데이트 시켜야함
+    let newRatings = await Rating.findOneAndUpdate(
+      { _id: ratings._id },
+      newTotal,
+      { new: true }
+    );
+    console.log(newRatings);
+  } catch (e) {
+    console.log(e);
+  }
+  // 리뷰남기기에 실패하든 성공하든 원래페이지로 리다이렉트
+  res.redirect(redirectUrl);
 };

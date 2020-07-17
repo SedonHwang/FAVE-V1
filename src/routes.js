@@ -70,6 +70,9 @@ const DELETE_NOTICE = "/notice/:id/delete";
 const EDIT_NOTICE = "/notice/:id/edit";
 const ADMIN_GAME = "/game";
 const PAYMENTS = "/payments";
+const ADMIN_REVIEW = "/adminreview";
+const REVIEW_UPDATE = "/adminreview/update";
+const REVIEW_DELETE = "/adminreview/delete";
 
 //Store
 const STORE = "/store";
@@ -98,6 +101,7 @@ const ORDERS_CHECK_JP = "/orders/check/jp";
 const REFUND = "/refund";
 const REFUND_KR = "/refund/kr";
 const REFUND_JP = "/refund/jp";
+const REVIEW = "/review";
 
 const routes = {
   home: HOME,
@@ -201,6 +205,10 @@ const routes = {
   refund: REFUND,
   refund_kr: REFUND_KR,
   refund_jp: REFUND_JP,
+  review: REVIEW,
+  admin_review: ADMIN_REVIEW,
+  review_update: REVIEW_UPDATE,
+  review_delete: REVIEW_DELETE,
 };
 
 export default routes;

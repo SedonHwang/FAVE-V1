@@ -2,6 +2,8 @@ import passport from "passport";
 import routes from "../routes";
 import Notice from "../models/notices";
 import Purchaselist from "../models/purchaseLists";
+import Rating from "../models/ratings";
+import Review from "../models/reviews";
 import axios from "axios";
 
 //Global Router Controller
@@ -243,4 +245,76 @@ export const postPayments = async (req, res) => {
     console.log(e);
   }
   res.redirect(`/admin${routes.payments}?page=${currentPage}`);
+};
+
+export const adminReviews = async (req, res) => {
+  const currentPage = parseInt(req.query.page || "1", 10);
+  if (currentPage < 1) {
+    return res.redirect(`/admin${routes.admin_review}`);
+  }
+  try {
+    const reviews = await Review.find()
+      .populate("creator")
+      .sort({ _id: -1 })
+      .limit(10)
+      .skip((currentPage - 1) * 10);
+    const reviewCnt = await Review.countDocuments();
+    const lastPage = Math.ceil(reviewCnt / 10);
+    console.log("reviews is", reviews);
+    console.log("currentPage is", currentPage);
+    console.log("lastPage is", lastPage);
+    res.render("admin_review", { reviews, currentPage, lastPage });
+  } catch (e) {
+    console.log(e);
+    res.redirect(`/admin${routes.admin_review}`);
+  }
+};
+
+export const reviewUpdate = async (req, res) => {
+  const { reviewId, reviewLang } = req.body;
+  const currentPage = parseInt(req.query.page || "1", 10);
+  try {
+    await Review.findOneAndUpdate({ _id: reviewId }, { language: reviewLang });
+  } catch (e) {
+    console.log(e);
+  }
+  res.redirect(`/admin${routes.admin_review}?page=${currentPage}`);
+};
+
+export const reviewDelete = async (req, res) => {
+  const { reviewId, product, starRating } = req.body;
+  console.log(reviewId);
+  console.log(starRating);
+  console.log(product);
+  const currentPage = parseInt(req.query.page || "1", 10);
+  let newVal = {};
+  try {
+    await Review.findOneAndDelete({ _id: reviewId });
+    let ratings = await Rating.find({});
+    let rating = ratings[0];
+    if (product === "fave350") {
+      newVal = {
+        fave450TotalRating: rating.fave450TotalRating,
+        fave450TotalCount: rating.fave450TotalCount,
+        fave350TotalRating:
+          Number(rating.fave350TotalRating) - Number(starRating),
+        fave350TotalCount: Number(rating.fave350TotalCount) - 1,
+      };
+    } else {
+      newVal = {
+        fave350TotalRating: rating.fave350TotalRating,
+        fave350TotalCount: rating.fave350TotalCount,
+        fave450TotalRating:
+          Number(rating.fave450TotalRating) - Number(starRating),
+        fave450TotalCount: Number(rating.fave450TotalCount) - 1,
+      };
+    }
+    const result = await Rating.findOneAndUpdate({ _id: rating._id }, newVal, {
+      new: true,
+    });
+    console.log(result);
+  } catch (e) {
+    console.log(e);
+  }
+  res.redirect(`/admin${routes.admin_review}?page=${currentPage}`);
 };

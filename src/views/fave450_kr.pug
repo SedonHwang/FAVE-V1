@@ -73,7 +73,10 @@ block content
                                 .button--border
                                     input.purchase--button(type="submit", value="구매하기")
         .purchase--tab
-            .purchase--detail
+            ul.tabs
+               li.tab-items.current(data-tab="detail") 상품 상세설명
+               li.tab-items(data-tab="review") 상품 후기
+            .purchase--detail.tab-contents.current#detail
                 .purchase--headers
                     h3 Smart Balance Trainer 450
                 .purchase--imgs
@@ -88,6 +91,106 @@ block content
                     .space 
                     p 코어 근육 증진, 전신 운동, 유산소 운동 등 포괄적인 운동이 가능합니다. 
                     p 또한 밸런스 볼은 재활운동에 쓰이기도 하고, 몸의 밸런스율을 상승시켜줍니다. 
+            .review--detail.tab-contents#review
+                .review-detail__container 
+                    .headers--container
+                        .headers--container__text
+                            .text__header
+                                h3 상품후기
+                                span fave 450을 이용한 고객들의 후기입니다.
+                            .text__link
+                                a(href="#")
+                                    span 전체 리뷰 >
+                        .headers--container__preview
+                            .headers--container__items
+                                .preview--rating__title
+                                    h3 FAVE 450
+                                .preview--rating__container    
+                                    .preview--rating__star
+                                        span.star--rating__blank
+                                            if totalRatings.fave450TotalRating == 0
+                                                span.star--rating__shiny(style=`width: 0%;`)
+                                            else  
+                                                span.star--rating__shiny(style=`width: ${Number((Number(totalRatings.fave450TotalRating) / Number(totalRatings.fave450TotalCount)).toFixed(1))*20}%`)
+                                    .preview--rating__score
+                                        if totalRatings.fave450TotalRating == 0
+                                            span= `(총점: 0 / 5.0)`
+                                        else
+                                            span= `(총점: ${(Number(totalRatings.fave450TotalRating) / Number(totalRatings.fave450TotalCount)).toFixed(1)} / 5.0)`
+                            .headers--container__items
+                                .preview--img__title
+                                    h4 포토 리뷰
+                                .preview--img__wrapper
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-1] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-1]}`}`)
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-2] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-2]}`}`)
+                                    .preview--img__items
+                                        img(src=`${totalRatings.headerImg[totalRatings.headerImg.length-3] === undefined ? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${totalRatings.headerImg[totalRatings.headerImg.length-3]}`}`)
+                    .review--lists__container
+                        if reviews.length === 0
+                            .review--list__wrapper
+                                .review--list__desc
+                                    h3 후기가 없습니다.
+                                    p 첫번째로 후기를 남겨보세요.
+                        else
+                            each review in reviews
+                                .review--list__wrapper
+                                    .review--list__info
+                                        .review--rating__star
+                                            span.star--rating__blank
+                                                span.star--rating__shiny(style=`width: ${Number(review.rating)*20}%;`)
+                                        h4= `${review.creator.name}`
+                                        h5= `${review.createdAt.toLocaleDateString('ko-KR')}`
+                                    .review--list__desc
+                                        h3= `${review.title}`
+                                        p= `${review.comment}`
+                                    .review--list__img
+                                        img(src=`${review.imgLinks === ""? "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" : `/${review.imgLinks}`}`)
+                    .review--upload__container
+                        if user
+                            .review--upload__wrapper
+                                form(action=`/store${routes.review}?urlProduct=fave450&urlLanguage=kr`, method="post", enctype="multipart/form-data")
+                                    .input--container
+                                        .label--wrapper
+                                            label(for="title") 제목
+                                        .input--wrapper
+                                            input(type="text", placeholder="제목을 입력해주세요.", name="title", id="title")
+                                    .input--container
+                                        .label--wrapper
+                                            label 별점
+                                        .input--wrapper
+                                            fieldset(class="rating")
+                                                input(type="radio", name="rating", id="star5", value=5)
+                                                label(for="star5", title="아주 맘에 들어요")
+                                                input(type="radio", name="rating", id="star4", value=4)
+                                                label(for="star4", title="맘에 들어요")
+                                                input(type="radio", name="rating", id="star3", value=3)
+                                                label(for="star3", title="보통이에요")
+                                                input(type="radio", name="rating", id="star2", value=2)
+                                                label(for="star2", title="별로에요")
+                                                input(type="radio", name="rating", id="star1", value=1)
+                                                label(for="star1", title="아주 별로에요")
+                                    .input--container
+                                        .label--wrapper
+                                            label 파일
+                                        .label--btn
+                                                label(for="file")
+                                                    i.fa.fa-camera
+                                                    | 사진을 첨부해주세요.
+                                                input(type="file", id="file", name="reviewImg", accept="image/*")
+                                    .input--container
+                                        .label--wrapper
+                                            label(for="review") 후기
+                                        .input--wrapper
+                                            textarea(name="review",id="review")
+                                    .input--container
+                                        input(name="country", value="kr", type="hidden")
+                                        input(name="product", value="fave450", type="hidden")
+                                    .input--container
+                                        .button--wrapper
+                                            .submit--btn
+                                                button(type="submit") 상품후기 등록하기         
     .center--icons
         .center--icons__wrapper
             .icon--columns
