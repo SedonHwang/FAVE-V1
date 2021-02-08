@@ -3,9 +3,9 @@ export default function (country, productName, productCnt) {
   // DATA format
   // const arr = {
   //     "FAVE 350": {
-  //         krPrice: 149000,
-  //         enPrice: 130,
-  //         jpPrice: 1400
+  //         krPrice: 200000,
+  //         enPrice: 200,
+  //         jpPrice: 20000
   //     }
   // }
   const products = {
