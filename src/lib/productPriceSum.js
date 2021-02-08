@@ -10,14 +10,14 @@ export default function (country, productName, productCnt) {
   // }
   const products = {
     "FAVE 350": {
-      krPrice: 124000,
-      enPrice: 129,
-      jpPrice: 14000,
+      krPrice: 200000,
+      enPrice: 200,
+      jpPrice: 20000,
     },
     "FAVE 450": {
-      krPrice: 124000,
-      enPrice: 129,
-      jpPrice: 14000,
+      krPrice: 200000,
+      enPrice: 200,
+      jpPrice: 20000,
     },
   };
   //한국, 일본, 미국포함 나머지 국가는 달러
